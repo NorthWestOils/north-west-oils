@@ -191,12 +191,12 @@ export const products: Product[] = [
     nameHi: "सोयाबीन रिफाइंड तेल",
     category: "Refined",
     summary:
-      "Our flagship: a light, neutral refined oil fortified with vitamins A and D, supplied in 15 KG tins.",
+      "Hero product: a light, neutral refined oil fortified with vitamins A and D, supplied in 15 KG tins.",
     intro:
       "Refined soyabean oil does the work mustard oil is too assertive for: frying that should not taste of the oil, batters, baking, and volume cooking where consistency matters more than character. It is refined under controlled conditions, fortified with vitamins A and D, and filled into 15 KG tins.",
     seoTitle: "Soyabean Refined Oil 15 KG Tin, Fortified",
     seoDescription:
-      "North West Soyabean Refined Oil, our flagship: a light, neutral oil fortified with vitamins A and D, in 15 KG food-grade tins for homes, caterers and trade.",
+      "North West Soyabean Refined Oil, our hero product: a light, neutral oil fortified with vitamins A and D, in 15 KG food-grade tins for homes, caterers and trade.",
     alternateNames: ["Refined Soyabean Oil", "Soybean Refined Oil", "Refined Soybean Oil", "Soya Oil"],
     compare: {
       made: "Refined under controlled conditions",

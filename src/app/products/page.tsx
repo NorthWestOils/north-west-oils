@@ -15,12 +15,12 @@ import { orderedProducts, productBySlug, type Product } from "@/data/products";
 export const metadata: Metadata = {
   title: "Soyabean, Mustard & Palmolein Oil Products",
   description:
-    "The North West Oils range: our flagship refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in five pack sizes and refined palmolein in 15 litre tins.",
+    "The North West Oils range: our hero product refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in five pack sizes and refined palmolein in 15 litre tins.",
   alternates: { canonical: "/products" },
   ...socialMetadata({
     title: "Soyabean, Mustard & Palmolein Oil Products | North West Oils",
     description:
-      "Our flagship refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in five pack sizes and refined palmolein oil in 15 litre tins.",
+      "Our hero product refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in five pack sizes and refined palmolein oil in 15 litre tins.",
     path: "/products",
   }),
 };
@@ -141,7 +141,7 @@ export default function ProductsPage() {
           </Reveal>
 
           <Reveal kind="rise" delay={0.1} className="mt-10 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-            <table className="w-full min-w-[40rem] border-collapse text-left">
+            <table className="w-full min-w-160 border-collapse text-left">
               <caption className="sr-only">
                 North West soyabean, mustard and palmolein oil compared
               </caption>

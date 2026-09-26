@@ -14,7 +14,7 @@ export function GET() {
   const lines = [
     `# ${company.legalName}`,
     "",
-    `> ${company.summary} Established ${company.established}. Flagship product: North West ${flagship.name}.`,
+    `> ${company.summary} Established ${company.established}. Hero product: North West ${flagship.name}.`,
     "",
     "## Products",
     "",

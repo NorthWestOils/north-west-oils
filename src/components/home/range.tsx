@@ -58,7 +58,7 @@ export function Range() {
                     height={product.heroHeight}
                     sizes="(max-width: 640px) 60vw, (max-width: 1023px) 40vw, 32vw"
                     shadowWidth="54%"
-                    className="mx-auto h-[15rem] sm:h-[19rem] lg:h-[24rem]"
+                    className="mx-auto h-60 sm:h-76 lg:h-96"
                   />
                 </Reveal>
 
@@ -68,7 +68,7 @@ export function Range() {
                 >
                   <RevealItem>
                     <Eyebrow style={{ color: accentVar[product.accent] }}>
-                      {product.slug === featuredProduct.slug && "Our flagship · "}
+                      {product.slug === featuredProduct.slug && "Hero product · "}
                       {product.category}
                     </Eyebrow>
                   </RevealItem>

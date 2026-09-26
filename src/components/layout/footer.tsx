@@ -144,7 +144,9 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/10 py-7 text-[0.8125rem] text-forest-400 sm:flex-row sm:items-center sm:justify-between">
+        {/* Extra bottom space so the floating WhatsApp button never sits on
+            top of this line when the page is scrolled to the end. */}
+        <div className="flex flex-col gap-3 border-t border-white/10 pt-7 pb-24 text-[0.8125rem] text-forest-400 sm:flex-row sm:items-center sm:justify-between lg:pb-28">
           <p>
             © {year} {company.legalName}. All rights reserved.
           </p>

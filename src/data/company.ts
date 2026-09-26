@@ -203,7 +203,7 @@ export const company = {
     {
       question: "What oils does North West Oils produce and supply?",
       answer:
-        "North West Oils produces and packages three core edible oils: its flagship refined Soyabean Oil (fortified with Vitamins A and D), cold-pressed Kachi Ghani Mustard Oil, and refined Palmolein Oil (fortified with Vitamins A and D).",
+        "North West Oils produces and packages three core edible oils: its hero product refined Soyabean Oil (fortified with Vitamins A and D), cold-pressed Kachi Ghani Mustard Oil, and refined Palmolein Oil (fortified with Vitamins A and D).",
     },
     {
       question: "Which oil should I use: soyabean, mustard or palmolein?",

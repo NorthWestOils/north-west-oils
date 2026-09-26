@@ -62,7 +62,7 @@ export function ProductCard({
           style={{ color: accent }}
         >
           <span aria-hidden="true" className="h-px w-5" style={{ backgroundColor: accent }} />
-          {featured && "Our flagship · "}
+          {featured && "Hero product · "}
           {product.category}
         </span>
 

@@ -98,26 +98,21 @@ export function Hero() {
             <motion.p
               {...rise(step.deva, reduced)}
               lang="hi"
-              className="deva mt-7 text-[1.375rem] leading-snug text-gold-500 sm:text-[1.625rem]"
+              className="deva mt-5 text-[1.125rem] leading-snug text-gold-500 sm:text-[1.25rem]"
             >
               {company.tagline.hi}
             </motion.p>
 
-            <motion.div {...rise(step.lede, reduced)} className="mt-7 max-w-lg">
-              <p className="eyebrow flex items-center gap-x-3 text-gold-500">
-                <span aria-hidden="true" className="h-px w-6 shrink-0 bg-gold-500/60" />
-                Our flagship
-              </p>
-              <p className="mt-3 font-display text-[1.625rem] leading-tight font-medium tracking-[-0.02em] text-paper sm:text-[1.875rem]">
-                Soyabean Refined Oil
-              </p>
-              <p className="mt-3 text-[1.0625rem] leading-relaxed text-forest-100">
-                Light, neutral and fortified with vitamins A and D, in 15 KG
-                tins. Alongside it, Kachi Ghani mustard and refined palmolein,
-                all tested and packed for homes, shelves and kitchens that cook
-                by the tin.
-              </p>
-            </motion.div>
+            {/* One sentence carries the flagship: the tin beside it does the
+                rest, and the kicker above already names the other two oils. */}
+            <motion.p
+              {...rise(step.lede, reduced)}
+              className="mt-6 max-w-md text-[1.0625rem] leading-relaxed text-forest-100"
+            >
+              Our hero product is{" "}
+              <strong className="font-semibold text-paper">Soyabean Refined Oil</strong>:
+              light, neutral and fortified with vitamins A and D, in 15 KG tins.
+            </motion.p>
 
             <motion.div
               {...rise(step.cta, reduced)}
@@ -140,7 +135,7 @@ export function Hero() {
           </div>
 
           <motion.div
-            className="lg:col-span-7 lg:-mr-[2%] lg:self-center"
+            className="lg:col-span-7 lg:mr-[-2%] lg:self-center"
             data-reveal=""
             initial={reduced ? false : { opacity: 0, y: 26, scale: 0.975 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -159,7 +154,7 @@ export function Hero() {
                   }
             }
           >
-            <div className="relative mx-auto w-full max-w-[32rem] lg:max-w-none">
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
               <Image
                 src="/images/soyabean-scene.webp"
                 alt="North West Soyabean Refined Oil in a 15 kg food-grade tin, with soybeans and soy leaves"
