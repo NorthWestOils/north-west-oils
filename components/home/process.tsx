@@ -1,0 +1,382 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { Container, Eyebrow, Section } from "@/components/ui/section";
+import { MaskReveal, Reveal } from "@/components/motion/reveal";
+import { TextLink } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+interface Stage {
+  step: string;
+  phase: string;
+  title: string;
+  summary: string;
+  spec: string;
+  highlight: string;
+  src: string;
+  alt: string;
+}
+
+const PROCESS_STAGES: Stage[] = [
+  {
+    step: "01",
+    phase: "Intake & Grading",
+    title: "Raw material selection",
+    summary:
+      "High-grade seed and oil stock, verified on arrival for condition and purity.",
+    spec: "Moisture & grade verified",
+    highlight: "Zero Compromise",
+    src: "/process/01-soyabean.webp",
+    alt: "Soybeans spilling from a steel scoop, the crop behind refined soyabean oil",
+  },
+  {
+    step: "02",
+    phase: "Cold Pressing",
+    title: "Cold-press & refining",
+    summary:
+      "Mustard pressed cold below 45°C; refined grades processed under strict heat control.",
+    spec: "Cold pressed < 45°C",
+    highlight: "Pungency Intact",
+    src: "/process/02-pressing.webp",
+    alt: "Golden oil running from a press spout",
+  },
+  {
+    step: "03",
+    phase: "Laboratory Control",
+    title: "Mandatory lab testing",
+    summary:
+      "Tested for purity, acid value, and FSSAI safety parameters before filling.",
+    spec: "Certified FSSAI testing",
+    highlight: "No Test, No Fill",
+    src: "/process/03-testing.webp",
+    alt: "An oil sample being handled in laboratory glassware",
+  },
+  {
+    step: "04",
+    phase: "Clean Packaging",
+    title: "Packing & sealing",
+    summary:
+      "Filled into food-grade tins, jars, and bottles with tamper-evident seals.",
+    spec: "Aseptic food-grade packs",
+    highlight: "Tamper-Evident",
+    src: "/process/04-packing.webp",
+    alt: "A sealed North West Kachi Ghani mustard oil 15 kg tin",
+  },
+  {
+    step: "05",
+    phase: "Nationwide Logistics",
+    title: "Nationwide dispatch",
+    summary:
+      "Direct dispatch in traceable batches to distributors and retailers across India.",
+    spec: "Traceable batch logistics",
+    highlight: "PAN India Logistics",
+    src: "/images/mustard-retail-lineup.webp",
+    alt: "The full North West Kachi Ghani mustard oil lineup packed and ready for dispatch across India",
+  },
+];
+
+export interface ProcessProps {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  lede?: string;
+  exploreHref?: string;
+  exploreLabel?: string;
+  showExploreLink?: boolean;
+}
+
+export function Process({
+  id = "process",
+  eyebrow = "Quality assurance",
+  title = "Five stages between the seed and the seal.",
+  lede = "Every batch runs the same sequence. Lab testing against FSSAI standards sits in the middle of it, not at the end. A batch that does not clear does not get filled.",
+  exploreHref = "/quality",
+  exploreLabel = "Quality, certifications & testing sequence",
+  showExploreLink = true,
+}: ProcessProps = {}) {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const reduced = useReducedMotion();
+
+  const activeStage = PROCESS_STAGES[activeIdx];
+
+  return (
+    <Section id={id} tone="forest" aria-labelledby={`${id}-heading`}>
+      <Container>
+        <div className="grid gap-y-8 lg:grid-cols-12 lg:items-end lg:gap-x-12">
+          <div className="lg:col-span-7">
+            <Reveal kind="fade">
+              <Eyebrow tone="light">{eyebrow}</Eyebrow>
+            </Reveal>
+            <MaskReveal as="h2" className="display-2 mt-5 text-paper" delay={0.05}>
+              <span id={`${id}-heading`}>
+                {title}
+              </span>
+            </MaskReveal>
+          </div>
+          <Reveal kind="rise" delay={0.1} className="lg:col-span-5">
+            <p className="max-w-md text-[0.9375rem] leading-relaxed text-forest-200 lg:pb-2">
+              {lede}
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-12 border-t border-b border-white/10 py-5 lg:mt-16">
+          <div className="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar sm:gap-4">
+            {PROCESS_STAGES.map((s, idx) => {
+              const isCurrent = idx === activeIdx;
+              const isPast = idx < activeIdx;
+
+              return (
+                <button
+                  key={s.step}
+                  type="button"
+                  onClick={() => setActiveIdx(idx)}
+                  className="group relative flex flex-1 min-w-[5.5rem] items-center gap-3 text-left transition-colors duration-200 focus:outline-none"
+                  aria-current={isCurrent ? "step" : undefined}
+                >
+                  <div
+                    className={cn(
+                      "flex size-8 shrink-0 items-center justify-center rounded-full border text-[0.8125rem] font-medium transition-all duration-300",
+                      isCurrent
+                        ? "border-gold-500 bg-gold-500 text-forest-950 font-semibold"
+                        : isPast
+                        ? "border-forest-400 bg-forest-900 text-forest-200"
+                        : "border-white/15 bg-forest-950/60 text-forest-300 group-hover:border-white/30"
+                    )}
+                  >
+                    {s.step}
+                  </div>
+                  <div className="hidden flex-col sm:flex">
+                    <span
+                      className={cn(
+                        "text-[0.6875rem] tracking-wider uppercase transition-colors duration-200",
+                        isCurrent
+                          ? "text-gold-500 font-medium"
+                          : "text-forest-400 group-hover:text-forest-200"
+                      )}
+                    >
+                      {s.phase}
+                    </span>
+                    <span
+                      className={cn(
+                        "text-[0.8125rem] truncate transition-colors duration-200",
+                        isCurrent ? "text-paper font-medium" : "text-forest-300"
+                      )}
+                    >
+                      {s.title}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-8 hidden lg:flex h-[32rem] gap-3">
+          {PROCESS_STAGES.map((stage, idx) => {
+            const isExpanded = idx === activeIdx;
+
+            return (
+              <motion.div
+                key={stage.step}
+                layout={!reduced}
+                onClick={() => setActiveIdx(idx)}
+                onMouseEnter={() => setActiveIdx(idx)}
+                className={cn(
+                  "relative flex cursor-pointer overflow-hidden rounded-xl border transition-colors duration-300",
+                  isExpanded
+                    ? "flex-[3.5] border-gold-500/50 bg-forest-900"
+                    : "flex-1 border-white/10 bg-forest-950/80 hover:border-white/25"
+                )}
+                transition={{
+                  layout: { duration: reduced ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] },
+                }}
+              >
+                <Image
+                  src={stage.src}
+                  alt={stage.alt}
+                  fill
+                  sizes="(max-width: 1280px) 50vw, 40vw"
+                  className={cn(
+                    "object-cover transition-transform duration-700 ease-out-expo",
+                    isExpanded ? "scale-100 opacity-75" : "scale-105 opacity-30 hover:opacity-45"
+                  )}
+                />
+
+                <div
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute inset-0 bg-gradient-to-t transition-opacity duration-300",
+                    isExpanded
+                      ? "from-forest-950 via-forest-950/65 to-transparent"
+                      : "from-forest-950/95 via-forest-950/80 to-forest-950/50"
+                  )}
+                />
+
+                <AnimatePresence initial={false}>
+                  {!isExpanded ? (
+                    <motion.div
+                      key="collapsed"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
+                      className="absolute inset-0 z-10 flex flex-col justify-between p-5"
+                    >
+                      <div className="flex size-9 items-center justify-center rounded-full border border-white/20 bg-forest-950/80 text-[0.875rem] font-semibold text-gold-500 backdrop-blur-sm">
+                        {stage.step}
+                      </div>
+
+                      <div className="flex flex-col w-full overflow-hidden">
+                        <span className="text-[0.6875rem] font-medium tracking-wider uppercase text-forest-300 truncate">
+                          {stage.phase}
+                        </span>
+                        <span className="mt-1 font-display text-[0.9375rem] font-medium leading-snug text-paper line-clamp-2">
+                          {stage.title}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="expanded"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
+                      className="absolute inset-0 z-10 flex flex-col justify-between p-6 lg:p-8"
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-forest-950/80 px-3 py-1 text-[0.75rem] font-medium text-gold-500 backdrop-blur-md">
+                          <span className="size-1.5 rounded-full bg-gold-500" />
+                          STAGE {stage.step} · {stage.phase}
+                        </div>
+                        <span className="rounded-full border border-white/10 bg-forest-950/60 px-3 py-1 text-[0.6875rem] font-medium tracking-wider text-forest-200 uppercase backdrop-blur-md">
+                          {stage.highlight}
+                        </span>
+                      </div>
+
+                      <div className="w-full max-w-xl">
+                        <h3 className="font-display text-2xl sm:text-3xl font-medium tracking-tight text-paper">
+                          {stage.title}
+                        </h3>
+
+                        <p className="mt-2.5 text-[0.9375rem] sm:text-[1rem] leading-relaxed text-forest-100">
+                          {stage.summary}
+                        </p>
+
+                        <div className="mt-5 flex flex-wrap items-center gap-3 pt-4 border-t border-white/15">
+                          <span className="inline-flex items-center gap-2 text-[0.8125rem] font-medium text-gold-500">
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              className="shrink-0"
+                            >
+                              <path
+                                d="M3 8.5L6.5 12L13 4.5"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            {stage.spec}
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 flex flex-col gap-4 lg:hidden">
+          <div className="relative overflow-hidden rounded-xl border border-gold-500/40 bg-forest-900">
+            <div className="relative h-64 w-full overflow-hidden">
+              <Image
+                src={activeStage.src}
+                alt={activeStage.alt}
+                fill
+                priority
+                sizes="(max-width: 1023px) 92vw, 50vw"
+                className="object-cover"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/40 to-transparent"
+              />
+              <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-forest-950/90 px-3 py-1 text-[0.75rem] font-medium text-gold-500">
+                STAGE {activeStage.step}
+              </div>
+            </div>
+
+            <div className="p-6">
+              <span className="text-[0.75rem] tracking-wider uppercase text-forest-300">
+                {activeStage.phase}
+              </span>
+              <h3 className="mt-1 font-display text-2xl font-medium text-paper">
+                {activeStage.title}
+              </h3>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-forest-100">
+                {activeStage.summary}
+              </p>
+
+              <div className="mt-5 flex items-center gap-2 border-t border-white/10 pt-4 text-[0.8125rem] text-gold-500">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8.5L6.5 12L13 4.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {activeStage.spec}
+              </div>
+
+              <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
+                <button
+                  type="button"
+                  disabled={activeIdx === 0}
+                  onClick={() => setActiveIdx((prev) => Math.max(0, prev - 1))}
+                  className="text-[0.8125rem] font-medium text-forest-200 disabled:opacity-30 disabled:pointer-events-none"
+                >
+                  ← Previous stage
+                </button>
+                <span className="text-[0.75rem] text-forest-400">
+                  {activeIdx + 1} of {PROCESS_STAGES.length}
+                </span>
+                <button
+                  type="button"
+                  disabled={activeIdx === PROCESS_STAGES.length - 1}
+                  onClick={() => setActiveIdx((prev) => Math.min(PROCESS_STAGES.length - 1, prev + 1))}
+                  className="text-[0.8125rem] font-medium text-gold-500 disabled:opacity-30 disabled:pointer-events-none"
+                >
+                  Next stage →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-lg text-[0.75rem] leading-relaxed text-forest-300">
+            Pack photography is authentic North West packaging. Laboratory tests
+            are conducted against official FSSAI standards under ISO 9001:2015 and
+            ISO 22000:2018 food safety guidelines.
+          </p>
+          {showExploreLink && (
+            <TextLink href={exploreHref} className="shrink-0 text-forest-100">
+              {exploreLabel}
+            </TextLink>
+          )}
+        </div>
+      </Container>
+    </Section>
+  );
+}
