@@ -37,12 +37,9 @@ export function FloatingWhatsApp({
           ? `Ask about ${productName} on WhatsApp`
           : "Chat with North West Oils on WhatsApp"
       }
-      className="fixed right-4 bottom-4 z-40 flex items-center gap-2.5 rounded-full border border-forest-700/40 bg-forest-950/90 text-paper px-4 py-2.5 backdrop-blur-md transition-all duration-200 hover:bg-forest-900 hover:border-forest-500 active:translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-400 select-none lg:right-6 lg:bottom-6"
+      className="fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.5rem))] z-40 flex size-14 items-center justify-center rounded-full bg-[#1FA855] text-white shadow-[0_8px_24px_-6px_rgba(3,32,20,0.45)] transition-[background-color,transform] duration-200 hover:scale-105 hover:bg-[#178A44] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1FA855] active:scale-95 active:bg-[#126E35] motion-reduce:transition-none motion-reduce:hover:scale-100 lg:right-8 lg:bottom-8 lg:size-15"
     >
-      <WhatsAppIcon className="size-5 text-[#25D366] shrink-0" />
-      <span className="text-[0.8125rem] font-medium tracking-wide hidden sm:inline">
-        WhatsApp Trade Desk
-      </span>
+      <WhatsAppIcon className="size-7 lg:size-8" />
     </a>
   );
 }
