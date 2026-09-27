@@ -39,23 +39,28 @@ interface CredentialItem {
   line2?: string;
 }
 
+/**
+ * Every line here comes from the company profile or the pack labels. Do not
+ * add process detail (temperatures, test parameters, HACCP, traceability)
+ * unless the company can show the document behind it.
+ */
 const CREDENTIALS: CredentialItem[] = [
   {
     id: "fssai",
     title: "Central FSSAI Licence",
     shortTitle: "FSSAI",
     authority: "Food Safety and Standards Authority of India",
-    category: "Statutory Food Authority",
-    badge: "Central Jurisdiction",
-    tagline: "Mandatory compliance for edible oil packaging & dispatch.",
+    category: "Food safety licence",
+    badge: "Central licence",
+    tagline: "Licensed at central level for edible oil.",
     description:
-      "Licensed centrally by FSSAI under strict edible vegetable oil standards. Every batch is evaluated against mandatory chemical, organoleptic, and purity parameters before it is cleared for container filling.",
+      "North West Oils Private Limited holds a central licence from the Food Safety and Standards Authority of India. The oils are lab tested for purity and freshness, in line with FSSAI standards.",
     verifiedSpecs: [
-      "Acid value & moisture limits strictly enforced",
-      "Zero artificial colour or argemone contamination",
-      "Tamper-evident food-grade sealing",
+      "Central FSSAI licence",
+      "FSSAI logo and licence number on every pack",
+      "Lab tested for purity and freshness",
     ],
-    packPlacement: "Printed clearly on front label and primary regulatory panel on all bottles, jars, and tins.",
+    packPlacement: "On the front label of every tin, jar and bottle, beside the licence number.",
     kind: "image",
     src: "/marks/fssai.webp",
     width: 400,
@@ -68,17 +73,17 @@ const CREDENTIALS: CredentialItem[] = [
     title: "ISO 9001:2015",
     shortTitle: "ISO 9001",
     authority: "International Organization for Standardization",
-    category: "Quality Management",
-    badge: "QMS Certified",
-    tagline: "Standardized quality control across all production lines.",
+    category: "Quality management",
+    badge: "Certified",
+    tagline: "Certified quality management system.",
     description:
-      "Certified to ISO 9001:2015 for establishing and executing consistent quality management systems across raw seed procurement, cold-press extraction, refining, packaging, and dispatch.",
+      "The company is certified to ISO 9001:2015, the international standard for quality management systems, and applies strict quality control measures across the range.",
     verifiedSpecs: [
-      "Standard operating procedures for intake and storage",
-      "Continuous equipment maintenance and sanitation records",
-      "Batch traceability from seed lot to finished case",
+      "Quality management system certified",
+      "Strict quality control measures",
+      "Declared on every pack",
     ],
-    packPlacement: "Declared on all commercial pack labeling and corporate trade documentation.",
+    packPlacement: "Printed on every pack: \"An ISO certified Co. ISO 9001:2015\".",
     kind: "type",
     line1: "ISO",
     line2: "9001:2015",
@@ -88,37 +93,37 @@ const CREDENTIALS: CredentialItem[] = [
     title: "ISO 22000:2018",
     shortTitle: "ISO 22000",
     authority: "International Organization for Standardization",
-    category: "Food Safety System",
-    badge: "FSMS & HACCP",
-    tagline: "Hazard control and sterile food safety management.",
+    category: "Food safety management",
+    badge: "Certified",
+    tagline: "Certified food safety management system.",
     description:
-      "Certified to ISO 22000:2018, demonstrating comprehensive food safety hazard controls (HACCP) covering processing hygiene, clean pipeline transfers, and sterile container filling.",
+      "The company is certified to ISO 22000:2018, the international standard for food safety management systems. The oils are processed under strict quality control and hygienic conditions.",
     verifiedSpecs: [
-      "Critical control point (CCP) temperature tracking",
-      "Preventive allergen and foreign-matter filtration",
-      "Sanitary automated bottling environment",
+      "Food safety management system certified",
+      "Hygienic processing conditions",
+      "Declared on every pack",
     ],
-    packPlacement: "Declared in official product specifications and corporate compliance records.",
+    packPlacement: "Printed on every pack, beside ISO 9001:2015.",
     kind: "type",
     line1: "ISO",
     line2: "22000:2018",
   },
   {
     id: "fortified",
-    title: "+F Fortified Standards",
+    title: "+F Fortified",
     shortTitle: "Fortified (+F)",
-    authority: "Food Fortification Resource Centre (FFRC) / FSSAI",
-    category: "Micronutrient Standard",
+    authority: "FSSAI fortification standard",
+    category: "Fortification",
     badge: "Vitamins A & D",
-    tagline: "Nutritional enrichment for healthier daily consumption.",
+    tagline: "Fortified with vitamins A and D.",
     description:
-      "North West Refined Soyabean Oil and Refined Palmolein Oil are fortified with Vitamins A and D to support dietary health, carrying the official +F logo as mandated by food fortification standards.",
+      "All three North West oils (soyabean, mustard and palmolein) are fortified with vitamins A and D and carry FSSAI's +F fortification logo.",
     verifiedSpecs: [
-      "Standardized Vitamin A and Vitamin D3 enrichment",
-      "Homogeneous nutrient dispersion assay",
-      "Transparent nutritional panel disclosure",
+      "Fortified with vitamins A and D",
+      "FSSAI +F logo on the pack",
+      "Nutrition information printed on every tin",
     ],
-    packPlacement: "Prominent +F logo printed on front facing of refined soyabean and palmolein 15 KG & 15 L tins.",
+    packPlacement: "On the front label, beside the product name.",
     kind: "image",
     src: "/marks/fortified.webp",
     width: 248,
@@ -128,20 +133,20 @@ const CREDENTIALS: CredentialItem[] = [
   },
   {
     id: "veg",
-    title: "100% Vegetarian Origin",
+    title: "100% Vegetarian",
     shortTitle: "Vegetarian",
-    authority: "Bureau of Indian Standards / FSSAI",
-    category: "Dietary Declaration",
-    badge: "Pure Plant-Based",
-    tagline: "Exclusively plant-derived oils with zero animal fats.",
+    authority: "FSSAI labelling rules",
+    category: "Food declaration",
+    badge: "Green mark",
+    tagline: "All three oils are 100% vegetarian.",
     description:
-      "All three North West oils are extracted exclusively from premium non-GMO mustard seeds, soybeans, and palm fruit. Free from tallow, animal fats, or non-vegetarian processing aids.",
+      "Mustard, soyabean and palmolein oil are plant oils. Every North West pack carries the green vegetarian mark and the words \"100% Veg\".",
     verifiedSpecs: [
-      "100% plant-derived edible oil source",
-      "Dedicated vegetarian processing equipment",
-      "Standard green dot-in-square certified mark",
+      "100% vegetarian",
+      "Green mark on every pack",
+      "Mustard, soyabean and palmolein",
     ],
-    packPlacement: "Green vegetarian symbol printed on every retail bottle, jar, pouch, and institutional tin.",
+    packPlacement: "At the top right of every pack label.",
     kind: "image",
     src: "/marks/veg.webp",
     width: 290,
@@ -153,18 +158,18 @@ const CREDENTIALS: CredentialItem[] = [
     id: "made-in-india",
     title: "Make in India",
     shortTitle: "Made in India",
-    authority: "National Manufacturing Initiative",
-    category: "Domestic Origin",
-    badge: "Delhi & Bareilly",
-    tagline: "Indigenous extraction, refining, and packaging facilities.",
+    authority: "Government of India initiative",
+    category: "Origin",
+    badge: "South Delhi",
+    tagline: "Packed in India since 1973.",
     description:
-      "Processed and packed at the company's operating units in South Delhi (Chattarpur) and Bareilly (Uttar Pradesh), contributing to Indian agricultural supply chains and regional distribution networks.",
+      "North West oils are packed in India by North West Oils Private Limited, from its registered office in South Delhi. The Make in India lion is printed on the packs.",
     verifiedSpecs: [
-      "Direct domestic seed and oil-stock sourcing",
-      "Local packaging and manufacturing workforce",
-      "PAN-India commercial dispatch network",
+      "Make in India lion on every pack",
+      "Registered office in South Delhi",
+      "Supplied across India",
     ],
-    packPlacement: "Make in India lion mark displayed on commercial shipping packaging and cartons.",
+    packPlacement: "Beside the pack size, at the foot of the label.",
     kind: "image",
     src: "/marks/made-in-india.webp",
     width: 400,
@@ -176,9 +181,9 @@ const CREDENTIALS: CredentialItem[] = [
 
 const CORPORATE_REGISTRATIONS = [
   { label: "MCA Approved", detail: "Incorporated under Ministry of Corporate Affairs" },
-  { label: "GST Registered", detail: "Central & State Goods and Services Tax verified" },
-  { label: "MSME Registered", detail: "Ministry of Micro, Small and Medium Enterprises" },
-  { label: "9-Month Shelf Life", detail: "Standardized expiry from packaging date" },
+  { label: "GST Registered", detail: "Registered under central GST" },
+  { label: "MSME Registered", detail: "Micro enterprise, Ministry of MSME" },
+  { label: "9-Month Shelf Life", detail: "Best before nine months from packaging" },
 ];
 
 export function Credentials() {
@@ -208,9 +213,8 @@ export function Credentials() {
                 Licensed, certified, registered.
               </h2>
               <p className="body-text mt-4 max-w-2xl">
-                Every mark below is physically printed on the packs themselves. We
-                place our certifications right on the front and side panels so retailers,
-                distributors, and institutional buyers can inspect and verify every batch.
+                Every mark below is printed on the packs themselves, so a retailer,
+                distributor or buyer can check it on any tin, jar or bottle.
               </p>
             </div>
 
@@ -235,7 +239,7 @@ export function Credentials() {
                       </span>
                     </div>
                     <p className="mt-1 text-[0.8125rem] leading-snug text-ink-3">
-                      Batch-cleared before packaging. Zero adulteration guarantee.
+                      Lab tested, with a 100% purity guarantee printed on the pack.
                     </p>
                   </div>
                 </div>
@@ -272,7 +276,7 @@ export function Credentials() {
                       {isSelected ? (
                         <motion.span
                           layoutId={reduced ? undefined : "active-mark-pill"}
-                          className="absolute -top-2 rounded-full bg-forest-800 px-2 py-0.5 text-[0.625rem] font-semibold uppercase tracking-wider text-paper"
+                          className="absolute -top-2 rounded-full bg-forest-800 px-2 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wider text-paper"
                           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                         >
                           Inspecting
@@ -379,13 +383,13 @@ export function Credentials() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span className="font-medium">Verified On-Pack Graphic</span>
+                      <span className="font-medium">The mark on the pack</span>
                     </div>
                   </div>
 
                   <div className="lg:col-span-5">
                     <span className="text-[0.75rem] font-medium uppercase tracking-wider text-ink-4">
-                      Compliance &amp; Quality Parameters
+                      What it means
                     </span>
                     <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">
                       {activeCredential.description}
@@ -393,7 +397,7 @@ export function Credentials() {
 
                     <div className="mt-6">
                       <span className="text-[0.8125rem] font-semibold text-ink">
-                        Verified batch checkpoints:
+                        What it covers:
                       </span>
                       <ul className="mt-3 flex flex-col gap-2.5">
                         {activeCredential.verifiedSpecs.map((spec) => (

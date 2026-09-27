@@ -13,12 +13,12 @@ import { waMessage, whatsappLink } from "@/lib/whatsapp";
 import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact & trade enquiries",
+  title: "Bulk orders & trade enquiries",
   description:
-    "Trade and bulk enquiries for North West soyabean, mustard and palmolein oil. WhatsApp or call +91 98105 48867. Offices in South Delhi and Bareilly.",
+    "Trade and bulk enquiries for North West soyabean, mustard and palmolein oil. WhatsApp or call +91 98105 48867. Office in South Delhi.",
   alternates: { canonical: "/contact" },
   ...socialMetadata({
-    title: "Contact & trade enquiries | North West Oils",
+    title: "Bulk orders & trade enquiries | North West Oils",
     description:
       "Trade and bulk enquiries for North West soyabean, mustard and palmolein oil. WhatsApp or call +91 98105 48867.",
     path: "/contact",
@@ -50,7 +50,7 @@ const WHAT_TO_INCLUDE = [
   },
   {
     title: "Whether you need paperwork",
-    body: "Say so and the licence and test documentation comes with the quotation.",
+    body: "Say so, and ask for the licence and test documents with the quotation.",
   },
 ];
 
@@ -129,7 +129,7 @@ export default function ContactPage() {
                       className={
                         row.big
                           ? "tnum mt-1.5 block font-display text-2xl text-ink transition-colors duration-200 hover:text-forest-700"
-                          : "mt-1.5 block break-all text-[0.9375rem] text-ink transition-colors duration-200 hover:text-forest-700"
+                          : "-mb-2 block break-all py-2 text-[0.9375rem] text-ink transition-colors duration-200 hover:text-forest-700"
                       }
                     >
                       {row.value}
@@ -192,7 +192,7 @@ export default function ContactPage() {
           </Reveal>
           <Reveal kind="rise" delay={0.05}>
             <h2 id="locations-heading" className="display-3 mt-5 text-ink">
-              Both addresses are printed on the pack.
+              Our address is printed on the pack.
             </h2>
           </Reveal>
 
@@ -215,7 +215,7 @@ export default function ContactPage() {
                     <dd>
                       <a
                         href={`tel:${loc.phone}`}
-                        className="tnum text-ink transition-colors duration-200 hover:text-forest-700"
+                        className="tnum -my-2 inline-block py-2 text-ink transition-colors duration-200 hover:text-forest-700"
                       >
                         {loc.phoneDisplay}
                       </a>
@@ -226,7 +226,7 @@ export default function ContactPage() {
                     <dd>
                       <a
                         href={`mailto:${loc.email}`}
-                        className="break-all text-ink transition-colors duration-200 hover:text-forest-700"
+                        className="-my-2 inline-block py-2 break-all text-ink transition-colors duration-200 hover:text-forest-700"
                       >
                         {loc.email}
                       </a>
@@ -240,7 +240,7 @@ export default function ContactPage() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-block text-[0.875rem] font-medium text-forest-800 underline-offset-4 transition-colors duration-200 hover:underline"
+                  className="mt-3 inline-block py-2 text-[0.875rem] font-medium text-forest-800 underline-offset-4 transition-colors duration-200 hover:underline"
                 >
                   Open in Maps
                 </a>

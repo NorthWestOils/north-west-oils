@@ -9,7 +9,7 @@ import { productBySlug } from "@/data/products";
 const FORMATS = [
   {
     title: "Retail packs",
-    detail: "500 ML, 1 L, 2 L and 5 L mustard oil for shelves and household kitchens.",
+    detail: "500 ML, 750 ML, 1 L, 2 L and 5 L mustard oil for shelves and household kitchens.",
   },
   {
     title: "Bulk tins",
@@ -17,12 +17,12 @@ const FORMATS = [
   },
   {
     title: "Loose and bulk supply",
-    detail: "Bulk quantities for repackers and loose-oil traders, dispatched PAN India.",
+    detail: "Bulk quantities and loose oil for loose oil suppliers, dispatched PAN India.",
   },
 ];
 
 export function PackFormats() {
-  /* Only the mustard line runs across five sizes, so it is the one
+  /* Only the mustard line runs across six sizes, so it is the one
      worth showing in the switcher. */
   const mustard = productBySlug("mustard-oil")!;
 
@@ -43,7 +43,7 @@ export function PackFormats() {
 
             <Reveal kind="rise" delay={0.1}>
               <p className="body-text mt-6 max-w-lg">
-                The mustard line runs across five sizes, so the same oil reaches
+                The mustard line runs across six sizes, so the same oil reaches
                 a household buying a bottle a month and a canteen ordering
                 cases of 15 KG tins. Soyabean and palmolein are supplied in
                 tins, sized for commercial kitchens.
@@ -83,7 +83,7 @@ export function PackFormats() {
           >
             <PackSwitcher packs={mustard.packs} accent={mustard.accent} />
             <p className="mt-6 text-center text-[0.8125rem] text-ink-4">
-              Kachi Ghani mustard oil, shown in all five retail and bulk formats.
+              Kachi Ghani mustard oil, shown in all six retail and bulk formats.
             </p>
           </Reveal>
         </div>

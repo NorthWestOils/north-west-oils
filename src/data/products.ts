@@ -72,15 +72,15 @@ export const products: Product[] = [
     nameHi: "कच्ची घानी सरसों का तेल",
     category: "Kachi Ghani & Refined",
     summary:
-      "Cold-pressed Kachi Ghani mustard oil with its pungency and aroma intact, in five pack sizes from 500 ML to 15 KG.",
+      "Cold-pressed Kachi Ghani mustard oil with its pungency and aroma intact, fortified with vitamins A and D, in six pack sizes from 500 ML to 15 KG.",
     intro:
-      "Kachi Ghani means the seed is pressed cold, not heated. It is the slower way to get oil out of mustard, and it is the reason the oil still smells and tastes of mustard by the time it reaches the pan. We press from selected seed and fill five sizes, from a 500 ML bottle for a household to a 15 KG tin for a kitchen that cooks all day.",
-    seoTitle: "Kachi Ghani Mustard Oil, 500 ML to 15 KG",
+      "Kachi Ghani means the seed is pressed cold, not heated. It is the slower way to get oil out of mustard, and it is the reason the oil still smells and tastes of mustard by the time it reaches the pan. We press from selected seed and fill six sizes, from a 500 ML bottle for a household to a 15 KG tin for a kitchen that cooks all day.",
+    seoTitle: "Bulk Kachi Ghani Mustard Oil, 6 Pack Sizes",
     seoDescription:
-      "Cold-pressed Kachi Ghani mustard oil with its natural pungency and aroma, in 500 ML and 1 L bottles, 2 L and 5 L jars and 15 KG tins. FSSAI licensed.",
+      "Cold-pressed Kachi Ghani mustard oil, fortified, in 500 ML, 750 ML and 1 L bottles, 2 L and 5 L jars and 15 KG tins. Bulk supply, PAN India.",
     alternateNames: ["Kachi Ghani Mustard Oil", "Cold-pressed Mustard Oil", "Sarson ka Tel", "Kachi Ghani Sarson Tel"],
     compare: {
-      made: "Cold-pressed (Kachi Ghani)",
+      made: "Cold-pressed (Kachi Ghani); refined also available",
       taste: "Pungent, with a natural mustard aroma",
       bestUse: "Everyday cooking where the food should taste of mustard",
     },
@@ -98,12 +98,17 @@ export const products: Product[] = [
       {
         question: "Which North West Mustard Oil pack size should I buy?",
         answer:
-          "500 ML and 1 L PET bottles suit the shelf, 2 L and 5 L handled jars suit a household that gets through it, and the 15 KG tin suits kitchens that buy by weight.",
+          "500 ML, 750 ML and 1 L PET bottles suit the shelf, 2 L and 5 L handled jars suit a household that gets through it, and the 15 KG tin suits kitchens that buy by weight.",
       },
       {
         question: "What is the shelf life of North West Mustard Oil?",
         answer:
           "Best before nine months from packaging. Store it in a dry place away from heat and light. The packaging date is printed on every pack.",
+      },
+      {
+        question: "Is North West Mustard Oil fortified?",
+        answer:
+          "Yes. North West Kachi Ghani Mustard Oil is fortified with vitamins A and D and carries the +F fortification mark on the pack.",
       },
     ],
     accent: "mustard",
@@ -149,6 +154,15 @@ export const products: Product[] = [
         height: 1150,
       },
       {
+        id: "750ml",
+        label: "750 ML",
+        format: "PET bottle",
+        image: "/products/mustard-750ml-bottle.webp",
+        alt: "North West Kachi Ghani Mustard Oil 750 ml PET bottle",
+        width: 367,
+        height: 1150,
+      },
+      {
         id: "500ml",
         label: "500 ML",
         format: "PET bottle",
@@ -162,13 +176,15 @@ export const products: Product[] = [
       "Cold-pressed by the Kachi Ghani method",
       "Distinct pungency and natural mustard aroma",
       "Rich in monounsaturated fatty acids and omega-3",
+      "Fortified with vitamins A and D",
       "100% vegetarian",
       "Best before nine months from packaging",
     ],
     specs: [
       { label: "Grade", value: "Kachi Ghani (cold-pressed) and refined" },
       { label: "Ingredient", value: "Mustard oil" },
-      { label: "Pack sizes", value: "15 KG · 5 L · 2 L · 1 L · 500 ML" },
+      { label: "Pack sizes", value: "15 KG · 5 L · 2 L · 1 L · 750 ML · 500 ML" },
+      { label: "Fortification", value: "Vitamins A and D" },
       { label: "Containers", value: "Metal tin, handled jar, PET bottle" },
       { label: "Shelf life", value: "Nine months from packaging" },
       { label: "Storage", value: "Dry place, away from heat and light" },
@@ -193,13 +209,13 @@ export const products: Product[] = [
     summary:
       "Hero product: a light, neutral refined oil fortified with vitamins A and D, supplied in 15 KG tins.",
     intro:
-      "Refined soyabean oil does the work mustard oil is too assertive for: frying that should not taste of the oil, batters, baking, and volume cooking where consistency matters more than character. It is refined under controlled conditions, fortified with vitamins A and D, and filled into 15 KG tins.",
-    seoTitle: "Soyabean Refined Oil 15 KG Tin, Fortified",
+      "Refined soyabean oil does the work mustard oil is too assertive for: frying that should not taste of the oil, batters, baking, and volume cooking where consistency matters more than character. It is processed under strict quality control and hygienic conditions, fortified with vitamins A and D, lab tested, and filled into 15 KG tins.",
+    seoTitle: "Bulk Soyabean Refined Oil, 15 KG Tins",
     seoDescription:
-      "North West Soyabean Refined Oil, our hero product: a light, neutral oil fortified with vitamins A and D, in 15 KG food-grade tins for homes, caterers and trade.",
+      "North West Soyabean Refined Oil, our hero product: light, neutral and fortified with vitamins A and D, in 15 KG tins. Bulk and wholesale supply, PAN India.",
     alternateNames: ["Refined Soyabean Oil", "Soybean Refined Oil", "Refined Soybean Oil", "Soya Oil"],
     compare: {
-      made: "Refined under controlled conditions",
+      made: "Refined",
       taste: "Light body, neutral aroma",
       bestUse: "Frying, batters, baking and volume cooking",
     },
@@ -242,7 +258,8 @@ export const products: Product[] = [
       },
     ],
     attributes: [
-      "Refined under controlled, hygienic conditions",
+      "Processed under strict quality control and hygienic conditions",
+      "Lab tested, with a 100% purity guarantee on the tin",
       "Light body and neutral aroma",
       "Fortified with vitamins A and D",
       "100% vegetarian",
@@ -276,10 +293,10 @@ export const products: Product[] = [
     summary:
       "A frying-grade refined palmolein for commercial kitchens, supplied in 15 litre tins.",
     intro:
-      "Palmolein holds up to heat that would break a lighter oil down, which is why commercial fryers run on it. Ours is refined to national standards, fortified with vitamins A and D, and filled into 15 litre tins. The pack is marked for frying and commercial use.",
-    seoTitle: "Refined Palmolein Oil 15 Litre Frying Tin",
+      "Palmolein holds up to heat that would break a lighter oil down, which is why commercial fryers run on it. Ours is fortified with vitamins A and D, lab tested, and filled into 15 litre tins. The pack recommends it for frying and commercial use.",
+    seoTitle: "Bulk Refined Palmolein Oil, 15 Litre Tins",
     seoDescription:
-      "Frying-grade refined palmolein oil, fortified with vitamins A and D, in 15 litre food-grade tins for commercial kitchens, caterers and snack makers.",
+      "Frying-grade refined palmolein oil, fortified with vitamins A and D, in 15 litre tins for commercial kitchens and caterers. Bulk supply, PAN India.",
     alternateNames: ["Palmolein Oil", "Palm Olein Oil", "Refined Palmolein"],
     compare: {
       made: "Refined, frying grade",

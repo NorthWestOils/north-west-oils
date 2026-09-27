@@ -60,7 +60,7 @@ export function ContactCta({
                   <span className="eyebrow text-ink-4">Email</span>
                   <a
                     href={`mailto:${company.contact.email}`}
-                    className="mt-2 block truncate text-[0.9375rem] text-ink transition-colors duration-200 hover:text-forest-700"
+                    className="-mb-2 block truncate py-2 text-[0.9375rem] text-ink transition-colors duration-200 hover:text-forest-700"
                   >
                     {company.contact.email}
                   </a>
@@ -68,7 +68,7 @@ export function ContactCta({
               </div>
 
               <TextLink href="/contact" className="text-[0.875rem]">
-                All contact details and locations
+                All contact details
               </TextLink>
             </div>
           </Reveal>

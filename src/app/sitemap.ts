@@ -39,5 +39,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.8,
     },
+    ...["/privacy-policy", "/terms-and-conditions"].map((path) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified: new Date("2026-09-27"),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
   ];
 }

@@ -12,12 +12,12 @@ import { socialMetadata } from "@/lib/seo";
 export const metadata: Metadata = {
   title: { absolute: "About North West Oils | Edible Oils Since 1973" },
   description:
-    "North West Oils Private Limited is an FSSAI-licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil company in South Delhi and Bareilly.",
+    "North West Oils Private Limited is an FSSAI-licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil company in South Delhi.",
   alternates: { canonical: "/about" },
   ...socialMetadata({
     title: "About North West Oils Private Limited",
     description:
-      "An FSSAI-licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil company in South Delhi and Bareilly, packing since 1973.",
+      "An FSSAI-licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil company in South Delhi, packing since 1973.",
     path: "/about",
   }),
 };
@@ -36,7 +36,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="A company you can look up."
-        lede="North West Oils Private Limited makes and packs edible oil. The registrations are public, the addresses are on the pack, and the phone number is answered."
+        lede="North West Oils Private Limited makes and packs edible oil. The registrations are public, the address is on the pack, and the phone number is answered."
         trail={trail}
       />
 
@@ -115,8 +115,8 @@ export default function AboutPage() {
             </div>
             <Reveal kind="rise" delay={0.1} className="lg:col-span-5">
               <p className="body-text max-w-md lg:pb-2">
-                None of these are unusual. Doing all six on every batch, for
-                every buyer, is the part that takes work.
+                None of these are unusual. Doing all six, for every buyer, is
+                the part that takes work.
               </p>
             </Reveal>
           </div>
@@ -148,7 +148,7 @@ export default function AboutPage() {
             <Eyebrow>Locations</Eyebrow>
           </Reveal>
           <MaskReveal as="h2" className="display-2 mt-5 max-w-2xl text-ink" delay={0.05}>
-            <span id="locations-heading">Two addresses, both on the pack.</span>
+            <span id="locations-heading">One address, printed on the pack.</span>
           </MaskReveal>
 
           <RevealGroup step={0.08} delay={0.08} className="mt-12 grid gap-x-14 gap-y-10 sm:grid-cols-2">
@@ -165,7 +165,7 @@ export default function AboutPage() {
                     <dd>
                       <a
                         href={`tel:${loc.phone}`}
-                        className="tnum text-ink transition-colors duration-200 hover:text-forest-700"
+                        className="tnum -my-2 inline-block py-2 text-ink transition-colors duration-200 hover:text-forest-700"
                       >
                         {loc.phoneDisplay}
                       </a>
@@ -176,7 +176,7 @@ export default function AboutPage() {
                     <dd>
                       <a
                         href={`mailto:${loc.email}`}
-                        className="break-all text-ink transition-colors duration-200 hover:text-forest-700"
+                        className="-my-2 inline-block py-2 break-all text-ink transition-colors duration-200 hover:text-forest-700"
                       >
                         {loc.email}
                       </a>

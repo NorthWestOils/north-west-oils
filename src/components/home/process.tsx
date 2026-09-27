@@ -19,61 +19,66 @@ interface Stage {
   alt: string;
 }
 
+/**
+ * The five stages, worded only from the company profile and the pack labels.
+ * `phase` is one short word: it sits in a narrow collapsed card and must not
+ * truncate.
+ */
 const PROCESS_STAGES: Stage[] = [
   {
     step: "01",
-    phase: "Intake & Grading",
+    phase: "Sourcing",
     title: "Raw material selection",
     summary:
-      "High-grade seed and oil stock, verified on arrival for condition and purity.",
-    spec: "Moisture & grade verified",
-    highlight: "Zero Compromise",
+      "High-quality raw material for all three oils, including carefully selected mustard seed for the Kachi Ghani line.",
+    spec: "Selected raw material",
+    highlight: "Quality sourcing",
     src: "/process/01-soyabean.webp",
     alt: "Soybeans spilling from a steel scoop, the crop behind refined soyabean oil",
   },
   {
     step: "02",
-    phase: "Cold Pressing",
-    title: "Cold-press & refining",
+    phase: "Extraction",
+    title: "Cold-press & processing",
     summary:
-      "Mustard pressed cold below 45°C; refined grades processed under strict heat control.",
-    spec: "Cold pressed < 45°C",
-    highlight: "Pungency Intact",
+      "Kachi Ghani mustard oil is cold-pressed to keep its strong aroma and pungency. Every grade is processed under strict quality control and hygienic conditions.",
+    spec: "Cold-press extraction",
+    highlight: "Pungency intact",
     src: "/process/02-pressing.webp",
     alt: "Golden oil running from a press spout",
   },
   {
     step: "03",
-    phase: "Laboratory Control",
-    title: "Mandatory lab testing",
+    phase: "Testing",
+    title: "Lab testing",
     summary:
-      "Tested for purity, acid value, and FSSAI safety parameters before filling.",
-    spec: "Certified FSSAI testing",
-    highlight: "No Test, No Fill",
+      "Tested in a national laboratory for purity and freshness, in line with FSSAI standards.",
+    spec: "In line with FSSAI standards",
+    highlight: "Purity checked",
     src: "/process/03-testing.webp",
     alt: "An oil sample being handled in laboratory glassware",
   },
   {
     step: "04",
-    phase: "Clean Packaging",
-    title: "Packing & sealing",
+    phase: "Packing",
+    title: "Packing & storage",
     summary:
-      "Filled into food-grade tins, jars, and bottles with tamper-evident seals.",
-    spec: "Aseptic food-grade packs",
-    highlight: "Tamper-Evident",
+      "Filled into tins, jars and PET bottles with safe packaging and storage. Every pack carries the Pure & Safe seal.",
+    spec: "Pure & Safe seal on every pack",
+    highlight: "Safe packaging",
     src: "/process/04-packing.webp",
     alt: "A sealed North West Kachi Ghani mustard oil 15 kg tin",
   },
   {
     step: "05",
-    phase: "Nationwide Logistics",
-    title: "Nationwide dispatch",
+    phase: "Dispatch",
+    title: "Supply across India",
     summary:
-      "Direct dispatch in traceable batches to distributors and retailers across India.",
-    spec: "Traceable batch logistics",
-    highlight: "PAN India Logistics",
+      "Retail packs, bulk tins and loose oil for distributors, wholesalers, retailers and institutional buyers across India.",
+    spec: "Retail & bulk supply",
+    highlight: "PAN India",
     src: "/images/mustard-retail-lineup.webp",
-    alt: "The full North West Kachi Ghani mustard oil lineup packed and ready for dispatch across India",
+    alt: "The North West Kachi Ghani mustard oil range, packed and ready for dispatch",
   },
 ];
 
@@ -91,7 +96,7 @@ export function Process({
   id = "process",
   eyebrow = "Quality assurance",
   title = "Five stages between the seed and the seal.",
-  lede = "Every batch runs the same sequence. Lab testing against FSSAI standards sits in the middle of it, not at the end. A batch that does not clear does not get filled.",
+  lede = "From selected raw material to a sealed, labelled pack, with lab testing for purity and freshness in the middle, in line with FSSAI standards.",
   exploreHref = "/quality",
   exploreLabel = "Quality, certifications & testing sequence",
   showExploreLink = true,
@@ -161,7 +166,7 @@ export function Process({
                     </span>
                     <span
                       className={cn(
-                        "text-[0.8125rem] truncate transition-colors duration-200",
+                        "hidden text-[0.8125rem] truncate transition-colors duration-200 xl:block",
                         isCurrent ? "text-paper font-medium" : "text-forest-300"
                       )}
                     >
@@ -174,7 +179,9 @@ export function Process({
           </div>
         </div>
 
-        <div className="mt-8 hidden lg:flex h-128 gap-3">
+        {/* Five-card accordion only from xl: below 1280px the collapsed cards are
+            too narrow for their labels, so the single-card layout takes over. */}
+        <div className="mt-8 hidden xl:flex h-128 gap-3">
           {PROCESS_STAGES.map((stage, idx) => {
             const isExpanded = idx === activeIdx;
 
@@ -302,9 +309,9 @@ export function Process({
           })}
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 lg:hidden">
-          <div className="relative overflow-hidden rounded-xl border border-gold-500/40 bg-forest-900">
-            <div className="relative h-64 w-full overflow-hidden">
+        <div className="mt-8 flex flex-col gap-4 xl:hidden">
+          <div className="relative overflow-hidden rounded-xl border border-gold-500/40 bg-forest-900 lg:grid lg:grid-cols-2">
+            <div className="relative h-64 w-full overflow-hidden lg:h-full lg:min-h-96">
               <Image
                 src={activeStage.src}
                 alt={activeStage.alt}
@@ -351,7 +358,7 @@ export function Process({
                   type="button"
                   disabled={activeIdx === 0}
                   onClick={() => setActiveIdx((prev) => Math.max(0, prev - 1))}
-                  className="text-[0.8125rem] font-medium text-forest-200 disabled:opacity-30 disabled:pointer-events-none"
+                  className="-my-2 py-2 text-[0.8125rem] font-medium text-forest-200 disabled:opacity-30 disabled:pointer-events-none"
                 >
                   ← Previous stage
                 </button>
@@ -362,7 +369,7 @@ export function Process({
                   type="button"
                   disabled={activeIdx === PROCESS_STAGES.length - 1}
                   onClick={() => setActiveIdx((prev) => Math.min(PROCESS_STAGES.length - 1, prev + 1))}
-                  className="text-[0.8125rem] font-medium text-gold-500 disabled:opacity-30 disabled:pointer-events-none"
+                  className="-my-2 py-2 text-[0.8125rem] font-medium text-gold-500 disabled:opacity-30 disabled:pointer-events-none"
                 >
                   Next stage →
                 </button>
@@ -373,9 +380,9 @@ export function Process({
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-lg text-[0.75rem] leading-relaxed text-forest-300">
-            Pack photography is authentic North West packaging. Laboratory tests
-            are conducted against official FSSAI standards under ISO 9001:2015 and
-            ISO 22000:2018 food safety guidelines.
+            Stages one to three use reference photography; stages four and five
+            show North West packs. The company is certified to ISO 9001:2015 and
+            ISO 22000:2018.
           </p>
           {showExploreLink && (
             <TextLink href={exploreHref} className="shrink-0 text-forest-100">

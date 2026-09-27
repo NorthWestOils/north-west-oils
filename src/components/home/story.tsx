@@ -38,15 +38,15 @@ export function Story() {
             <p className="mt-7 text-[1.0625rem] leading-relaxed text-forest-100">
               North West Oils Private Limited is registered with the Ministry of
               Corporate Affairs, licensed by FSSAI, and certified to ISO
-              9001:2015 and ISO 22000:2018. It works from a registered office in
-              Fatehpur Beri, South Delhi and a unit in Faridpur, Bareilly.
+              9001:2015 and ISO 22000:2018. It works from its registered office in
+              Fatehpur Beri, South Delhi.
             </p>
           </Reveal>
 
           <Reveal kind="rise" delay={0.16}>
             <p className="mt-5 text-[0.9375rem] leading-relaxed text-forest-200">
-              Both addresses and a customer-care number are printed on the side
-              of every tin. Of everything a company can say about itself, that
+              The company&rsquo;s address and a customer-care number are printed on
+              every pack. Of everything a company can say about itself, that
               is the part you can check.
             </p>
           </Reveal>

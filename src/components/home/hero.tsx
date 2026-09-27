@@ -60,7 +60,7 @@ export function Hero() {
             >
               <span aria-hidden="true" className="h-px w-8 shrink-0 bg-forest-400/60" />
               <span>
-                Soyabean, mustard &amp; palmolein oil{" "}
+                Bulk soyabean, mustard &amp; palmolein oil{" "}
                 <span aria-hidden="true" className="text-forest-400/60">
                   ·
                 </span>{" "}
@@ -111,23 +111,26 @@ export function Hero() {
             >
               Our hero product is{" "}
               <strong className="font-semibold text-paper">Soyabean Refined Oil</strong>:
-              light, neutral and fortified with vitamins A and D, in 15 KG tins.
+              light, neutral and fortified with vitamins A and D, in 15 KG tins,
+              supplied in bulk across India.
             </motion.p>
 
             <motion.div
               {...rise(step.cta, reduced)}
-              className="mt-9 flex flex-col gap-3 xs:flex-row xs:items-center"
+              className="mt-9 flex flex-col gap-3 xs:flex-row xs:flex-wrap xs:items-center"
             >
               <ButtonLink
                 href={whatsappLink(waMessage.trade)}
                 variant="whatsapp"
+                className="whitespace-nowrap"
               >
-                Message us on WhatsApp
+                Get a bulk quote
               </ButtonLink>
               <ButtonLink
                 href="/products/soyabean-refined-oil"
                 variant="outline-light"
                 withArrow
+                className="whitespace-nowrap"
               >
                 Soyabean oil
               </ButtonLink>

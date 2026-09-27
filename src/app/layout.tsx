@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "North West Oils | Soyabean Refined, Mustard & Palmolein Oil",
+      "Bulk Soyabean, Mustard & Palmolein Oil | North West Oils",
     template: "%s | North West Oils",
   },
   description: company.summary,
@@ -65,8 +65,7 @@ export const metadata: Metadata = {
     "mustard oil supplier",
     "refined palmolein oil",
     "edible oil supplier Delhi",
-    "edible oil manufacturer Bareilly",
-    "mustard oil mill Uttar Pradesh",
+    "edible oil supplier South Delhi",
     "bulk edible oil supplier India",
     "15 kg mustard oil tin",
     "edible oil distributor",

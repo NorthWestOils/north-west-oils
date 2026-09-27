@@ -15,12 +15,12 @@ import { socialMetadata } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Quality, testing & certifications",
   description:
-    "How North West Oils checks a batch: seed selection, cold-press and controlled refining, lab testing against FSSAI standards, then food-grade packing.",
+    "How North West Oils looks after quality: selected raw material, cold-press extraction, lab testing for purity and freshness in line with FSSAI standards, and safe packing.",
   alternates: { canonical: "/quality" },
   ...socialMetadata({
     title: "Quality, testing & certifications | North West Oils",
     description:
-      "Seed selection, cold-press and controlled refining, lab testing against FSSAI standards, then food-grade packing. ISO 9001 and ISO 22000 certified.",
+      "Selected raw material, cold-press extraction, lab testing for purity and freshness in line with FSSAI standards. ISO 9001 and ISO 22000 certified.",
     path: "/quality",
   }),
 };
@@ -42,7 +42,7 @@ const ON_THE_PACK = [
   },
   {
     title: "Fortification",
-    body: "The soyabean and palmolein grades carry the +F mark for fortification with vitamins A and D.",
+    body: "All three oils carry the +F mark for fortification with vitamins A and D."
   },
   {
     title: "Nine months",
@@ -66,8 +66,8 @@ export default function QualityPage() {
 
       <PageHeader
         eyebrow="Quality"
-        title="A batch that does not clear does not get filled."
-        lede="Quality control is a sequence, not a slogan. Here is the order it runs in, what is checked, and what ends up printed on the pack as a result."
+        title="Quality you can check on the pack."
+        lede="Lab testing for purity and freshness, ISO 9001 and ISO 22000 certification, and everything that ends up printed on the tin as a result."
         trail={trail}
       />
 
@@ -75,7 +75,7 @@ export default function QualityPage() {
         id="stages"
         eyebrow="The sequence"
         title="Seed in, sealed tin out."
-        lede="Quality control is a sequence, not a slogan. Every batch runs the same five stages under ISO guidelines, with mandatory laboratory clearance in the middle before any tin is filled."
+        lede="Five stages from selected raw material to a sealed pack, with lab testing for purity and freshness in line with FSSAI standards."
         exploreHref="#certs-heading"
         exploreLabel="Explore on-pack certifications"
       />
@@ -104,16 +104,16 @@ export default function QualityPage() {
             </MaskReveal>
             <Reveal kind="rise" delay={0.1}>
               <p className="mt-7 text-[1.0625rem] leading-relaxed text-forest-100">
-                Every batch is tested before it is cleared for filling, against
+                The oils are lab tested for purity and freshness, in line with
                 the standards set by the Food Safety and Standards Authority of
                 India. The packs state it plainly: the oil has been
-                scientifically tested in a reputed national laboratory.
+                scientifically tested in a reputed national laboratory, with a
+                100% guarantee that it is pure.
               </p>
             </Reveal>
             <Reveal kind="rise" delay={0.16}>
               <p className="mt-5 text-[0.9375rem] leading-relaxed text-forest-200">
-                Test documentation against a specific order can be sent with the
-                quotation. Ask for it when you enquire.
+                Ask for the licence and test documents when you enquire.
               </p>
             </Reveal>
           </div>
@@ -227,7 +227,7 @@ export default function QualityPage() {
 
       <ContactCta
         heading="Need the paperwork with the quote?"
-        body="Ask, and we will send the licence and test documentation alongside pricing."
+        body="Ask for the licence and test documents along with pricing."
         message={waMessage.documents}
       />
     </>

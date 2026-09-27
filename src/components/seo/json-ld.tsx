@@ -7,7 +7,7 @@ import type { Product } from "@/data/products";
  *
  * Adheres strictly to Schema.org standards and Google Search Central requirements:
  * - Organization & Corporation with verified credentials and departments
- * - LocalBusiness / ManufacturingBusiness with exact geo-coordinates and service areas
+ * - LocalBusiness for the registered office, with geo-coordinates
  * - Product schema with measurements, origins, and availability
  * - ItemList schema for catalogs
  * - FAQPage schema for AI answer engine extraction (Perplexity, ChatGPT, SGE)
@@ -34,10 +34,10 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 /**
  * Enterprise Organization & Corporation schema.
  * Represents North West Oils Private Limited as an established manufacturer
- * with branches, food safety certifications, and trade credentials.
+ * with food safety certifications and trade credentials.
  */
 export function OrganizationJsonLd() {
-  const [delhi, bareilly] = company.locations;
+  const [delhi] = company.locations;
 
   return (
     <JsonLd
@@ -97,28 +97,6 @@ export function OrganizationJsonLd() {
             },
             areaServed: ["Delhi", "NCR", "North India", "PAN India"],
           },
-          {
-            "@type": ["LocalBusiness", "ManufacturingBusiness"],
-            "@id": `${SITE_URL}/#bareilly-unit`,
-            name: company.legalName,
-            description: "Processing and packaging unit",
-            telephone: bareilly.phone,
-            email: bareilly.email,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: bareilly.street,
-              addressLocality: bareilly.locality,
-              addressRegion: bareilly.region,
-              postalCode: bareilly.postalCode,
-              addressCountry: bareilly.country,
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: bareilly.geo.latitude,
-              longitude: bareilly.geo.longitude,
-            },
-            areaServed: ["Uttar Pradesh", "North India", "PAN India"],
-          },
         ],
         contactPoint: [
           {
@@ -163,7 +141,7 @@ export function OrganizationJsonLd() {
             },
             {
               "@type": "OfferCatalog",
-              name: "Kachi Ghani Mustard Oil (500 ML, 1 L, 2 L, 5 L, 15 KG)",
+              name: "Kachi Ghani Mustard Oil (500 ML, 750 ML, 1 L, 2 L, 5 L, 15 KG)",
             },
             {
               "@type": "OfferCatalog",
@@ -198,11 +176,11 @@ export function WebSiteJsonLd() {
 }
 
 /**
- * LocalBusiness schema explicitly modeling the Delhi HQ & Bareilly packaging plant.
+ * LocalBusiness schema for the registered office in South Delhi.
  * Highly valuable for Google Local Search, Google Maps, and GEO generative discovery.
  */
 export function LocalBusinessJsonLd() {
-  const [delhi, bareilly] = company.locations;
+  const [delhi] = company.locations;
 
   return (
     <JsonLd
@@ -235,33 +213,6 @@ export function LocalBusinessJsonLd() {
               delhi.mapsQuery
             )}`,
             areaServed: ["Delhi", "NCR", "North India", "PAN India"],
-          },
-          {
-            "@type": ["LocalBusiness", "ManufacturingBusiness"],
-            "@id": `${SITE_URL}/#bareilly-unit`,
-            name: company.legalName,
-            description: "Processing and packaging unit",
-            parentOrganization: { "@id": ORG_ID },
-            url: `${SITE_URL}/contact`,
-            telephone: bareilly.phone,
-            email: bareilly.email,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: bareilly.street,
-              addressLocality: bareilly.locality,
-              addressRegion: bareilly.region,
-              postalCode: bareilly.postalCode,
-              addressCountry: bareilly.country,
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: bareilly.geo.latitude,
-              longitude: bareilly.geo.longitude,
-            },
-            hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              bareilly.mapsQuery
-            )}`,
-            areaServed: ["Uttar Pradesh", "North India", "PAN India"],
           },
         ],
       }}

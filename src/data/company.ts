@@ -1,12 +1,14 @@
 /**
  * Company facts.
  *
- * Every value here is taken from one of two first-party sources:
+ * Every value here is taken from a first-party source:
  *   1. the company profile deck (`.assets-src/NORTH WEST OILS PRIVATE LIMITED PDF.pdf`)
  *   2. text printed on the company's own packaging (the pack shots in /public/products)
+ *   3. the company's registration certificates and public registry records
+ *      (MCA, GST, IP India)
  *
- * Nothing is inferred or estimated. If a fact is not in one of those two places
- * it does not belong in this file — and it does not belong on the website.
+ * Nothing is inferred or estimated. If a fact is not in one of those places it
+ * does not belong in this file — and it does not belong on the website.
  */
 
 export const SITE_URL = "https://northwestoilspvtltd.in";
@@ -15,6 +17,8 @@ export const company = {
   legalName: "North West Oils Private Limited",
   brandName: "North West",
   shortName: "North West Oils",
+  /** Corporate Identity Number, from the certificate of incorporation. */
+  cin: "U46909DL2024PTC430606",
   /** Printed on every pack in the range. */
   established: 1973,
 
@@ -25,45 +29,28 @@ export const company = {
 
   /** One-line description used for metadata and structured data. */
   summary:
-    "North West Oils Private Limited supplies refined soyabean oil, Kachi Ghani mustard oil and refined palmolein oil to households, retailers, distributors and institutional kitchens across India.",
+    "North West Oils Private Limited supplies refined soyabean oil, Kachi Ghani mustard oil and refined palmolein oil in bulk and wholesale to distributors, wholesalers, retailers and institutional kitchens, PAN India.",
 
   locations: [
     {
       id: "delhi",
       label: "Delhi",
       role: "Registered office",
-      street: "Kh. No. 486, Fatehpur Beri",
-      locality: "Chattarpur, South Delhi",
+      /* As written on the GST, FSSAI and IEC certificates. The Google
+         Business Profile uses this exact address too; change both together. */
+      street: "Kh. No. 486, 496, 579, 580, 581, Village Fatehpur Beri",
+      locality: "New Delhi",
       region: "Delhi",
       postalCode: "110074",
       country: "IN",
-      full: "Kh. No. 486, Fatehpur Beri, Chattarpur, South Delhi 110074",
-      mapsQuery: "Fatehpur Beri, Chattarpur, South Delhi 110074",
+      full: "Kh. No. 486, 496, 579, 580, 581, Village Fatehpur Beri, South Delhi, New Delhi, Delhi 110074",
+      mapsQuery: "Village Fatehpur Beri, New Delhi, Delhi 110074",
       phone: "+919810548867",
       phoneDisplay: "+91 98105 48867",
       email: "care.northwestoilspvtltd@gmail.com",
       geo: {
         latitude: 28.4907,
         longitude: 77.1652,
-      },
-    },
-    {
-      id: "bareilly",
-      label: "Bareilly",
-      role: "Uttar Pradesh unit",
-      street: "Kh. No. 626, Faridpur",
-      locality: "Bareilly",
-      region: "Uttar Pradesh",
-      postalCode: "243502",
-      country: "IN",
-      full: "Kh. No. 626, Faridpur, Bareilly, Uttar Pradesh 243502",
-      mapsQuery: "Faridpur, Bareilly, Uttar Pradesh 243502",
-      phone: "+918057110074",
-      phoneDisplay: "+91 80571 10074",
-      email: "northwestoils1973@gmail.com",
-      geo: {
-        latitude: 28.2106,
-        longitude: 79.5444,
       },
     },
   ],
@@ -74,6 +61,30 @@ export const company = {
     whatsapp: "919810548867",
     email: "northwestoilspvtltd@gmail.com",
     careEmail: "care.northwestoilspvtltd@gmail.com",
+  },
+
+  /**
+   * The contact the privacy policy must name under the IT (Reasonable Security
+   * Practices) Rules, 2011. A director, per the GST registration certificate.
+   */
+  grievanceOfficer: {
+    name: "Rishab Aggarwal",
+    designation: "Director and Grievance Officer",
+    email: "care.northwestoilspvtltd@gmail.com",
+    phone: "+919810548867",
+    phoneDisplay: "+91 98105 48867",
+  },
+
+  /**
+   * The "North West" word-and-device mark, from the public IP India trade mark
+   * search. It is an application, not yet a registration: use ™ if anything,
+   * never ®, until it is registered.
+   */
+  trademark: {
+    applicationNo: "7432627",
+    mark: "North West with device NW",
+    class: 29,
+    filed: "31 December 2025",
   },
 
   /**
@@ -125,15 +136,15 @@ export const company = {
   principles: [
     {
       title: "Raw material sourcing",
-      body: "Seed and oil stock is selected before it enters the line, because nothing downstream fixes a poor starting material.",
+      body: "High-quality raw material, starting with carefully selected mustard seed for the Kachi Ghani line, because nothing downstream fixes a poor start.",
     },
     {
       title: "Modern processing",
-      body: "Cold-press extraction for Kachi Ghani, controlled refining for the soyabean and palmolein grades.",
+      body: "Cold-press extraction for Kachi Ghani, and strict quality control and hygienic conditions for every grade.",
     },
     {
       title: "Quality control",
-      body: "Lab testing for purity and freshness, against FSSAI standards, before a batch is cleared.",
+      body: "Lab testing for purity and freshness, in line with FSSAI standards.",
     },
     {
       title: "Competitive pricing",
@@ -145,7 +156,7 @@ export const company = {
     },
     {
       title: "Customer-centric",
-      body: "A named customer-care line on every pack, answered from the Delhi office.",
+      body: "A customer-care number and email printed on every pack.",
     },
   ],
 
@@ -154,27 +165,27 @@ export const company = {
     {
       step: "01",
       title: "Raw material selection",
-      body: "High-grade mustard seed and verified oil stock, checked on intake for the aroma, colour and condition the batch needs to start from.",
+      body: "High-quality raw material for all three oils, including carefully selected mustard seed for the Kachi Ghani line.",
     },
     {
       step: "02",
       title: "Extraction and refining",
-      body: "Kachi Ghani mustard oil is cold-pressed to keep its pungency intact. Soyabean and palmolein are refined under controlled temperature.",
+      body: "Kachi Ghani mustard oil is cold-pressed to keep its strong aroma and pungency. Every grade is processed under strict quality control and hygienic conditions.",
     },
     {
       step: "03",
       title: "Lab testing",
-      body: "Every batch is tested for purity and freshness against FSSAI standards before it is cleared for filling.",
+      body: "Tested in a national laboratory for purity and freshness, in line with FSSAI standards.",
     },
     {
       step: "04",
       title: "Packing and storage",
-      body: "Filled into food-grade tins, jars and PET bottles, sealed, and held in conditions that keep the oil away from heat and light.",
+      body: "Filled into tins, jars and PET bottles with safe packaging and storage, away from heat and light.",
     },
     {
       step: "05",
       title: "Dispatch",
-      body: "Retail cartons and bulk tins move out to distributors, wholesalers, retailers and institutional buyers across India.",
+      body: "Retail packs, bulk tins and loose oil go out to distributors, wholesalers, retailers and institutional buyers across India.",
     },
   ],
 
@@ -182,7 +193,7 @@ export const company = {
   buyers: [
     {
       title: "Distributors and wholesalers",
-      body: "Full-range supply across retail pack sizes, with repeat dispatch schedules.",
+      body: "Supply across the retail and bulk range.",
     },
     {
       title: "Retailers",
@@ -194,7 +205,7 @@ export const company = {
     },
     {
       title: "Loose oil suppliers",
-      body: "Bulk supply for repackers and loose-oil traders, PAN India.",
+      body: "Bulk and loose oil supply, PAN India.",
     },
   ],
 
@@ -203,7 +214,7 @@ export const company = {
     {
       question: "What oils does North West Oils produce and supply?",
       answer:
-        "North West Oils produces and packages three core edible oils: its hero product refined Soyabean Oil (fortified with Vitamins A and D), cold-pressed Kachi Ghani Mustard Oil, and refined Palmolein Oil (fortified with Vitamins A and D).",
+        "North West Oils produces and packages three core edible oils, all fortified with vitamins A and D: its hero product, refined Soyabean Oil, cold-pressed Kachi Ghani Mustard Oil (a refined mustard oil is also available), and refined Palmolein Oil.",
     },
     {
       question: "Which oil should I use: soyabean, mustard or palmolein?",
@@ -213,17 +224,17 @@ export const company = {
     {
       question: "Is North West Mustard Oil cold-pressed Kachi Ghani?",
       answer:
-        "Yes. North West Mustard Oil is cold-pressed using traditional Kachi Ghani extraction from selected mustard seed without artificial heating, preserving its natural pungency and sharp aroma.",
+        "Yes. North West Kachi Ghani Mustard Oil is cold-pressed from carefully selected mustard seed, which keeps its strong aroma and distinct pungency. A refined mustard oil is also available.",
     },
     {
       question: "What packaging formats and sizes are available?",
       answer:
-        "North West Mustard Oil is packed in 500 ML and 1 L PET bottles, 2 L and 5 L handled jars, and 15 KG metal tins. Refined Soyabean Oil is supplied in 15 KG tins, and Refined Palmolein Oil is supplied in 15 Litre tins for commercial and institutional kitchens.",
+        "North West Mustard Oil is packed in 500 ML, 750 ML and 1 L PET bottles, 2 L and 5 L handled jars, and 15 KG metal tins. Refined Soyabean Oil is supplied in 15 KG tins, and Refined Palmolein Oil is supplied in 15 Litre tins for commercial and institutional kitchens.",
     },
     {
-      question: "Where are North West Oils' facilities located?",
+      question: "Where is North West Oils located?",
       answer:
-        "North West Oils Private Limited has its registered corporate office at Kh. No. 486, Fatehpur Beri, Chattarpur, South Delhi (110074) and its processing and packaging unit at Kh. No. 626, Faridpur, Bareilly, Uttar Pradesh (243502).",
+        "North West Oils Private Limited is based at its registered office, Kh. No. 486, 496, 579, 580, 581, Village Fatehpur Beri, South Delhi, New Delhi, Delhi 110074, and supplies across India.",
     },
     {
       question: "What food safety and quality certifications does the company hold?",
@@ -233,7 +244,7 @@ export const company = {
     {
       question: "Does North West Oils supply loose oil and bulk consignments across India?",
       answer:
-        "Yes. North West Oils provides cartons of retail packs, bulk tins by the pallet, and loose oil supply to distributors, wholesalers, repackers, and institutional kitchens with PAN India dispatch.",
+        "Yes. North West Oils supplies retail packs, bulk tins and loose oil to distributors, wholesalers, retailers, institutional buyers and loose oil suppliers, with dispatch across India.",
     },
     {
       question: "How can I contact North West Oils for trade or distribution enquiries?",
@@ -247,7 +258,7 @@ export const company = {
     {
       question: "How does North West Oils ensure the quality of its cooking oils?",
       answer:
-        "Every batch runs through a strict sequence: raw material intake inspection, cold-press extraction or controlled refining, mandatory laboratory testing against FSSAI standards before clearance, food-grade packing, and sealed dispatch.",
+        "Quality starts with high-quality raw material and runs through cold-press extraction for Kachi Ghani, processing under strict quality control and hygienic conditions, lab testing for purity and freshness in line with FSSAI standards, and safe packaging and storage. The company is certified to ISO 9001:2015 and ISO 22000:2018.",
     },
     {
       question: "What food safety and quality certifications does North West Oils have?",
@@ -262,7 +273,7 @@ export const company = {
     {
       question: "Are North West cooking oils fortified?",
       answer:
-        "Yes, refined soyabean oil and refined palmolein oil carry the +F mark and are fortified with Vitamins A and D. All three oils are 100% vegetarian.",
+        "Yes. All three North West oils (soyabean, mustard and palmolein) are fortified with vitamins A and D and carry the +F mark. All three are also 100% vegetarian.",
     },
   ],
 

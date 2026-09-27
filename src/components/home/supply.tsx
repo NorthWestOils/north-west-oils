@@ -16,7 +16,7 @@ export function Supply() {
             </Reveal>
 
             <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-              <span id="supply-heading">Retail shelves and working kitchens.</span>
+              <span id="supply-heading">Bulk and wholesale, PAN India.</span>
             </MaskReveal>
 
             <Reveal kind="rise" delay={0.1}>

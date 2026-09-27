@@ -160,7 +160,7 @@ export function TextLink({
   icon?: ReactNode;
 }) {
   const cls = cn(
-    "group/btn inline-flex items-center gap-2 text-[0.9375rem] font-medium text-forest-800",
+    "group/btn -my-2 inline-flex items-center gap-2 py-2 text-[0.9375rem] font-medium text-forest-800",
     className
   );
   const inner = (

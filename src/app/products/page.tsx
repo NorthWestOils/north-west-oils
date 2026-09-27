@@ -15,12 +15,12 @@ import { orderedProducts, productBySlug, type Product } from "@/data/products";
 export const metadata: Metadata = {
   title: "Soyabean, Mustard & Palmolein Oil Products",
   description:
-    "The North West Oils range: our hero product refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in five pack sizes and refined palmolein in 15 litre tins.",
+    "The North West Oils range: our hero product, refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in six sizes and refined palmolein in 15 litre tins.",
   alternates: { canonical: "/products" },
   ...socialMetadata({
     title: "Soyabean, Mustard & Palmolein Oil Products | North West Oils",
     description:
-      "Our hero product refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in five pack sizes and refined palmolein oil in 15 litre tins.",
+      "Our hero product, refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in six pack sizes and refined palmolein oil in 15 litre tins.",
     path: "/products",
   }),
 };
@@ -90,12 +90,12 @@ export default function ProductsPage() {
               </Reveal>
               <Reveal kind="rise" delay={0.05}>
                 <h2 className="display-3 mt-5 text-ink">
-                  Five sizes of the same oil.
+                  Six sizes of the same oil.
                 </h2>
               </Reveal>
               <Reveal kind="rise" delay={0.1}>
                 <p className="body-text mt-5 max-w-md">
-                  500 ML and 1 L bottles for the shelf, 2 L and 5 L jars for a
+                  500 ML, 750 ML and 1 L bottles for the shelf, 2 L and 5 L jars for a
                   household that gets through it, and the 15 KG tin for kitchens
                   that buy by weight.
                 </p>
@@ -156,7 +156,7 @@ export default function ProductsPage() {
                     >
                       <Link
                         href={`/products/${p.slug}`}
-                        className="underline-offset-4 hover:underline"
+                        className="-my-2 inline-block py-2 underline-offset-4 hover:underline"
                       >
                         {p.name}
                       </Link>

@@ -12,6 +12,11 @@ const PAGES = [
   { label: "Contact", href: "/contact" },
 ];
 
+const LEGAL = [
+  { label: "Privacy policy", href: "/privacy-policy" },
+  { label: "Terms and conditions", href: "/terms-and-conditions" },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -93,7 +98,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${company.contact.phone}`}
-                  className="tnum -my-1 inline-block py-1 text-forest-100 transition-colors duration-200 hover:text-white"
+                  className="tnum -my-2 inline-block py-2 text-forest-100 transition-colors duration-200 hover:text-white"
                 >
                   {company.contact.phoneDisplay}
                 </a>
@@ -101,7 +106,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${company.contact.email}`}
-                  className="-my-1 inline-block py-1 break-all text-forest-100 transition-colors duration-200 hover:text-white"
+                  className="-my-2 inline-block py-2 break-all text-forest-100 transition-colors duration-200 hover:text-white"
                 >
                   {company.contact.email}
                 </a>
@@ -109,7 +114,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${company.contact.careEmail}`}
-                  className="-my-1 inline-block py-1 break-all text-forest-100 transition-colors duration-200 hover:text-white"
+                  className="-my-2 inline-block py-2 break-all text-forest-100 transition-colors duration-200 hover:text-white"
                 >
                   {company.contact.careEmail}
                 </a>
@@ -147,9 +152,25 @@ export function Footer() {
         {/* Extra bottom space so the floating WhatsApp button never sits on
             top of this line when the page is scrolled to the end. */}
         <div className="flex flex-col gap-3 border-t border-white/10 pt-7 pb-24 text-[0.8125rem] text-forest-400 sm:flex-row sm:items-center sm:justify-between lg:pb-28">
-          <p>
-            © {year} {company.legalName}. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
+            <p>
+              © {year} {company.legalName}. All rights reserved.
+            </p>
+            <nav aria-label="Legal">
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                {LEGAL.map((p) => (
+                  <li key={p.href}>
+                    <Link
+                      href={p.href}
+                      className="-my-1 inline-block py-1 transition-colors duration-200 hover:text-white"
+                    >
+                      {p.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
           <p>
             Pack artwork and product photography are the property of{" "}
             {company.legalName}.

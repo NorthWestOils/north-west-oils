@@ -11,9 +11,9 @@ import { ContactCta } from "@/components/ui/contact-cta";
 import { FAQJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "North West Oils | Soyabean Refined, Mustard & Palmolein Oil",
+  title: "Bulk Soyabean, Mustard & Palmolein Oil | North West Oils",
   description:
-    "Refined soyabean oil, our hero product, with Kachi Ghani mustard and refined palmolein oil. Retail and bulk packs from North West Oils, FSSAI licensed, since 1973.",
+    "Bulk and wholesale soyabean, Kachi Ghani mustard and palmolein oil, supplied PAN India. Soyabean Refined Oil is our hero product. FSSAI licensed, since 1973.",
   alternates: { canonical: "/" },
 };
 
