@@ -268,7 +268,7 @@ export function Credentials() {
                         "group relative flex w-full flex-col items-center rounded-xl border p-3.5 text-center cursor-pointer transition-all duration-200 select-none",
                         "active:translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-800/40",
                         isSelected
-                          ? "border-forest-800 bg-white ring-1 ring-forest-800/20 shadow-xs"
+                          ? "border-forest-800 bg-white ring-1 ring-forest-800/30"
                           : "border-line bg-white/50 hover:border-forest-800/40 hover:bg-white"
                       )}
                       aria-pressed={isSelected}

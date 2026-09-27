@@ -37,9 +37,9 @@
   --color-ink: #171A12;
   --color-ink-2: #3F453A;
   --color-ink-3: #6C7367;
-  --color-ink-4: #949A8F;
-  --color-line: rgba(23, 26, 18, 0.11);
-  --color-line-strong: rgba(23, 26, 18, 0.2);
+  --color-line: rgba(23, 26, 18, 0.055);
+  --color-line-strong: rgba(23, 26, 18, 0.09);
+  --color-line-subtle: rgba(23, 26, 18, 0.035);
 
   /* Type */
   --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;

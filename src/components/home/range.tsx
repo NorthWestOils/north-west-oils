@@ -1,7 +1,8 @@
 import { Container, Eyebrow, Section } from "@/components/ui/section";
 import { MaskReveal, Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ProductShot } from "@/components/ui/product-shot";
-import { TextLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
+import { whatsappLink } from "@/lib/whatsapp";
 import { accentVar, featuredProduct, orderedProducts } from "@/data/products";
 import { cn } from "@/lib/utils";
 
@@ -88,29 +89,47 @@ export function Range() {
                   </RevealItem>
 
                   <RevealItem>
-                    <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
+                    <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-4 rounded-xl border border-line-subtle bg-paper-2/50 p-4">
                       <div>
                         <dt className="eyebrow text-ink-4">Pack sizes</dt>
-                        <dd className="tnum mt-2 text-[0.9375rem] text-ink">
+                        <dd className="tnum mt-1.5 text-[0.875rem] font-medium text-ink">
                           {product.packs.map((p) => p.label).join(" · ")}
                         </dd>
                       </div>
                       <div>
-                        <dt className="eyebrow text-ink-4">Container</dt>
-                        <dd className="mt-2 text-[0.9375rem] text-ink">
+                        <dt className="eyebrow text-ink-4">Container format</dt>
+                        <dd className="mt-1.5 text-[0.875rem] font-medium text-ink">
                           {product.packs.length > 1
-                            ? "Tin, jar, bottle"
+                            ? "Metal tin, handled jar, PET bottle"
                             : product.packs[0].format}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="eyebrow text-ink-4">Fortification</dt>
+                        <dd className="mt-1.5 text-[0.875rem] font-medium text-forest-700">
+                          +F Vitamins A &amp; D
                         </dd>
                       </div>
                     </dl>
                   </RevealItem>
 
                   <RevealItem>
-                    <div className="mt-8">
-                      <TextLink href={`/products/${product.slug}`}>
-                        {product.name} details
-                      </TextLink>
+                    <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <ButtonLink
+                        href={`/products/${product.slug}`}
+                        variant="outline"
+                        size="sm"
+                        withArrow
+                      >
+                        Explore {product.name}
+                      </ButtonLink>
+                      <ButtonLink
+                        href={whatsappLink(`Hello Team North West Oils, I would like to enquire about trade supply for North West ${product.name}.`)}
+                        variant="whatsapp"
+                        size="sm"
+                      >
+                        Get quote
+                      </ButtonLink>
                     </div>
                   </RevealItem>
                 </RevealGroup>

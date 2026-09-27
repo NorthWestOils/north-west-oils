@@ -13,15 +13,15 @@ type Variant =
 type Size = "md" | "sm";
 
 const base =
-  "group/btn relative inline-flex items-center justify-center gap-2.5 rounded-full font-medium cursor-pointer " +
-  "transition-all duration-150 ease-out-expo select-none " +
+  "group/btn relative inline-flex items-center justify-center gap-2 rounded-full font-medium cursor-pointer " +
+  "transition-all duration-150 ease-out select-none " +
   "active:translate-y-0.5 " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-800/40 focus-visible:ring-offset-2 " +
-  "disabled:pointer-events-none disabled:opacity-55";
+  "disabled:pointer-events-none disabled:opacity-50";
 
 const sizes: Record<Size, string> = {
-  md: "h-12 px-7 text-[0.9375rem]",
-  sm: "h-10 px-5 text-[0.875rem]",
+  md: "h-12 px-6 sm:px-7 text-[0.9375rem]",
+  sm: "h-10 px-4 sm:px-5 text-[0.875rem]",
 };
 
 const variantStyles: Record<Variant, string> = {
@@ -35,27 +35,28 @@ const variantStyles: Record<Variant, string> = {
   ghost: "text-ink hover:text-forest-700 active:text-forest-900",
   light:
     "bg-paper text-forest-950 hover:bg-white border border-transparent active:bg-paper-2",
-  /* WhatsApp's own green, so the button is recognised before it is read. */
+  /* Calibrated WhatsApp green: refined, high-contrast, premium */
   whatsapp:
-    "bg-[#1FA855] text-white hover:bg-[#178A44] active:bg-[#126E35]",
+    "bg-[#15803D] text-white hover:bg-[#166534] active:bg-[#14532D]",
 };
 
-/** A small arrow that nudges on hover — the site's one button microinteraction. */
+/** Crisp arrow with micro-nudge on hover and clean shadcn-style tactile press */
 export function ButtonArrow({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 16 16"
       aria-hidden="true"
       className={cn(
-        "size-[0.9em] shrink-0 transition-transform duration-300 ease-out-expo group-hover/btn:translate-x-0.75",
+        "size-[0.9em] shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.75",
         className
       )}
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="square"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <path d="M2 8h11M9 4l4 4-4 4" />
+      <path d="M2.5 8h11M9.5 4l4 4-4 4" />
     </svg>
   );
 }
@@ -79,7 +80,8 @@ export function ButtonLink({
   className?: string;
   children: ReactNode;
 } & Omit<ComponentPropsWithoutRef<"a">, "href" | "children" | "className">) {
-  const resolvedIcon = icon ?? (variant === "whatsapp" ? <WhatsAppIcon /> : null);
+  const resolvedIcon =
+    icon ?? (variant === "whatsapp" ? <WhatsAppIcon className="size-[1.15em] shrink-0" /> : null);
   const cls = cn(base, sizes[size], variantStyles[variant], className);
   const inner = (
     <>
@@ -129,7 +131,8 @@ export function Button({
   withArrow?: boolean;
   icon?: ReactNode;
 } & ComponentPropsWithoutRef<"button">) {
-  const resolvedIcon = icon ?? (variant === "whatsapp" ? <WhatsAppIcon /> : null);
+  const resolvedIcon =
+    icon ?? (variant === "whatsapp" ? <WhatsAppIcon className="size-[1.15em] shrink-0" /> : null);
   return (
     <button
       className={cn(base, sizes[size], variantStyles[variant], className)}

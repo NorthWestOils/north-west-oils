@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useId, useMemo, useRef, useState } from "react";
+import { useCallback, useId, useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { waMessage, whatsappLink } from "@/lib/whatsapp";
-import { spring } from "@/lib/motion";
+import { ease, spring } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 export interface StagePack {
@@ -13,6 +13,8 @@ export interface StagePack {
   productSlug: string;
   productName: string;
   shortName: string;
+  category: "tins" | "jars" | "bottles";
+  categoryName: string;
   oilCategory: string;
   size: string;
   format: string;
@@ -23,9 +25,12 @@ export interface StagePack {
   alt: string;
   width: number;
   height: number;
-  containerSpec: string;
-  bestFor: string;
-  specs: string[];
+  tareWeight: string;
+  material: string;
+  closure: string;
+  palletLoad: string;
+  recommendedFor: string;
+  compliance: string;
   description: string;
 }
 
@@ -34,7 +39,9 @@ export const STAGE_PACKS: StagePack[] = [
     id: "soy-15kg",
     productSlug: "soyabean-refined-oil",
     productName: "Soyabean Refined Oil",
-    shortName: "Soyabean",
+    shortName: "Soyabean 15 KG",
+    category: "tins",
+    categoryName: "Commercial Metal Tin",
     oilCategory: "Refined Edible Grade",
     size: "15 KG",
     format: "Food-Grade Metal Tin",
@@ -42,100 +49,125 @@ export const STAGE_PACKS: StagePack[] = [
     isHero: true,
     accent: "soy",
     image: "/products/soyabean-15kg-tin.webp",
-    alt: "North West Soyabean Refined Oil in 15 kg food-grade tin",
+    alt: "North West Soyabean Refined Oil 15 kg food-grade tin",
     width: 771,
     height: 1150,
-    containerSpec: "Heavy-gauge square tinplate with inner lacquer & sealed pour spout",
-    bestFor: "Commercial kitchens, volume fryers, bakeries & industrial caterers",
-    specs: ["+F Fortified (A & D)", "Tamper-Evident Spout", "9M Shelf Life", "Lab Certified Pure"],
+    tareWeight: "15.00 KG Net Weight",
+    material: "Electrolytic tinplate with protective food-grade inner lacquer",
+    closure: "Hermetic pull-ring pour spout with tamper-evident seal",
+    palletLoad: "33 Tins per Pallet · Shrink-wrapped or full truckload dispatch",
+    recommendedFor: "Commercial kitchens, industrial bakeries, cloud kitchens & volume fryers",
+    compliance: "+F Fortified with Vitamins A & D · Central FSSAI · 9M Shelf Life",
     description:
-      "Our hero product. A light, neutral refined oil engineered for continuous frying, baking, and large-scale culinary production where consistency matters above all.",
+      "Our hero product. A light, neutral refined oil engineered for continuous commercial frying, baking, and large-scale culinary production where thermal stability and neutral aroma matter most.",
   },
   {
     id: "mustard-15kg",
     productSlug: "mustard-oil",
     productName: "Kachi Ghani Mustard Oil",
-    shortName: "Mustard Tin",
+    shortName: "Mustard 15 KG",
+    category: "tins",
+    categoryName: "Commercial Metal Tin",
     oilCategory: "Cold-Pressed Grade",
     size: "15 KG",
     format: "Food-Grade Metal Tin",
     badge: "Commercial Bulk",
     accent: "mustard",
     image: "/products/mustard-15kg-tin.webp",
-    alt: "North West Kachi Ghani Mustard Oil in 15 kg tin",
+    alt: "North West Kachi Ghani Mustard Oil 15 kg tin",
     width: 815,
     height: 1150,
-    containerSpec: "Reinforced steel tinplate with top carry wire and hermetic seal",
-    bestFor: "Halwais, sweet makers, canteens, dhabas & wholesale distribution",
-    specs: ["Cold-Pressed", "+F Fortified", "High Natural Pungency", "Best Before 9 Months"],
+    tareWeight: "15.00 KG Net Weight",
+    material: "Heavy-gauge reinforced steel tinplate with welded hermetic seams",
+    closure: "Factory-crimped seal with steel wire top carry handle",
+    palletLoad: "33 Tins per Pallet · Palletized consignments or full truckload",
+    recommendedFor: "Sweet makers (halwais), institutional canteens, dhabas & wholesale stockists",
+    compliance: "+F Fortified with Vitamins A & D · Cold-Pressed · High Pungency",
     description:
-      "Traditional cold-pressed mustard oil with pungent aroma and authentic flavor preserved. Packed in robust 15 KG tins for high-volume commercial cooking.",
+      "Authentic cold-pressed Kachi Ghani mustard oil with natural pungency and aroma intact. Packaged in rigid 15 KG tins designed to endure long-distance transit and demanding kitchen floors.",
   },
   {
     id: "palm-15l",
     productSlug: "refined-palmolein-oil",
     productName: "Refined Palmolein Oil",
-    shortName: "Palmolein",
+    shortName: "Palmolein 15 LTR",
+    category: "tins",
+    categoryName: "Commercial Metal Tin",
     oilCategory: "Refined Frying Grade",
     size: "15 LTR",
     format: "Food-Grade Metal Tin",
     badge: "Continuous Fryer Grade",
     accent: "palm",
     image: "/products/palmolein-15l-tin.webp",
-    alt: "North West Refined Palmolein Oil in 15 litre tin",
+    alt: "North West Refined Palmolein Oil 15 litre tin",
     width: 812,
     height: 1150,
-    containerSpec: "Corrosion-resistant metal tinplate built for high thermal stability",
-    bestFor: "Continuous deep-fryers, snack manufacturers & banquet caterers",
-    specs: ["High Smoke Point", "+F Fortified", "Zero Trans-Fat", "Neutral Aroma"],
+    tareWeight: "15.00 Litres Volume",
+    material: "Corrosion-resistant lacquered steel tinplate for high smoke-point storage",
+    closure: "Tamper-evident threaded spout with inner security membrane",
+    palletLoad: "33 Tins per Pallet · Direct bulk tanker dispatch also available",
+    recommendedFor: "Continuous deep-fryers, namkeen & snack manufacturers, industrial kitchens",
+    compliance: "+F Fortified with Vitamins A & D · High Heat Stability · Zero Trans-Fat",
     description:
-      "Engineered to withstand prolonged commercial frying temperatures without breaking down. Favored by snack producers and heavy commercial kitchens.",
+      "Engineered specifically for high-temperature commercial deep-frying. Holds its clarity and structural stability across prolonged frying cycles without foaming or off-flavors.",
   },
   {
     id: "mustard-5l",
     productSlug: "mustard-oil",
     productName: "Kachi Ghani Mustard Oil",
-    shortName: "Mustard 5L",
+    shortName: "Mustard 5 L",
+    category: "jars",
+    categoryName: "Handled Jar",
     oilCategory: "Cold-Pressed Grade",
     size: "5 L",
     format: "Handled Jar",
-    badge: "Family & Food Service",
+    badge: "Food Service & Family",
     accent: "mustard",
     image: "/products/mustard-5l-jar.webp",
     alt: "North West Kachi Ghani Mustard Oil 5 litre handled jar",
     width: 760,
     height: 1150,
-    containerSpec: "Heavy-duty HDPE jar with integrated carry handle & anti-glug pour",
-    bestFor: "Joint households, cloud kitchens, dhabas & small restaurants",
-    specs: ["Molded Ergonomic Handle", "Tamper-Proof Ring", "+F Fortified", "Wide Stable Base"],
+    tareWeight: "5.00 Litres Volume",
+    material: "High-density food-grade virgin polymer with ergonomic side handle",
+    closure: "Wide-mouth threaded cap with tamper-evident tear ring and pour lip",
+    palletLoad: "4 Jars per Corrugated Master Shipper Box",
+    recommendedFor: "Large households, joint families, dhabas, cloud kitchens & small restaurants",
+    compliance: "+F Fortified with Vitamins A & D · FSSAI Certified · Recyclable",
     description:
-      "Generous household and small-kitchen format. The molded side handle and wide mouth ensure smooth, controlled dispensing with zero splashback.",
+      "A high-volume consumer and food-service pack. The heavy-duty molded handle and anti-glug neck geometry provide confident, splash-free pouring into commercial cookware.",
   },
   {
     id: "mustard-2l",
     productSlug: "mustard-oil",
     productName: "Kachi Ghani Mustard Oil",
-    shortName: "Mustard 2L",
+    shortName: "Mustard 2 L",
+    category: "jars",
+    categoryName: "Handled Jar",
     oilCategory: "Cold-Pressed Grade",
     size: "2 L",
     format: "Handled Jar",
-    badge: "Household Pantry",
+    badge: "Pantry Standard",
     accent: "mustard",
     image: "/products/mustard-2l-jar.webp",
     alt: "North West Kachi Ghani Mustard Oil 2 litre handled jar",
     width: 768,
     height: 1150,
-    containerSpec: "Square-profile handled jar optimized for kitchen countertop storage",
-    bestFor: "Monthly household consumption and retail kirana counters",
-    specs: ["Space-Saving Footprint", "Aroma-Lock Cap", "+F Fortified", "Easy Grip"],
+    tareWeight: "2.00 Litres Volume",
+    material: "Square-profile food-grade polymer with space-saving footprint",
+    closure: "Screw cap with induction seal and integrated pouring spout",
+    palletLoad: "6 Jars per Corrugated Master Carton",
+    recommendedFor: "Monthly household consumption and retail grocery counters",
+    compliance: "+F Fortified with Vitamins A & D · Aroma Lock Seal",
     description:
-      "A convenient handled format designed to sit neatly on kitchen counters or inside pantries without rolling or taking excess shelf space.",
+      "Tailored for monthly household pantries. The square profile prevents shelf roll and maximizes storage efficiency in both domestic kitchens and retail store aisles.",
   },
   {
     id: "mustard-1l",
     productSlug: "mustard-oil",
     productName: "Kachi Ghani Mustard Oil",
-    shortName: "Mustard 1L",
+    shortName: "Mustard 1 L",
+    category: "bottles",
+    categoryName: "Consumer PET Bottle",
     oilCategory: "Cold-Pressed Grade",
     size: "1 L",
     format: "PET Bottle",
@@ -145,17 +177,22 @@ export const STAGE_PACKS: StagePack[] = [
     alt: "North West Kachi Ghani Mustard Oil 1 litre PET bottle",
     width: 335,
     height: 1150,
-    containerSpec: "Fluted virgin food-grade PET bottle with tamper-evident seal",
-    bestFor: "Supermarket shelves, grocery stores & daily home cooking",
-    specs: ["Retail Standard", "Spill-Free Pour Cap", "100% Recyclable", "UV-Shielded PET"],
+    tareWeight: "1.00 Litre Volume",
+    material: "Virgin food-grade PET with UV-protective fluted ribs",
+    closure: "Precision-flow dispenser cap with tamper-evident drop band",
+    palletLoad: "12 or 16 Bottles per Corrugated Master Shipper with partitions",
+    recommendedFor: "Supermarket shelves, kirana stores & everyday home culinary use",
+    compliance: "+F Fortified with Vitamins A & D · 100% Recyclable Virgin PET",
     description:
-      "The benchmark retail format. Ribbed for slip-free grip and sealed with a tamper-evident ring that guarantees untouched purity straight from the mill.",
+      "The definitive retail benchmark. Fluted sidewalls prevent bottle deformation during transit, while the precision dispenser ensures clean, dripless oil delivery.",
   },
   {
     id: "mustard-750ml",
     productSlug: "mustard-oil",
     productName: "Kachi Ghani Mustard Oil",
-    shortName: "Mustard 750ML",
+    shortName: "Mustard 750 ML",
+    category: "bottles",
+    categoryName: "Consumer PET Bottle",
     oilCategory: "Cold-Pressed Grade",
     size: "750 ML",
     format: "PET Bottle",
@@ -165,59 +202,65 @@ export const STAGE_PACKS: StagePack[] = [
     alt: "North West Kachi Ghani Mustard Oil 750 ml PET bottle",
     width: 367,
     height: 1150,
-    containerSpec: "Slim contoured PET bottle with ribbed ergonomic grip zones",
-    bestFor: "Value-conscious retail shelves and compact kitchen pantries",
-    specs: ["Slim Ergonomic Profile", "Drop-Safe Cap", "+F Fortified", "Precision Dispenser"],
+    tareWeight: "750 ML Volume",
+    material: "Slim-line virgin PET with textured ergonomic grip bands",
+    closure: "Threaded dispenser cap with factory-sealed breakaway ring",
+    palletLoad: "16 Bottles per Corrugated Master Carton",
+    recommendedFor: "Value-conscious retail shelves and compact kitchen cabinets",
+    compliance: "+F Fortified with Vitamins A & D · Drop-Safe Cap",
     description:
-      "A tailored intermediate size that balances consumer price-point with generous volume, popular in urban grocery and compact apartment pantries.",
+      "A calibrated consumer intermediate format that delivers exceptional value for urban households with compact pantry shelving.",
   },
   {
     id: "mustard-500ml",
     productSlug: "mustard-oil",
     productName: "Kachi Ghani Mustard Oil",
-    shortName: "Mustard 500ML",
+    shortName: "Mustard 500 ML",
+    category: "bottles",
+    categoryName: "Consumer PET Bottle",
     oilCategory: "Cold-Pressed Grade",
     size: "500 ML",
     format: "PET Bottle",
-    badge: "Trial & Everyday",
+    badge: "Trial & Tabletop",
     accent: "mustard",
     image: "/products/mustard-500ml-bottle.webp",
     alt: "North West Kachi Ghani Mustard Oil 500 ml PET bottle",
     width: 367,
     height: 1150,
-    containerSpec: "Lightweight virgin PET with precision-flow insert and tamper cap",
-    bestFor: "Single households, trial buyers, seasonal pickling & convenience counters",
-    specs: ["Entry Pack", "Precision Pour Nozzle", "Portable", "+F Fortified"],
+    tareWeight: "500 ML Volume",
+    material: "Lightweight virgin food-grade PET with precision-blow molding",
+    closure: "Tamper-evident screw cap with micro-pour nozzle insert",
+    palletLoad: "24 Bottles per Corrugated Shipping Case",
+    recommendedFor: "Single households, trial purchasers, seasonal pickle makers & grocery counters",
+    compliance: "+F Fortified with Vitamins A & D · Precision Dispenser",
     description:
-      "Our most agile retail format. Perfect for small households, trial testing, or seasonal pickle preparation where a fresh unopened bottle is preferred.",
+      "Our most nimble retail format. Highly popular for seasonal pickle preparation and trial purchases, ensuring consumers get factory-sealed freshness on every opening.",
   },
 ];
 
-type FilterKey = "all" | "soy" | "mustard" | "palm";
+type CategoryFilter = "all" | "tins" | "jars" | "bottles";
 
 export function PackStage({ className }: { className?: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
-  const stageRef = useRef<HTMLDivElement>(null);
-  const touchStartXRef = useRef<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   const uid = useId();
   const reduced = useReducedMotion();
 
   const totalPacks = STAGE_PACKS.length;
   const activePack = STAGE_PACKS[activeIndex];
 
-  // Filter packs for quick switching
-  const handleFilterSelect = (filterKey: FilterKey) => {
-    setActiveFilter(filterKey);
-    if (filterKey === "soy") {
-      setActiveIndex(0); // Soyabean hero tin
-    } else if (filterKey === "mustard") {
-      // Find first mustard pack
-      const firstMustard = STAGE_PACKS.findIndex((p) => p.accent === "mustard");
-      if (firstMustard !== -1) setActiveIndex(firstMustard);
-    } else if (filterKey === "palm") {
-      const palmIdx = STAGE_PACKS.findIndex((p) => p.accent === "palm");
-      if (palmIdx !== -1) setActiveIndex(palmIdx);
+  const filteredPacks = useMemo(() => {
+    if (activeCategory === "all") return STAGE_PACKS;
+    return STAGE_PACKS.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
+
+  const handleCategorySelect = (cat: CategoryFilter) => {
+    setActiveCategory(cat);
+    if (cat === "all") {
+      setActiveIndex(0);
+    } else {
+      const matchIndex = STAGE_PACKS.findIndex((p) => p.category === cat);
+      if (matchIndex !== -1) setActiveIndex(matchIndex);
     }
   };
 
@@ -229,143 +272,54 @@ export function PackStage({ className }: { className?: string }) {
     setActiveIndex((prev) => (prev - 1 + totalPacks) % totalPacks);
   }, [totalPacks]);
 
-  // Touch swipe support
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartXRef.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartXRef.current === null) return;
-    const diff = e.changedTouches[0].clientX - touchStartXRef.current;
-    if (diff > 45) {
-      prevPack();
-    } else if (diff < -45) {
-      nextPack();
-    }
-    touchStartXRef.current = null;
-  };
-
-  // Keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-      e.preventDefault();
-      nextPack();
-    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-      e.preventDefault();
-      prevPack();
-    }
-  };
-
-  // WhatsApp link generator
   const quoteMessage = useMemo(() => {
-    return `${waMessage.quote(activePack.productName)} (Pack format: ${activePack.size} ${activePack.format})`;
+    return `${waMessage.quote(activePack.productName)} (Packaging spec: ${activePack.size} ${activePack.format})`;
   }, [activePack]);
-
-  // Turntable dial angle
-  const turntableAngle = (activeIndex * (360 / totalPacks)) % 360;
 
   return (
     <div
       className={cn("relative flex flex-col", className)}
       role="region"
       aria-roledescription="carousel"
-      aria-label="Packaging and Supply Interactive Showcase"
+      aria-label="Packaging and Supply Specification Showcase"
     >
-      {/* Top Filter Pills */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
+      {/* Category Segment Selector Rail */}
+      <div className="flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
         <div
           role="tablist"
-          aria-label="Filter pack lineup"
+          aria-label="Filter pack lineup by container type"
           className="flex flex-wrap items-center gap-1.5 rounded-full border border-line bg-paper-2/60 p-1"
         >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeFilter === "all"}
-            onClick={() => handleFilterSelect("all")}
-            className={cn(
-              "relative rounded-full px-3.5 py-1.5 text-[0.8125rem] font-medium transition-colors duration-150",
-              activeFilter === "all" ? "text-ink" : "text-ink-3 hover:text-ink"
-            )}
-          >
-            {activeFilter === "all" ? (
-              <motion.span
-                layoutId={reduced ? undefined : `${uid}-pill`}
-                className="absolute inset-0 rounded-full border border-line bg-paper"
-                transition={spring.snappy}
-              />
-            ) : null}
-            <span className="relative">All 8 Formats</span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeFilter === "soy"}
-            onClick={() => handleFilterSelect("soy")}
-            className={cn(
-              "relative rounded-full px-3.5 py-1.5 text-[0.8125rem] font-medium transition-colors duration-150",
-              activeFilter === "soy" ? "text-ink" : "text-ink-3 hover:text-ink"
-            )}
-          >
-            {activeFilter === "soy" ? (
-              <motion.span
-                layoutId={reduced ? undefined : `${uid}-pill`}
-                className="absolute inset-0 rounded-full border border-forest-600/30 bg-forest-50 text-forest-800"
-                transition={spring.snappy}
-              />
-            ) : null}
-            <span className="relative flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-forest-600" />
-              Soyabean (Hero Tin)
-            </span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeFilter === "mustard"}
-            onClick={() => handleFilterSelect("mustard")}
-            className={cn(
-              "relative rounded-full px-3.5 py-1.5 text-[0.8125rem] font-medium transition-colors duration-150",
-              activeFilter === "mustard" ? "text-ink" : "text-ink-3 hover:text-ink"
-            )}
-          >
-            {activeFilter === "mustard" ? (
-              <motion.span
-                layoutId={reduced ? undefined : `${uid}-pill`}
-                className="absolute inset-0 rounded-full border border-amber-600/30 bg-amber-50 text-amber-900"
-                transition={spring.snappy}
-              />
-            ) : null}
-            <span className="relative flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-amber-600" />
-              Mustard Line (6 Sizes)
-            </span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeFilter === "palm"}
-            onClick={() => handleFilterSelect("palm")}
-            className={cn(
-              "relative rounded-full px-3.5 py-1.5 text-[0.8125rem] font-medium transition-colors duration-150",
-              activeFilter === "palm" ? "text-ink" : "text-ink-3 hover:text-ink"
-            )}
-          >
-            {activeFilter === "palm" ? (
-              <motion.span
-                layoutId={reduced ? undefined : `${uid}-pill`}
-                className="absolute inset-0 rounded-full border border-sky-600/30 bg-sky-50 text-sky-900"
-                transition={spring.snappy}
-              />
-            ) : null}
-            <span className="relative flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-sky-600" />
-              Palmolein (15L)
-            </span>
-          </button>
+          {[
+            { key: "all", label: "All 8 Formats" },
+            { key: "tins", label: "Commercial Tins (15 KG / 15 L)" },
+            { key: "jars", label: "Handled Jars (2 L & 5 L)" },
+            { key: "bottles", label: "Consumer Bottles (500 ML – 1 L)" },
+          ].map((tab) => {
+            const isSelected = activeCategory === tab.key;
+            return (
+              <button
+                key={tab.key}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => handleCategorySelect(tab.key as CategoryFilter)}
+                className={cn(
+                  "relative rounded-full px-3.5 py-1.5 text-[0.8125rem] font-medium transition-colors duration-150 cursor-pointer select-none active:translate-y-0.5",
+                  isSelected ? "text-ink" : "text-ink-3 hover:text-ink"
+                )}
+              >
+                {isSelected ? (
+                  <motion.span
+                    layoutId={reduced ? undefined : `${uid}-category-pill`}
+                    className="absolute inset-0 rounded-full border border-line bg-paper"
+                    transition={spring.snappy}
+                  />
+                ) : null}
+                <span className="relative">{tab.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Counter and Carousel Nav Arrows */}
@@ -379,8 +333,8 @@ export function PackStage({ className }: { className?: string }) {
             <button
               type="button"
               onClick={prevPack}
-              aria-label="Previous pack format"
-              className="flex size-9 items-center justify-center rounded-full border border-line bg-paper text-ink transition-all duration-150 hover:border-forest-700 hover:text-forest-700 active:scale-95 cursor-pointer"
+              aria-label="Previous format"
+              className="flex size-9 items-center justify-center rounded-full border border-line bg-paper text-ink transition-all duration-150 hover:border-forest-700 hover:text-forest-700 active:translate-y-0.5 cursor-pointer"
             >
               <svg
                 viewBox="0 0 16 16"
@@ -399,8 +353,8 @@ export function PackStage({ className }: { className?: string }) {
             <button
               type="button"
               onClick={nextPack}
-              aria-label="Next pack format"
-              className="flex size-9 items-center justify-center rounded-full border border-line bg-paper text-ink transition-all duration-150 hover:border-forest-700 hover:text-forest-700 active:scale-95 cursor-pointer"
+              aria-label="Next format"
+              className="flex size-9 items-center justify-center rounded-full border border-line bg-paper text-ink transition-all duration-150 hover:border-forest-700 hover:text-forest-700 active:translate-y-0.5 cursor-pointer"
             >
               <svg
                 viewBox="0 0 16 16"
@@ -419,301 +373,199 @@ export function PackStage({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* Main Split Showcase: Left Info + Right Circular Turntable Stage */}
-      <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center">
-        {/* LEFT COLUMN: Editorial HUD & Spec Card */}
-        <div className="flex flex-col lg:col-span-6 lg:pr-4">
-          {/* Double-Bezel Architecture Card */}
-          <div className="rounded-[2rem] border border-line bg-paper-2/60 p-1.5 sm:p-2">
-            <div className="relative overflow-hidden rounded-[calc(2rem-0.375rem)] border border-line-subtle bg-paper p-6 sm:p-8">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activePack.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  {/* Top Status & Line Badge */}
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="inline-flex items-center gap-2 text-[0.8125rem] font-medium text-ink-2">
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          "size-2.5 rounded-full",
-                          activePack.accent === "soy" && "bg-forest-600",
-                          activePack.accent === "mustard" && "bg-amber-600",
-                          activePack.accent === "palm" && "bg-sky-600"
-                        )}
-                      />
-                      {activePack.productName}
-                    </span>
-
-                    <span
-                      className={cn(
-                        "rounded-full px-3 py-1 text-[0.6875rem] font-medium tracking-wide uppercase",
-                        activePack.isHero
-                          ? "border border-forest-600/30 bg-forest-600/10 text-forest-800"
-                          : "border border-line bg-paper-2 text-ink-3"
-                      )}
-                    >
-                      {activePack.badge}
-                    </span>
-                  </div>
-
-                  {/* Large Pack Typography */}
-                  <div className="mt-6 flex items-baseline justify-between gap-3 border-b border-line pb-5">
-                    <div>
-                      <span className="font-display text-4xl sm:text-5xl font-medium tracking-tight text-ink tnum">
-                        {activePack.size}
-                      </span>
-                      <h3 className="text-base sm:text-lg font-medium text-ink mt-1">
-                        {activePack.format}
-                      </h3>
-                    </div>
-
-                    <span className="tnum text-[0.8125rem] text-ink-4">
-                      {activePack.oilCategory}
-                    </span>
-                  </div>
-
-                  {/* Engineering & Description */}
-                  <div className="mt-5 space-y-3">
-                    <p className="text-[0.875rem] leading-relaxed text-ink-2">
-                      {activePack.description}
-                    </p>
-
-                    <div className="rounded-xl border border-line-subtle bg-paper-2/60 p-3.5">
-                      <p className="text-[0.6875rem] font-medium uppercase tracking-wider text-ink-4">
-                        Container Engineering
-                      </p>
-                      <p className="mt-1 text-[0.8125rem] leading-relaxed text-ink font-medium">
-                        {activePack.containerSpec}
-                      </p>
-                    </div>
-
-                    <div className="rounded-xl border border-line-subtle bg-paper-2/40 p-3.5">
-                      <p className="text-[0.6875rem] font-medium uppercase tracking-wider text-ink-4">
-                        Recommended For
-                      </p>
-                      <p className="mt-1 text-[0.8125rem] leading-relaxed text-ink">
-                        {activePack.bestFor}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Quality Pills */}
-                  <div className="mt-5 flex flex-wrap gap-1.5">
-                    {activePack.specs.map((spec) => (
-                      <span
-                        key={spec}
-                        className="rounded-full border border-line bg-paper-2 px-2.5 py-0.5 text-[0.6875rem] font-medium text-ink-3"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action: Nested CTA Button with Island Trailing Icon */}
-                  <div className="mt-7 pt-4 border-t border-line">
-                    <a
-                      href={whatsappLink(quoteMessage)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(
-                        "group/btn relative inline-flex w-full items-center justify-between rounded-full pl-6 pr-2 py-2 text-[0.875rem] font-medium transition-all duration-200 cursor-pointer",
-                        activePack.isHero
-                          ? "bg-forest-800 text-paper hover:bg-forest-950 active:scale-[0.99]"
-                          : "border border-line-strong bg-paper text-ink hover:border-forest-800 hover:bg-forest-50 active:scale-[0.99]"
-                      )}
-                    >
-                      <span>
-                        Enquire Trade Quote for {activePack.size} {activePack.shortName}
-                      </span>
-                      <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-black/5 dark:bg-white/10 transition-transform duration-200 group-hover/btn:translate-x-0.5">
-                        <WhatsAppIcon className="size-4 text-[#25D366]" />
-                      </span>
-                    </a>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
-          {/* Quick Click Thumbnail Pill Row */}
-          <div className="mt-5 flex flex-wrap items-center gap-1.5">
-            {STAGE_PACKS.map((pack, i) => {
-              const isSelected = i === activeIndex;
-              return (
-                <button
-                  key={pack.id}
-                  type="button"
-                  onClick={() => setActiveIndex(i)}
-                  className={cn(
-                    "tnum relative rounded-full px-3 py-1.5 text-[0.75rem] font-medium transition-all duration-150 cursor-pointer",
-                    isSelected
-                      ? "border border-forest-700 bg-forest-800 text-paper"
-                      : "border border-line bg-paper text-ink-3 hover:text-ink hover:border-line-strong"
-                  )}
-                >
-                  <span>{pack.size}</span>
-                  <span className="ml-1 opacity-70">
-                    {pack.accent === "soy" ? "Soy" : pack.accent === "palm" ? "Palm" : "Mustard"}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* RIGHT COLUMN: Circular Turntable Photo Stage */}
-        <div
-          ref={stageRef}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-          aria-label="Revolving turntable photo stage. Swipe or use arrow keys."
-          className="relative flex h-[380px] sm:h-[480px] lg:h-[540px] items-center justify-center overflow-hidden rounded-[2.5rem] border border-line bg-gradient-to-b from-paper-2/70 via-paper to-paper-2/40 lg:col-span-6 focus-visible:outline-none"
-        >
-          {/* Concentric Circular Turntable Floor Rings */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          >
-            {/* Outer ring */}
-            <div className="size-[320px] sm:size-[430px] lg:size-[490px] rounded-full border border-line/60" />
-            {/* Mid ring */}
-            <div className="absolute size-[240px] sm:size-[320px] lg:size-[370px] rounded-full border border-line/40" />
-            {/* Inner ring */}
-            <div className="absolute size-[160px] sm:size-[220px] lg:size-[250px] rounded-full border border-line/30" />
-
-            {/* Circular turntable tick marks */}
+      {/* Main Showcase Panel: Left Technical Procurement Sheet + Right Gallery Pedestal */}
+      <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-stretch">
+        {/* LEFT COLUMN: Industrial Technical Specification Sheet */}
+        <div className="flex flex-col justify-between rounded-[2rem] border border-line bg-paper p-6 sm:p-8 lg:col-span-6 lg:p-10">
+          <AnimatePresence mode="wait">
             <motion.div
-              className="absolute size-[320px] sm:size-[430px] lg:size-[490px] rounded-full pointer-events-none"
-              animate={{ rotate: turntableAngle }}
-              transition={{ ...spring.soft, duration: 0.6 }}
+              key={activePack.id}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease: ease.out }}
+              className="flex flex-col justify-between h-full"
             >
-              {Array.from({ length: totalPacks }).map((_, idx) => {
-                const deg = idx * (360 / totalPacks);
-                const isNeedle = idx === 0;
-                return (
-                  <div
-                    key={idx}
-                    className="absolute left-1/2 top-0 -translate-x-1/2 origin-bottom h-1/2 w-0.5 flex flex-col items-center"
-                    style={{ transform: `rotate(${deg}deg)` }}
-                  >
+              <div>
+                {/* Product Line & Packaging Grade Tag */}
+                <div className="flex items-center justify-between gap-3 border-b border-line pb-4">
+                  <span className="inline-flex items-center gap-2 text-[0.8125rem] font-medium text-ink">
                     <span
+                      aria-hidden="true"
                       className={cn(
-                        "rounded-full transition-all duration-300",
-                        isNeedle
-                          ? "h-3 w-1 bg-forest-600"
-                          : "h-1.5 w-0.5 bg-ink-4/40"
+                        "size-2.5 rounded-full",
+                        activePack.accent === "soy" && "bg-forest-600",
+                        activePack.accent === "mustard" && "bg-amber-600",
+                        activePack.accent === "palm" && "bg-sky-600"
                       )}
                     />
-                  </div>
-                );
-              })}
-            </motion.div>
+                    {activePack.productName}
+                  </span>
 
-            {/* Radial Pedestal Lighting Tint */}
+                  <span
+                    className={cn(
+                      "rounded-full px-3 py-1 text-[0.6875rem] font-medium tracking-wide uppercase",
+                      activePack.isHero
+                        ? "border border-forest-600/30 bg-forest-600/10 text-forest-800"
+                        : "border border-line bg-paper-2 text-ink-3"
+                    )}
+                  >
+                    {activePack.badge}
+                  </span>
+                </div>
+
+                {/* Massive Capacity & Format Title */}
+                <div className="mt-6 flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-ink tnum">
+                    {activePack.size}
+                  </h3>
+                  <span className="text-[0.9375rem] font-medium text-ink-3">
+                    {activePack.format}
+                  </span>
+                </div>
+
+                {/* Editorial Description */}
+                <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
+                  {activePack.description}
+                </p>
+
+                {/* Industrial Technical Specification Matrix */}
+                <div className="mt-6 divide-y divide-line rounded-xl border border-line-subtle bg-paper-2/50 text-[0.8125rem]">
+                  <div className="grid grid-cols-1 gap-1 p-3.5 sm:grid-cols-12 sm:gap-4">
+                    <span className="text-ink-4 uppercase tracking-wider sm:col-span-4 text-[0.6875rem] font-medium">
+                      Net Capacity
+                    </span>
+                    <span className="text-ink font-medium sm:col-span-8 leading-snug tnum">
+                      {activePack.tareWeight}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-1 p-3.5 sm:grid-cols-12 sm:gap-4">
+                    <span className="text-ink-4 uppercase tracking-wider sm:col-span-4 text-[0.6875rem] font-medium">
+                      Material Construction
+                    </span>
+                    <span className="text-ink font-medium sm:col-span-8 leading-snug">
+                      {activePack.material}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-1 p-3.5 sm:grid-cols-12 sm:gap-4">
+                    <span className="text-ink-4 uppercase tracking-wider sm:col-span-4 text-[0.6875rem] font-medium">
+                      Closure &amp; Seal
+                    </span>
+                    <span className="text-ink font-medium sm:col-span-8 leading-snug">
+                      {activePack.closure}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-1 p-3.5 sm:grid-cols-12 sm:gap-4">
+                    <span className="text-ink-4 uppercase tracking-wider sm:col-span-4 text-[0.6875rem] font-medium">
+                      Secondary Packaging
+                    </span>
+                    <span className="text-ink font-medium sm:col-span-8 leading-snug">
+                      {activePack.palletLoad}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-1 p-3.5 sm:grid-cols-12 sm:gap-4">
+                    <span className="text-ink-4 uppercase tracking-wider sm:col-span-4 text-[0.6875rem] font-medium">
+                      Primary Use
+                    </span>
+                    <span className="text-ink font-medium sm:col-span-8 leading-snug">
+                      {activePack.recommendedFor}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button: Clean, Tactile WhatsApp Link */}
+              <div className="mt-8 border-t border-line pt-6">
+                <a
+                  href={whatsappLink(quoteMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "group/btn relative inline-flex w-full items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-[0.875rem] font-medium transition-all duration-150 cursor-pointer select-none active:translate-y-0.5",
+                    activePack.isHero
+                      ? "bg-forest-800 text-paper hover:bg-forest-950"
+                      : "border border-line-strong bg-paper text-ink hover:border-forest-800 hover:bg-forest-50"
+                  )}
+                >
+                  <WhatsAppIcon className="size-4.5 shrink-0" />
+                  <span>
+                    Request Trade Pricing for {activePack.size} {activePack.shortName}
+                  </span>
+                </a>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* RIGHT COLUMN: Gallery Pedestal Stage with Thumbnail Strip */}
+        <div className="flex flex-col justify-between rounded-[2rem] border border-line bg-gradient-to-b from-paper-2/90 via-paper to-paper-2/60 p-6 sm:p-8 lg:col-span-6 lg:p-10">
+          {/* Architectural Studio Stage */}
+          <div className="relative flex min-h-[340px] sm:min-h-[420px] lg:min-h-[460px] w-full flex-1 items-end justify-center overflow-hidden rounded-2xl border border-line-subtle bg-paper-2/30 pb-8 pt-10">
+            {/* Diffused ambient lighting behind product */}
             <div
-              className="absolute size-[300px] sm:size-[400px] rounded-full pointer-events-none"
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            >
+              <div
+                className="size-[260px] sm:size-[360px] rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle at center, rgba(23,26,18,0.05) 0%, rgba(23,26,18,0.015) 55%, transparent 72%)",
+                }}
+              />
+            </div>
+
+            {/* Soft contact ground shadow */}
+            <span
+              aria-hidden="true"
+              className="absolute bottom-6 left-1/2 h-5 w-60 -translate-x-1/2 rounded-[50%] pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(23,26,18,0.08) 0%, rgba(23,26,18,0.02) 50%, transparent 72%)",
+                  "radial-gradient(ellipse at center, rgba(23,26,18,0.24) 0%, rgba(23,26,18,0.08) 45%, rgba(23,26,18,0) 72%)",
               }}
             />
-          </div>
 
-          {/* Central Ground Shadow for Active Pack */}
-          <span
-            aria-hidden="true"
-            className="absolute bottom-10 left-1/2 h-5 w-56 -translate-x-1/2 rounded-[50%] pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(23,26,18,0.24) 0%, rgba(23,26,18,0.08) 45%, rgba(23,26,18,0) 72%)",
-            }}
-          />
+            {/* Active Pack Photo: Clean, Upright, Photorealistic */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activePack.id}
+                initial={{ opacity: 0, scale: 0.98, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.98, y: -4 }}
+                transition={{ ...spring.soft, duration: 0.28 }}
+                className="relative z-10 flex h-[280px] sm:h-[350px] lg:h-[390px] w-full items-end justify-center"
+              >
+                <Image
+                  src={activePack.image}
+                  alt={activePack.alt}
+                  width={activePack.width}
+                  height={activePack.height}
+                  priority
+                  sizes="(max-width: 640px) 260px, (max-width: 1023px) 360px, 420px"
+                  className="h-full w-auto object-contain select-none drop-shadow-none"
+                />
+              </motion.div>
+            </AnimatePresence>
 
-          {/* 3D Circular Revolving Carousel Packs */}
-          <div className="relative flex h-full w-full items-center justify-center pointer-events-none">
-            {STAGE_PACKS.map((pack, idx) => {
-              // Calculate relative circular distance (-total/2 to +total/2)
-              let diff = idx - activeIndex;
-              if (diff > totalPacks / 2) diff -= totalPacks;
-              if (diff < -totalPacks / 2) diff += totalPacks;
-
-              const isCurrent = diff === 0;
-              const isAdjacent = Math.abs(diff) === 1;
-              const isVisible = Math.abs(diff) <= 2;
-
-              // Orbital positioning mathematics
-              const xOffset = diff * 155; // horizontal distance in px
-              const yOffset = -Math.abs(diff) * 14; // curve upward slightly along circular arc
-              const scale = isCurrent ? 1 : isAdjacent ? 0.64 : 0.42;
-              const opacity = isCurrent ? 1 : isAdjacent ? 0.45 : isVisible ? 0.18 : 0;
-              const zIndex = isCurrent ? 30 : isAdjacent ? 20 : 10;
-              const rotateY = diff * -18; // 3D tilt towards center
-
-              return (
-                <motion.div
-                  key={pack.id}
-                  className="absolute bottom-14 flex h-[240px] sm:h-[320px] lg:h-[360px] w-auto items-end justify-center origin-bottom cursor-pointer pointer-events-auto"
-                  animate={{
-                    x: xOffset,
-                    y: yOffset,
-                    scale,
-                    opacity,
-                    rotateY,
-                  }}
-                  transition={{
-                    ...spring.soft,
-                    duration: 0.55,
-                  }}
-                  style={{
-                    zIndex,
-                    filter: isCurrent ? "none" : "grayscale(25%)",
-                  }}
-                  onClick={() => {
-                    if (!isCurrent) setActiveIndex(idx);
-                  }}
-                  title={isCurrent ? undefined : `Click to view ${pack.size} ${pack.productName}`}
-                >
-                  <Image
-                    src={pack.image}
-                    alt={pack.alt}
-                    width={pack.width}
-                    height={pack.height}
-                    sizes="(max-width: 640px) 240px, 360px"
-                    priority={idx === 0 || idx === 1}
-                    className="h-full w-auto object-contain select-none transition-transform duration-300 hover:scale-[1.02]"
-                  />
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Interactive Revolving Stage Controls Floating Overlay */}
-          <div className="absolute bottom-4 inset-x-4 flex items-center justify-between pointer-events-none">
-            <span className="text-[0.6875rem] font-medium tracking-wider uppercase text-ink-4 bg-paper/80 px-2.5 py-1 rounded-full border border-line">
-              Swipe or click to revolve
-            </span>
-
-            <div className="flex items-center gap-1.5 pointer-events-auto">
+            {/* Stage Arrow Nav Affordances */}
+            <div className="absolute inset-y-0 inset-x-3 flex items-center justify-between pointer-events-none z-20">
               <button
                 type="button"
                 onClick={prevPack}
-                aria-label="Revolve left"
-                className="flex size-8 items-center justify-center rounded-full border border-line bg-paper/90 text-ink shadow-none hover:border-forest-700 active:scale-90 cursor-pointer"
+                aria-label="Previous format photo"
+                className="pointer-events-auto flex size-10 items-center justify-center rounded-full border border-line bg-paper/90 text-ink backdrop-blur-sm transition-all duration-150 hover:border-forest-700 active:translate-y-0.5 cursor-pointer"
               >
                 <svg
                   viewBox="0 0 16 16"
                   aria-hidden="true"
-                  className="size-3.5 shrink-0"
+                  className="size-4 shrink-0"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="1.75"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
@@ -724,22 +576,71 @@ export function PackStage({ className }: { className?: string }) {
               <button
                 type="button"
                 onClick={nextPack}
-                aria-label="Revolve right"
-                className="flex size-8 items-center justify-center rounded-full border border-line bg-paper/90 text-ink shadow-none hover:border-forest-700 active:scale-90 cursor-pointer"
+                aria-label="Next format photo"
+                className="pointer-events-auto flex size-10 items-center justify-center rounded-full border border-line bg-paper/90 text-ink backdrop-blur-sm transition-all duration-150 hover:border-forest-700 active:translate-y-0.5 cursor-pointer"
               >
                 <svg
                   viewBox="0 0 16 16"
                   aria-hidden="true"
-                  className="size-3.5 shrink-0"
+                  className="size-4 shrink-0"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="1.75"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
                   <path d="M6 4l4 4-4 4" />
                 </svg>
               </button>
+            </div>
+          </div>
+
+          {/* Interactive Pack Selector Filmstrip */}
+          <div className="mt-6">
+            <p className="text-[0.75rem] font-medium uppercase tracking-wider text-ink-4">
+              Select format to inspect:
+            </p>
+
+            <div className="mt-3 flex flex-wrap gap-2">
+              {filteredPacks.map((pack) => {
+                const globalIndex = STAGE_PACKS.findIndex((p) => p.id === pack.id);
+                const isCurrent = globalIndex === activeIndex;
+                return (
+                  <button
+                    key={pack.id}
+                    type="button"
+                    onClick={() => setActiveIndex(globalIndex)}
+                    aria-pressed={isCurrent}
+                    className={cn(
+                      "group relative flex items-center gap-2.5 rounded-xl border px-3 py-2 text-left transition-all duration-150 cursor-pointer select-none active:translate-y-0.5",
+                      isCurrent
+                        ? "border-forest-700/50 bg-forest-50/60 ring-1 ring-forest-600/20"
+                        : "border-line bg-paper-2/40 hover:border-line-strong hover:bg-paper"
+                    )}
+                  >
+                    <span className="relative flex size-8 shrink-0 items-center justify-center">
+                      <Image
+                        src={pack.image}
+                        alt=""
+                        width={40}
+                        height={60}
+                        className={cn(
+                          "h-full w-auto object-contain transition-transform duration-200",
+                          isCurrent ? "scale-110" : "group-hover:scale-105 opacity-80"
+                        )}
+                      />
+                    </span>
+                    <div className="flex flex-col">
+                      <span className="tnum text-[0.8125rem] font-semibold text-ink leading-tight">
+                        {pack.size}
+                      </span>
+                      <span className="text-[0.6875rem] text-ink-3 leading-tight">
+                        {pack.shortName}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

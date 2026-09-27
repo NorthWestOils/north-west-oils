@@ -140,45 +140,59 @@ export default function ProductsPage() {
             </h2>
           </Reveal>
 
-          <Reveal kind="rise" delay={0.1} className="mt-10 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-            <table className="w-full min-w-160 border-collapse text-left">
-              <caption className="sr-only">
-                North West soyabean, mustard and palmolein oil compared
-              </caption>
-              <thead>
-                <tr className="border-b border-line-strong">
-                  <td className="w-[18%] py-3" />
-                  {orderedProducts.map((p) => (
-                    <th
-                      key={p.slug}
-                      scope="col"
-                      className="py-3 pr-6 align-bottom font-display text-[1.0625rem] font-medium leading-snug text-ink"
-                    >
-                      <Link
-                        href={`/products/${p.slug}`}
-                        className="-my-2 inline-block py-2 underline-offset-4 hover:underline"
-                      >
-                        {p.name}
-                      </Link>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="text-[0.9375rem] leading-relaxed text-ink-2">
-                {COMPARE_ROWS.map((row) => (
-                  <tr key={row.label} className="border-b border-line align-top">
-                    <th scope="row" className="py-4 pr-6 text-[0.8125rem] font-normal text-ink-3">
-                      {row.label}
-                    </th>
-                    {orderedProducts.map((p) => (
-                      <td key={p.slug} className="py-4 pr-6">
-                        {row.value(p)}
+          <Reveal kind="rise" delay={0.1} className="mt-10">
+            <div className="rounded-[2rem] border border-line bg-paper-2/60 p-1.5 sm:p-2 overflow-hidden">
+              <div className="overflow-x-auto rounded-[calc(2rem-0.375rem)] border border-line-subtle bg-paper p-5 sm:p-8">
+                <table className="w-full min-w-160 border-collapse text-left">
+                  <caption className="sr-only">
+                    North West soyabean, mustard and palmolein oil compared
+                  </caption>
+                  <thead>
+                    <tr className="border-b border-line-strong">
+                      <td className="w-[20%] py-4 text-[0.75rem] font-medium uppercase tracking-wider text-ink-4">
+                        Specification
                       </td>
+                      {orderedProducts.map((p) => (
+                        <th
+                          key={p.slug}
+                          scope="col"
+                          className="py-4 pr-6 align-bottom"
+                        >
+                          <div className="flex flex-col gap-1.5">
+                            <span className="eyebrow text-[0.6875rem] text-forest-700">
+                              {p.slug === "soyabean-refined-oil" ? "Hero Product" : p.category}
+                            </span>
+                            <Link
+                              href={`/products/${p.slug}`}
+                              className="font-display text-[1.125rem] font-medium leading-snug text-ink underline-offset-4 hover:underline"
+                            >
+                              {p.name}
+                            </Link>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="text-[0.9375rem] leading-relaxed text-ink-2 divide-y divide-line">
+                    {COMPARE_ROWS.map((row) => (
+                      <tr
+                        key={row.label}
+                        className="align-top transition-colors duration-150 hover:bg-paper-2/40"
+                      >
+                        <th scope="row" className="py-4.5 pr-6 text-[0.8125rem] font-medium text-ink-3">
+                          {row.label}
+                        </th>
+                        {orderedProducts.map((p) => (
+                          <td key={p.slug} className="py-4.5 pr-6">
+                            {row.value(p)}
+                          </td>
+                        ))}
+                      </tr>
                     ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </Reveal>
         </Container>
       </Section>
