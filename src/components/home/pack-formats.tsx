@@ -1,6 +1,6 @@
 import { Container, Eyebrow, Section } from "@/components/ui/section";
 import { MaskReveal, Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { PackCarousel } from "@/components/home/pack-carousel";
+import { PackStage } from "@/components/home/pack-stage";
 import { ButtonLink } from "@/components/ui/button";
 import { waMessage, whatsappLink } from "@/lib/whatsapp";
 
@@ -70,9 +70,9 @@ export function PackFormats() {
           </div>
         </div>
 
-        {/* Next-Level Pack Carousel */}
+        {/* Next-Level Circular Turntable Pack Stage */}
         <div className="mt-12 lg:mt-16">
-          <PackCarousel />
+          <PackStage />
         </div>
 
         {/* Commercial Pallet & Tanker Dispatch Banner */}
