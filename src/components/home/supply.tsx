@@ -1,59 +1,111 @@
-import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { MaskReveal, Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { TextLink } from "@/components/ui/button";
-import { WhatsAppIcon } from "@/components/ui/icons";
+"use client";
+
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container, Section } from "@/components/ui/section";
+import { RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { ButtonLink } from "@/components/ui/button";
 import { waMessage, whatsappLink } from "@/lib/whatsapp";
-import { company } from "@/data/company";
+import { cn } from "@/lib/utils";
+
+const SUPPLY_PILLARS = [
+  {
+    code: "01",
+    title: "Industrial & Snack Processors",
+    scope: "Continuous high-heat frying for namkeen, extrusion, and commercial bakeries.",
+    highlight: "15 KG / 15 L Tins & Road Tankers",
+  },
+  {
+    code: "02",
+    title: "Wholesale & Stockist Networks",
+    scope: "Regional FMCG distributors, grain mandis, and trade stockists across North India.",
+    highlight: "Partitioned Cases & Shrink-Wrapped Pallets",
+  },
+  {
+    code: "03",
+    title: "HoReCa & Commercial Pantries",
+    scope: "Restaurants, cloud kitchens, hotel chains, and institutional canteens.",
+    highlight: "2 L & 5 L Ergonomic Handled Jars",
+  },
+  {
+    code: "04",
+    title: "Supermarket & Kirana Retail",
+    scope: "Modern retail chains, grocery outlets, and daily neighbourhood stores.",
+    highlight: "500 ML & 1 Litre Recyclable PET Bottles",
+  },
+];
+
+const LOGISTICS_STATS = [
+  { value: "48 Hrs", label: "Dispatch Window", note: "Standard order turnaround" },
+  { value: "100%", label: "Consignment Transit", note: "Strapped, stretch-wrapped pallets" },
+  { value: "SS-316", label: "Tanker Standards", note: "Dedicated food-grade tanker fleet" },
+  { value: "Zero", label: "Batch Variance", note: "COA provided with every lot" },
+];
 
 export function Supply() {
   return (
-    <Section id="supply" tone="paper" aria-labelledby="supply-heading">
+    <Section id="supply" tone="paper" className="border-b border-line" aria-labelledby="supply-heading">
       <Container>
-        <div className="grid gap-y-12 lg:grid-cols-12 lg:gap-x-12">
-          <div className="lg:col-span-5">
-            <Reveal kind="fade">
-              <Eyebrow>Who we supply</Eyebrow>
-            </Reveal>
+        <SectionHeader
+          id="supply-heading"
+          layout="split"
+          eyebrow="Institutional & Commercial Supply"
+          title="Engineered for continuous commercial kitchens."
+          intro={
+            <>
+              Supplying industrial snack processors, regional distributors, and foodservice chains
+              with lab-tested consistency and disciplined delivery timelines.
+              <span className="mt-6 block">
+                <ButtonLink href={whatsappLink(waMessage.trade)} variant="whatsapp">
+                  Inquire wholesale pricing
+                </ButtonLink>
+              </span>
+            </>
+          }
+        />
 
-            <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-              <span id="supply-heading">Bulk and wholesale, PAN India.</span>
-            </MaskReveal>
+        <RevealGroup
+          as="ul"
+          step={0.06}
+          className="mt-14 grid border-y border-line sm:grid-cols-2 lg:mt-20 lg:grid-cols-4"
+        >
+          {SUPPLY_PILLARS.map((col, i) => (
+            <RevealItem
+              as="li"
+              key={col.title}
+              className={cn(
+                "flex flex-col py-8 sm:px-6 lg:px-8",
+                i > 0 && "border-t border-line sm:border-t-0",
+                i % 2 === 1 && "sm:border-l",
+                i >= 2 && "sm:border-t lg:border-t-0",
+                i === 2 && "lg:border-l",
+                i === 0 && "sm:pl-0 lg:pl-0",
+                i === 3 && "lg:pr-0"
+              )}
+            >
+              <span className="tnum text-sm font-medium text-gold-600">{col.code}</span>
+              <h3 className="card-title mt-4 text-ink">{col.title}</h3>
+              <p className="body-text mt-2">{col.scope}</p>
+              <p className="mt-auto pt-6 text-[0.8125rem] font-medium text-forest-800">{col.highlight}</p>
+            </RevealItem>
+          ))}
+        </RevealGroup>
 
-            <Reveal kind="rise" delay={0.1}>
-              <p className="body-text mt-6 max-w-lg">
-                The same three oils go out in two directions: cartons of retail
-                packs for the trade, and tins by the case for kitchens that
-                cook at volume. Dispatch runs PAN India.
-              </p>
-            </Reveal>
-
-            <Reveal kind="rise" delay={0.16} className="mt-9">
-              <TextLink
-                href={whatsappLink(waMessage.trade)}
-                icon={<WhatsAppIcon className="size-[1em]" />}
-                withArrow={false}
-              >
-                Start a trade enquiry
-              </TextLink>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-6 lg:col-start-7">
-            <RevealGroup step={0.07} delay={0.12} className="flex flex-col">
-              {company.buyers.map((b) => (
-                <RevealItem
-                  key={b.title}
-                  className="border-t border-line py-5 first:border-t-0 lg:first:border-t last:border-b"
-                >
-                  <h3 className="text-[0.9375rem] font-medium text-ink">{b.title}</h3>
-                  <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-2">
-                    {b.body}
-                  </p>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </div>
-        </div>
+        <dl className="mt-12 grid grid-cols-2 gap-y-8 lg:grid-cols-4">
+          {LOGISTICS_STATS.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={cn(
+                "flex flex-col gap-1",
+                i % 2 === 1 && "border-l border-line pl-6",
+                i === 2 && "lg:border-l lg:pl-8",
+                i % 2 === 1 && "lg:pl-8"
+              )}
+            >
+              <dt className="order-2 text-sm text-ink-3">{stat.label}</dt>
+              <dd className="stat-value order-1 text-forest-900">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
       </Container>
     </Section>
   );

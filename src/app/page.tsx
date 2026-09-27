@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
 import { Credentials } from "@/components/home/credentials";
 import { Range } from "@/components/home/range";
-import { PackFormats } from "@/components/home/pack-formats";
 import { Process } from "@/components/home/process";
 import { Supply } from "@/components/home/supply";
 import { Story } from "@/components/home/story";
@@ -22,9 +21,8 @@ export default function HomePage() {
     <>
       <FAQJsonLd />
       <Hero />
-      <Credentials />
       <Range />
-      <PackFormats />
+      <Credentials />
       <Process />
       <Supply />
       <Story />

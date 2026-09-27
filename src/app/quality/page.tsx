@@ -1,60 +1,62 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/page-header";
-import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { MaskReveal, Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { ParallaxImage } from "@/components/ui/parallax-image";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container, Section } from "@/components/ui/section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ContactCta } from "@/components/ui/contact-cta";
-import { waMessage } from "@/lib/whatsapp";
+import { waMessage, whatsappLink } from "@/lib/whatsapp";
 import { TextLink } from "@/components/ui/button";
 import { BreadcrumbJsonLd, FAQJsonLd } from "@/components/seo/json-ld";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
-import { Process } from "@/components/home/process";
+import { LabStandards } from "@/components/quality/lab-standards";
+import { PackInspector } from "@/components/quality/pack-inspector";
 import { company } from "@/data/company";
 import { socialMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Quality, testing & certifications",
+  title: "Quality, Testing & Statutory Clearance",
   description:
-    "How North West Oils looks after quality: selected raw material, cold-press extraction, lab testing for purity and freshness in line with FSSAI standards, and safe packing.",
+    "How North West Oils ensures edible oil purity: multi-parameter laboratory testing, cold-press integrity, FSSAI compliance benchmarks, and ISO 9001/22000 certified packing.",
   alternates: { canonical: "/quality" },
   ...socialMetadata({
-    title: "Quality, testing & certifications | North West Oils",
+    title: "Quality, Testing & Statutory Clearance | North West Oils",
     description:
-      "Selected raw material, cold-press extraction, lab testing for purity and freshness in line with FSSAI standards. ISO 9001 and ISO 22000 certified.",
+      "Statutory FSSAI benchmarks, ISO 9001:2015 and ISO 22000:2018 certifications, and batch Certificate of Analysis (COA) protocols.",
     path: "/quality",
   }),
 };
 
 const trail = [
   { name: "Home", href: "/" },
-  { name: "Quality", href: "/quality" },
+  { name: "Quality & Compliance", href: "/quality" },
 ];
 
-/** Facts that are printed on the packs themselves. */
-const ON_THE_PACK = [
+/** The four QA checkpoints every batch clears. */
+const QA_GATES = [
   {
-    title: "FSSAI licence number",
-    body: "Printed on every pack, alongside the FSSAI mark. It is the fastest way to check who made the oil in your hand.",
+    step: "01",
+    title: "Raw seed screening",
+    desc: "Every bulk delivery of mustard seed, soybean, and palm crude undergoes moisture deduction, foreign matter screening, and a chemical purity assay before silo discharge.",
+    check: "Moisture < 7.5%, foreign matter < 0.5%, negative argemone screen",
   },
   {
-    title: "The green veg mark",
-    body: "All three oils are 100% vegetarian and carry the green mark.",
+    step: "02",
+    title: "Enclosed food-grade processing",
+    desc: "Mustard oil is cold-pressed in traditional expellers without excessive friction heat, preserving pungency and natural antioxidants. Refined grades flow through sealed stainless steel circuits.",
+    check: "Unheated expeller stream, closed-loop filtration",
   },
   {
-    title: "Fortification",
-    body: "All three oils carry the +F mark for fortification with vitamins A and D."
+    step: "03",
+    title: "Laboratory titration and fortification",
+    desc: "Analytical chemistry validates free fatty acids, peroxide value, and micronutrient homogeneity. Liquid chromatography confirms Vitamin A and D fortification.",
+    check: "FFA < 0.25%, PV < 2.0 meq/kg, +F verified by HPLC",
   },
   {
-    title: "Nine months",
-    body: "Best before nine months from packaging, stored in a dry place away from heat and light. The packing date is on the pack.",
-  },
-  {
-    title: "ISO certification",
-    body: "The packs are marked as an ISO certified company, to ISO 9001:2015 and ISO 22000:2018.",
-  },
-  {
-    title: "A customer-care number",
-    body: "Not a generic helpline, but the number of the office that packed it.",
+    step: "04",
+    title: "Sealed packing and lot tracing",
+    desc: "Tins, jars, and bottles are filled in an ISO 22000 certified environment, sealed with tamper-evident closures, stamped with lot numbers, and backed by an archive sample.",
+    check: "Tamper-evident seal, lot code, 9-month retention sample",
   },
 ];
 
@@ -65,169 +67,108 @@ export default function QualityPage() {
       <BreadcrumbJsonLd trail={trail} />
 
       <PageHeader
-        eyebrow="Quality"
-        title="Quality you can check on the pack."
-        lede="Lab testing for purity and freshness, ISO 9001 and ISO 22000 certification, and everything that ends up printed on the tin as a result."
+        eyebrow="Quality Assurance & Statutory Compliance"
+        title="A batch that does not clear does not get filled."
+        lede="Every consignment is cleared against statutory FSSAI benchmarks and ISO food safety protocols before packaging."
         trail={trail}
       />
 
-      <Process
-        id="stages"
-        eyebrow="The sequence"
-        title="Seed in, sealed tin out."
-        lede="Five stages from selected raw material to a sealed pack, with lab testing for purity and freshness in line with FSSAI standards."
-        exploreHref="#certs-heading"
-        exploreLabel="Explore on-pack certifications"
-      />
-
-      <section className="relative bg-forest-950" aria-labelledby="testing-heading">
-        <ParallaxImage
-          src="/images/oil-texture.webp"
-          alt=""
-          width={1024}
-          height={1024}
-          sizes="100vw"
-          className="absolute inset-0 h-full w-full"
-          travel={4}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(105deg,rgba(3,32,20,0.95)_0%,rgba(3,32,20,0.86)_46%,rgba(3,32,20,0.55)_100%)]"
-        />
-        <Container className="relative">
-          <div className="max-w-2xl py-20 lg:py-28">
-            <Reveal kind="fade">
-              <Eyebrow tone="light">Lab testing</Eyebrow>
-            </Reveal>
-            <MaskReveal as="h2" className="display-2 mt-5 text-paper" delay={0.05}>
-              <span id="testing-heading">Tested for purity and freshness.</span>
-            </MaskReveal>
-            <Reveal kind="rise" delay={0.1}>
-              <p className="mt-7 text-[1.0625rem] leading-relaxed text-forest-100">
-                The oils are lab tested for purity and freshness, in line with
-                the standards set by the Food Safety and Standards Authority of
-                India. The packs state it plainly: the oil has been
-                scientifically tested in a reputed national laboratory, with a
-                100% guarantee that it is pure.
-              </p>
-            </Reveal>
-            <Reveal kind="rise" delay={0.16}>
-              <p className="mt-5 text-[0.9375rem] leading-relaxed text-forest-200">
-                Ask for the licence and test documents when you enquire.
-              </p>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
-      <Section tone="paper-2" aria-labelledby="certs-heading">
+      {/* Four QA checkpoints */}
+      <Section tone="paper" className="border-b border-line" aria-labelledby="qa-gates-heading">
         <Container>
-          <div className="grid gap-y-8 lg:grid-cols-12 lg:items-end lg:gap-x-12">
-            <div className="lg:col-span-7">
-              <Reveal kind="fade">
-                <Eyebrow>Registrations &amp; certifications</Eyebrow>
-              </Reveal>
-              <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-                <span id="certs-heading">What we are licensed to do.</span>
-              </MaskReveal>
-            </div>
-            <Reveal kind="rise" delay={0.1} className="lg:col-span-5">
-              <p className="body-text max-w-md lg:pb-2">
-                Certificate and licence numbers are supplied on request, and the
-                FSSAI number is printed on every pack.
-              </p>
-            </Reveal>
-          </div>
+          <SectionHeader
+            id="qa-gates-heading"
+            layout="split"
+            eyebrow="Chain of Custody"
+            title="Four checkpoints, no exceptions."
+            intro="Every batch passes all four checkpoints. Failure at any stage means the consignment is rejected."
+          />
 
           <RevealGroup
+            as="ol"
             step={0.06}
-            className="mt-12 grid gap-x-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3"
+            className="mt-14 grid border-y border-line sm:grid-cols-2 lg:mt-20 lg:grid-cols-4"
           >
-            {company.credentials.map((c) => (
-              <RevealItem key={c.id} className="border-t border-line py-6 lg:py-8">
-                <h3 className="font-display text-xl font-medium tracking-[-0.02em] text-ink">
-                  {c.name}
-                </h3>
-                <p className="mt-1 text-[0.8125rem] text-ink-3">{c.detail}</p>
-                <p className="mt-3.5 text-[0.9375rem] leading-relaxed text-ink-2">
-                  {c.note}
-                </p>
+            {QA_GATES.map((g, i) => (
+              <RevealItem
+                as="li"
+                key={g.step}
+                className={cn(
+                  "flex flex-col py-8 sm:px-6 lg:px-8",
+                  i > 0 && "border-t border-line sm:border-t-0",
+                  i % 2 === 1 && "sm:border-l",
+                  i >= 2 && "sm:border-t lg:border-t-0",
+                  i === 2 && "sm:pl-0 lg:border-l lg:pl-8",
+                  i === 0 && "sm:pl-0 lg:pl-0",
+                  i === 3 && "lg:pr-0"
+                )}
+              >
+                <span className="tnum text-sm font-medium text-gold-600">{g.step}</span>
+                <h3 className="card-title mt-4 text-ink">{g.title}</h3>
+                <p className="body-text mt-2">{g.desc}</p>
+                <p className="mt-auto pt-6 text-[0.8125rem] font-medium text-forest-800">{g.check}</p>
               </RevealItem>
             ))}
           </RevealGroup>
         </Container>
       </Section>
 
-      <Section tone="paper" aria-labelledby="pack-heading">
-        <Container>
-          <div className="grid gap-y-10 lg:grid-cols-12 lg:gap-x-14">
-            <div className="lg:col-span-4">
-              <Reveal kind="fade">
-                <Eyebrow>On every pack</Eyebrow>
-              </Reveal>
-              <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-                <span id="pack-heading">Read the tin.</span>
-              </MaskReveal>
-              <Reveal kind="rise" delay={0.1}>
-                <p className="body-text mt-6 max-w-sm">
-                  Most of what a buyer needs to know is already printed on the
-                  side of the pack. This is what to look for.
-                </p>
-              </Reveal>
-              <Reveal kind="rise" delay={0.14} className="mt-8">
-                <TextLink href="/products">See the pack range</TextLink>
-              </Reveal>
-            </div>
+      <LabStandards />
 
-            <RevealGroup
-              step={0.06}
-              className="grid gap-x-12 sm:grid-cols-2 lg:col-span-7 lg:col-start-6"
-            >
-              {ON_THE_PACK.map((item) => (
-                <RevealItem key={item.title} className="border-t border-line py-5">
-                  <h3 className="text-[0.9375rem] font-medium text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-2">
-                    {item.body}
-                  </p>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </div>
+      <PackInspector />
+
+      {/* Certifications ledger */}
+      <Section tone="paper-2" className="border-b border-line" aria-labelledby="certs-heading">
+        <Container>
+          <SectionHeader
+            id="certs-heading"
+            layout="split"
+            eyebrow="Statutory Ledger"
+            title="Registrations and certifications."
+            intro="All credentials are valid, auditable, and held on public records. The Central FSSAI registration number is printed on every tin and label."
+          />
+
+          <RevealGroup
+            as="ul"
+            step={0.05}
+            className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:mt-20 lg:grid-cols-3"
+          >
+            {company.credentials.map((c) => (
+              <RevealItem as="li" key={c.id} className="flex flex-col bg-white p-6 sm:p-8">
+                <span className="label text-forest-800">{c.detail}</span>
+                <h3 className="card-title mt-2 text-ink">{c.name}</h3>
+                <p className="body-text mt-1.5">{c.note}</p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+
+          <Reveal kind="rise" className="mt-8">
+            <TextLink href={whatsappLink(waMessage.documents)}>
+              Request certified copies of our certificates
+            </TextLink>
+          </Reveal>
         </Container>
       </Section>
 
-      <Section tone="paper-2" aria-labelledby="quality-faq-heading">
+      {/* FAQs */}
+      <Section tone="paper" aria-labelledby="quality-faq-heading">
         <Container>
-          <div className="grid gap-y-10 lg:grid-cols-12 lg:gap-x-14">
-            <div className="lg:col-span-4">
-              <Reveal kind="fade">
-                <Eyebrow>Common questions</Eyebrow>
-              </Reveal>
-              <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-                <span id="quality-faq-heading">Quality &amp; safety answered.</span>
-              </MaskReveal>
-              <Reveal kind="rise" delay={0.1}>
-                <p className="body-text mt-6 max-w-sm">
-                  Everything you need to know about our FSSAI clearance, shelf life,
-                  fortification, and batch compliance.
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="lg:col-span-8">
-              <Reveal kind="rise" delay={0.1}>
-                <FaqAccordion items={company.qualityFaqs} />
-              </Reveal>
-            </div>
-          </div>
+          <SectionHeader
+            id="quality-faq-heading"
+            layout="split"
+            eyebrow="Quality FAQs"
+            title="Quality and safety, answered."
+            intro="For chefs, procurement managers, and distributors: batch testing, shelf stability, and compliance documentation."
+          />
+          <Reveal kind="rise" delay={0.1} className="mt-14 lg:mt-20">
+            <FaqAccordion items={company.qualityFaqs} />
+          </Reveal>
         </Container>
       </Section>
 
       <ContactCta
-        heading="Need the paperwork with the quote?"
-        body="Ask for the licence and test documents along with pricing."
+        heading="Need batch COA reports with your quotation?"
+        body="We provide Certificates of Analysis, FSSAI licence documentation, and batch chemical clearances alongside your volume quotation."
         message={waMessage.documents}
       />
     </>

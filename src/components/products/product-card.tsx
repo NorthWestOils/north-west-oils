@@ -1,113 +1,127 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ElementType } from "react";
-import { ProductShot } from "@/components/ui/product-shot";
-import { ButtonArrow } from "@/components/ui/button";
-import { accentVar, type Product } from "@/data/products";
+import type { Accent, Product } from "@/data/products";
 import { cn } from "@/lib/utils";
 
+/** Per-oil tinted stage, shared with the home page range cards. */
+export const STAGE_TINT: Record<Accent, string> = {
+  soy: "from-forest-100/70 via-paper-2 to-paper",
+  mustard: "from-gold-500/25 via-gold-500/5 to-paper",
+  palm: "from-palm/20 via-palm/5 to-paper",
+};
+
 /**
- * A product entry. The whole block is the link, so the target is large and the
- * hover state can be a single coordinated move: the pack lifts a few pixels,
- * the rule under the name draws itself, the arrow steps right.
+ * Product card in the same language as the home page range:
+ * tinted stage per oil, faint index numeral, clean detail rows.
  */
 export function ProductCard({
   product,
+  index,
   featured = false,
   headingLevel: Heading = "h3",
   className,
 }: {
   product: Product;
+  /** 1-based position, shown as a faint numeral on the stage. */
+  index?: number;
   featured?: boolean;
   /** Set by the page so the heading outline never skips a level. */
   headingLevel?: ElementType;
   className?: string;
 }) {
-  const accent = accentVar[product.accent];
+  const formats = product.availableFormats ?? product.packs.map((p) => p.label);
 
   return (
-    <Link
-      href={`/products/${product.slug}`}
+    <article
       className={cn(
-        "group/card relative flex flex-col border-t border-line pt-8 transition-colors duration-300 hover:border-line-strong",
-        featured ? "lg:flex-row lg:items-center lg:gap-14 lg:pt-10" : "",
+        "group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white transition-[border-color,box-shadow] duration-500",
+        "hover:border-line-strong hover:shadow-[0_24px_60px_-30px_rgb(20_40_25/0.35)]",
+        featured ? "border-forest-800/25 lg:grid lg:grid-cols-2" : "border-line",
         className
       )}
     >
+      {/* Stage */}
       <div
         className={cn(
-          "flex items-end justify-center",
-          featured
-            ? "h-64 w-full sm:h-88 lg:h-108 lg:w-[38%] lg:shrink-0"
-            : "h-60 w-full sm:h-72"
+          "relative flex items-end justify-center overflow-hidden bg-gradient-to-b px-8 pt-12",
+          featured ? "aspect-[4/3.6] lg:aspect-auto lg:min-h-[32rem]" : "aspect-[4/3.6]",
+          STAGE_TINT[product.accent]
         )}
       >
-        <ProductShot
+        {index ? (
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute left-6 top-4 font-display text-[5.5rem] leading-none tracking-tight text-ink/[0.06] tnum"
+          >
+            0{index}
+          </span>
+        ) : null}
+        {featured ? (
+          <span className="label absolute right-5 top-5 rounded-full bg-gold-500 px-2.5 py-1 text-forest-950">
+            Hero
+          </span>
+        ) : null}
+        <span
+          aria-hidden="true"
+          className="absolute bottom-6 left-1/2 h-6 w-2/3 -translate-x-1/2 rounded-[50%] bg-ink/10 blur-xl"
+        />
+        <Image
           src={product.heroImage}
           alt={product.heroAlt}
           width={product.heroWidth}
           height={product.heroHeight}
-          sizes={
-            featured
-              ? "(max-width: 1023px) 55vw, 30vw"
-              : "(max-width: 640px) 50vw, (max-width: 1023px) 34vw, 24vw"
-          }
-          shadowWidth="52%"
-          className="h-full transition-transform duration-500 ease-out-expo group-hover/card:-translate-y-1.5"
+          sizes={featured ? "(max-width: 1023px) 70vw, 40vw" : "(max-width: 1023px) 70vw, 36vw"}
+          className="relative mb-6 h-[85%] w-auto object-contain select-none transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:scale-[1.03]"
         />
       </div>
 
-      <div className={cn("mt-8", featured && "lg:mt-0 lg:flex-1")}>
-        <span
-          className="eyebrow inline-flex items-center gap-2.5"
-          style={{ color: accent }}
-        >
-          <span aria-hidden="true" className="h-px w-5" style={{ backgroundColor: accent }} />
-          {featured && "Hero product · "}
-          {product.category}
-        </span>
-
-        <Heading
-          className={cn(
-            "mt-3.5 font-display font-medium tracking-[-0.022em] text-ink",
-            featured ? "text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.06]" : "text-[1.375rem] leading-tight"
-          )}
-        >
-          <span className="relative inline">
+      {/* Details */}
+      <div className={cn("flex flex-1 flex-col p-6 sm:p-8", featured && "lg:p-12")}>
+        <span className="label text-forest-800">{product.category}</span>
+        <Heading className="display-3 mt-2 text-ink">
+          <Link
+            href={`/products/${product.slug}`}
+            className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+          >
             {product.name}
-            <span
-              aria-hidden="true"
-              className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-400 ease-out-expo group-hover/card:scale-x-100"
-            />
-          </span>
+          </Link>
         </Heading>
-
-        <p lang="hi" className="deva mt-2 text-[0.875rem] text-ink-3">
+        <p lang="hi" className="deva mt-1 text-sm text-ink-3">
           {product.nameHi}
         </p>
 
-        <p
-          className={cn(
-            "mt-4 leading-relaxed text-ink-2",
-            featured ? "max-w-xl text-[1rem]" : "text-[0.9375rem]"
-          )}
-        >
-          {product.summary}
-        </p>
+        <p className="body-text mt-4 max-w-xl text-ink-2">{product.summary}</p>
 
-        <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-5">
-          <div>
-            <dt className="eyebrow text-ink-4">Pack sizes</dt>
-            <dd className="tnum mt-1.5 text-[0.875rem] text-ink">
-              {product.packs.map((p) => p.label).join(" · ")}
-            </dd>
+        <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
+          <div className="flex flex-col gap-1 py-3.5">
+            <dt className="label text-ink-4">Profile</dt>
+            <dd className="text-ink">{product.compare.taste}</dd>
+          </div>
+          <div className="flex flex-col gap-1 py-3.5">
+            <dt className="label text-ink-4">Best for</dt>
+            <dd className="text-ink-2">{product.compare.bestUse}</dd>
+          </div>
+          <div className="flex flex-col gap-1 py-3.5">
+            <dt className="label text-ink-4">Packs</dt>
+            <dd className="tnum text-ink-2">{formats.join(", ")}</dd>
           </div>
         </dl>
 
-        <span className="mt-7 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-forest-800 group-hover/card:[&_svg]:translate-x-0.75">
-          View product
-          <ButtonArrow className="transition-transform duration-300 ease-out-expo" />
-        </span>
+        <div className="mt-auto pt-6">
+          <span className="inline-flex items-center gap-2 text-sm font-medium text-forest-800">
+            View specifications
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              fill="none"
+              className="size-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1"
+            >
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </div>
       </div>
-    </Link>
+    </article>
   );
 }

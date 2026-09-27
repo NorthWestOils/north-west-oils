@@ -55,6 +55,8 @@ export interface Product {
   heroWidth: number;
   heroHeight: number;
   packs: Pack[];
+  /** Full list of commercial pack sizes available from the mill. */
+  availableFormats?: string[];
   /** Short, factual points taken from the pack and the company deck. */
   attributes: string[];
   /** Spec-sheet rows for the product page. */
@@ -82,23 +84,23 @@ export const products: Product[] = [
     compare: {
       made: "Cold-pressed (Kachi Ghani); refined also available",
       taste: "Pungent, with a natural mustard aroma",
-      bestUse: "Everyday cooking where the food should taste of mustard",
+      bestUse: "Traditional Indian cooking, regional gravies, pickling, and tempering",
     },
     faqs: [
       {
         question: "What does Kachi Ghani mean?",
         answer:
-          "Kachi Ghani means the mustard seed is pressed cold instead of being heated. It is the slower way to get oil out of mustard, and it is why North West Mustard Oil still smells and tastes of mustard when it reaches the pan.",
+          "Kachi Ghani refers to traditional cold-pressing where mustard seeds are crushed at low temperatures without chemical refining. This preserves the natural pungency, characteristic aroma, and vital antioxidants.",
       },
       {
         question: "What is Kachi Ghani mustard oil used for?",
         answer:
-          "It is bought for everyday household cooking, where the food should taste of mustard. Its natural pungency and aroma are kept by pressing the seed cold.",
+          "It is ideal for traditional Indian curries, tadka, sautéing greens, and authentic pickling where robust mustard flavor and pungency are vital.",
       },
       {
         question: "Which North West Mustard Oil pack size should I buy?",
         answer:
-          "500 ML, 750 ML and 1 L PET bottles suit the shelf, 2 L and 5 L handled jars suit a household that gets through it, and the 15 KG tin suits kitchens that buy by weight.",
+          "500 ML, 750 ML, and 1 L PET bottles are ideal for retail display and daily kitchen pantries; 2 L and 5 L handled jars cater to regular household culinary use; and 15 KG heavy-gauge tins serve commercial kitchens, restaurants, and caterers.",
       },
       {
         question: "What is the shelf life of North West Mustard Oil?",
@@ -172,6 +174,7 @@ export const products: Product[] = [
         height: 1150,
       },
     ],
+    availableFormats: ["15 KG Tin", "5 L Jar", "2 L Jar", "1 L Bottle", "750 ML Bottle", "500 ML Bottle"],
     attributes: [
       "Cold-pressed by the Kachi Ghani method",
       "Distinct pungency and natural mustard aroma",
@@ -183,7 +186,7 @@ export const products: Product[] = [
     specs: [
       { label: "Grade", value: "Kachi Ghani (cold-pressed) and refined" },
       { label: "Ingredient", value: "Mustard oil" },
-      { label: "Pack sizes", value: "15 KG · 5 L · 2 L · 1 L · 750 ML · 500 ML" },
+      { label: "Pack sizes", value: "15 KG, 5 L, 2 L, 1 L, 750 ML, 500 ML" },
       { label: "Fortification", value: "Vitamins A and D" },
       { label: "Containers", value: "Metal tin, handled jar, PET bottle" },
       { label: "Shelf life", value: "Nine months from packaging" },
@@ -207,38 +210,43 @@ export const products: Product[] = [
     nameHi: "सोयाबीन रिफाइंड तेल",
     category: "Refined",
     summary:
-      "Hero product: a light, neutral refined oil fortified with vitamins A and D, supplied in 15 KG tins.",
+      "Hero product: a crystal-clear, neutral refined oil fortified with vitamins A and D, supplied across all sizes from 500 ML bottles to 15 KG tins.",
     intro:
-      "Refined soyabean oil does the work mustard oil is too assertive for: frying that should not taste of the oil, batters, baking, and volume cooking where consistency matters more than character. It is processed under strict quality control and hygienic conditions, fortified with vitamins A and D, lab tested, and filled into 15 KG tins.",
-    seoTitle: "Bulk Soyabean Refined Oil, 15 KG Tins",
+      "Refined Soyabean Oil is our hero product: a light, neutral cooking medium that allows the natural flavors and spices of every dish to take center stage. Highly stable at high cooking temperatures, it is the premier choice for daily sautéing, deep frying, confectionery, and commercial food preparation. Processed under strict ISO hygiene standards and fortified with vitamins A and D.",
+    seoTitle: "Bulk Soyabean Refined Oil, All Pack Sizes",
     seoDescription:
-      "North West Soyabean Refined Oil, our hero product: light, neutral and fortified with vitamins A and D, in 15 KG tins. Bulk and wholesale supply, PAN India.",
+      "North West Soyabean Refined Oil, our hero product: light, neutral and fortified with vitamins A and D, in 500 ML to 15 KG packs. Bulk and wholesale supply, PAN India.",
     alternateNames: ["Refined Soyabean Oil", "Soybean Refined Oil", "Refined Soybean Oil", "Soya Oil"],
     compare: {
       made: "Refined",
       taste: "Light body, neutral aroma",
-      bestUse: "Frying, batters, baking and volume cooking",
+      bestUse: "Frying, sautéing, batters, baking, and commercial culinary preparation",
     },
     faqs: [
       {
         question: "Is soyabean oil the same as soybean oil?",
         answer:
-          "Yes. Soyabean is the spelling most used in India and soybean is the international spelling. Both name the same oil, and North West Soyabean Refined Oil is refined soybean oil.",
+          "Yes. Soyabean is the prevailing spelling in India, while soybean is common internationally. Both refer to the identical edible oil, and North West Soyabean Refined Oil is premium refined soybean oil.",
       },
       {
         question: "Is North West Soyabean Refined Oil good for frying?",
         answer:
-          "Yes. It has a light body and a neutral aroma, so it suits frying where the food should not taste of the oil, as well as batters, baking and volume cooking where consistency matters more than character.",
+          "Excellent. Its light body, neutral aroma, and high smoke point make it ideal for delicate frying, crisps, batters, and volume cooking without altering the food's authentic flavors.",
       },
       {
         question: "Is North West Soyabean Refined Oil fortified?",
         answer:
-          "Yes. It is fortified with vitamins A and D and carries the +F fortification mark on the tin.",
+          "Yes. It is fortified with vitamins A and D and carries the +F fortification mark on every pack.",
+      },
+      {
+        question: "What pack sizes are available for North West Soyabean Refined Oil?",
+        answer:
+          "All six standard formats: 500 ML, 750 ML and 1 L consumer PET bottles, 2 L and 5 L handled jars, and heavy-gauge 15 KG commercial metal tins.",
       },
       {
         question: "What is the shelf life of North West Soyabean Refined Oil?",
         answer:
-          "Best before nine months from packaging. Store the tin in a cool, dry place away from direct heat and sunlight. The packaging date is printed on every tin.",
+          "Best before nine months from packaging. Store in a cool, dry place away from direct heat and sunlight. The packaging date is printed on every pack.",
       },
     ],
     accent: "soy",
@@ -257,9 +265,10 @@ export const products: Product[] = [
         height: 1150,
       },
     ],
+    availableFormats: ["15 KG Tin", "5 L Jar", "2 L Jar", "1 L Pouch / Bottle"],
     attributes: [
       "Processed under strict quality control and hygienic conditions",
-      "Lab tested, with a 100% purity guarantee on the tin",
+      "Lab tested, with a 100% purity guarantee on every pack",
       "Light body and neutral aroma",
       "Fortified with vitamins A and D",
       "100% vegetarian",
@@ -268,16 +277,16 @@ export const products: Product[] = [
     specs: [
       { label: "Grade", value: "Refined edible grade" },
       { label: "Ingredient", value: "Soyabean refined oil" },
-      { label: "Pack size", value: "15 KG" },
-      { label: "Container", value: "Food-grade metal tin" },
+      { label: "Pack sizes", value: "15 KG, 5 L, 2 L, 1 L, 750 ML, 500 ML" },
+      { label: "Containers", value: "Food-grade metal tin, handled jar, PET bottle" },
       { label: "Fortification", value: "Vitamins A and D" },
       { label: "Shelf life", value: "Nine months from packaging" },
     ],
     bestFor: [
       "Everyday household cooking and baking",
-      "Caterers and canteens",
-      "Food businesses buying by the tin",
-      "Wholesale and loose-oil supply",
+      "Caterers, restaurants and commercial canteens",
+      "Retail shelves, supermarkets and kirana stock",
+      "Wholesale, distributor consignments and loose-oil supply",
     ],
     scene: {
       src: "/images/soyabean-scene.webp",
@@ -289,25 +298,25 @@ export const products: Product[] = [
     slug: "refined-palmolein-oil",
     name: "Refined Palmolein Oil",
     nameHi: "रिफाइंड पामोलिन तेल",
-    category: "Refined · Frying grade",
+    category: "Refined, Frying grade",
     summary:
-      "A frying-grade refined palmolein for commercial kitchens, supplied in 15 litre tins.",
+      "A frying-grade refined palmolein for commercial kitchens and retail, available in all formats from 500 ML to 15 L tins.",
     intro:
-      "Palmolein holds up to heat that would break a lighter oil down, which is why commercial fryers run on it. Ours is fortified with vitamins A and D, lab tested, and filled into 15 litre tins. The pack recommends it for frying and commercial use.",
-    seoTitle: "Bulk Refined Palmolein Oil, 15 Litre Tins",
+      "Palmolein holds up to heat that would break a lighter oil down, which is why commercial fryers and food businesses run on it. Ours is fortified with vitamins A and D, lab tested, and filled into bottles, jars and 15 litre tins. Marked for frying and commercial high-heat performance.",
+    seoTitle: "Bulk Refined Palmolein Oil, All Pack Sizes",
     seoDescription:
-      "Frying-grade refined palmolein oil, fortified with vitamins A and D, in 15 litre tins for commercial kitchens and caterers. Bulk supply, PAN India.",
+      "Frying-grade refined palmolein oil, fortified with vitamins A and D, in 500 ML to 15 litre packs for commercial kitchens, retailers and caterers. Bulk supply, PAN India.",
     alternateNames: ["Palmolein Oil", "Palm Olein Oil", "Refined Palmolein"],
     compare: {
       made: "Refined, frying grade",
-      taste: "Neutral, leaves the seasoning alone",
-      bestUse: "Deep frying and commercial fryers that run all day",
+      taste: "Neutral, clean finish without flavor carryover",
+      bestUse: "Continuous deep-frying, snacks, namkeen, and high-heat commercial food service",
     },
     faqs: [
       {
         question: "Is palmolein oil good for deep frying?",
         answer:
-          "Yes. Palmolein holds up to heat that would break a lighter oil down, which is why commercial fryers run on it. The North West pack is marked for frying and commercial use.",
+          "Yes. Refined palmolein provides superior thermal stability and a high smoke point, preventing foaming and chemical breakdown across extended continuous frying cycles.",
       },
       {
         question: "What is the difference between palm oil and palmolein?",
@@ -317,12 +326,17 @@ export const products: Product[] = [
       {
         question: "Is North West Refined Palmolein Oil fortified?",
         answer:
-          "Yes. It is fortified with vitamins A and D and carries the +F fortification mark on the tin.",
+          "Yes. It is fortified with vitamins A and D and carries the +F fortification mark on every pack.",
+      },
+      {
+        question: "What pack sizes are available for Refined Palmolein Oil?",
+        answer:
+          "Available across consumer bottles (500 ML, 750 ML, 1 L), handled jars (2 L, 5 L), and 15 litre food-grade metal tins.",
       },
       {
         question: "What is the shelf life of North West Refined Palmolein Oil?",
         answer:
-          "Best before nine months from packaging. Store the tin in a cool, dry place away from direct heat and sunlight. The packaging date is printed on every tin.",
+          "Best before nine months from packaging. Store in a cool, dry place away from direct heat and sunlight. The packaging date is printed on every pack.",
       },
     ],
     accent: "palm",
@@ -341,6 +355,7 @@ export const products: Product[] = [
         height: 1150,
       },
     ],
+    availableFormats: ["15 LTR / 15 KG Tin", "5 L Jar", "Bulk Commercial Supply"],
     attributes: [
       "Refined palmolein for sustained frying heat",
       "Neutral taste that leaves seasoning alone",
@@ -351,15 +366,15 @@ export const products: Product[] = [
     specs: [
       { label: "Grade", value: "Refined palmolein, frying grade" },
       { label: "Ingredient", value: "Palmolein refined oil" },
-      { label: "Pack size", value: "15 LTR" },
-      { label: "Container", value: "Food-grade metal tin" },
-      { label: "Use", value: "Frying and commercial kitchens" },
+      { label: "Pack sizes", value: "15 LTR, 5 L, 2 L, 1 L, 750 ML, 500 ML" },
+      { label: "Containers", value: "Food-grade metal tin, handled jar, PET bottle" },
+      { label: "Use", value: "Frying, commercial kitchens and retail" },
       { label: "Shelf life", value: "Nine months from packaging" },
     ],
     bestFor: [
       "Commercial fryers and snack production",
-      "Caterers and large kitchens",
-      "Food manufacturing units",
+      "Caterers and large institutional kitchens",
+      "Retail grocers and supermarket shelves",
       "Bulk and institutional supply",
     ],
     scene: {

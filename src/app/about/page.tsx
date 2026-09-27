@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHeader } from "@/components/ui/page-header";
-import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { MaskReveal, Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { ContactCta } from "@/components/ui/contact-cta";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container, Section } from "@/components/ui/section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { TextLink } from "@/components/ui/button";
+import { ContactCta } from "@/components/ui/contact-cta";
+import { cn } from "@/lib/utils";
+
 import { AboutPageJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { company } from "@/data/company";
 import { socialMetadata } from "@/lib/seo";
@@ -12,12 +15,12 @@ import { socialMetadata } from "@/lib/seo";
 export const metadata: Metadata = {
   title: { absolute: "About North West Oils | Edible Oils Since 1973" },
   description:
-    "North West Oils Private Limited is an FSSAI-licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil company in South Delhi.",
+    "North West Oils Private Limited is a Central FSSAI licensed, ISO 9001:2015 and ISO 22000:2018 certified manufacturer of pure edible oils, supplying nationwide since 1973.",
   alternates: { canonical: "/about" },
   ...socialMetadata({
     title: "About North West Oils Private Limited",
     description:
-      "An FSSAI-licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil company in South Delhi, packing since 1973.",
+      "Central FSSAI licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil manufacturer and supplier, delivering across India since 1973.",
     path: "/about",
   }),
 };
@@ -27,6 +30,101 @@ const trail = [
   { name: "About", href: "/about" },
 ];
 
+const STATUTORY_REGISTRATIONS = [
+  {
+    authority: "Ministry of Corporate Affairs (MCA)",
+    designation: "Corporate Identification Number (CIN)",
+    identifier: company.cin,
+    verification: "Active Private Limited Corporation",
+  },
+  {
+    authority: "Food Safety & Standards Authority of India",
+    designation: "Central FSSAI Manufacturing Licence",
+    identifier: "Central Licence (On every pack)",
+    verification: "Licensed under Central Jurisdiction",
+  },
+  {
+    authority: "International Organization for Standardization",
+    designation: "Quality Management System",
+    identifier: "ISO 9001:2015 Certified",
+    verification: "Standardized Batch Processing",
+  },
+  {
+    authority: "International Organization for Standardization",
+    designation: "Food Safety Management System",
+    identifier: "ISO 22000:2018 Certified",
+    verification: "Hygienic Packaging & Traceability",
+  },
+  {
+    authority: "Goods & Services Tax Network (GSTN)",
+    designation: "GST Registration Status",
+    identifier: "Active Taxpayer Entity",
+    verification: "Interstate & Intrastate Compliant",
+  },
+  {
+    authority: "Ministry of MSME, Government of India",
+    designation: "Udyam Registration",
+    identifier: "Registered Manufacturing Enterprise",
+    verification: "National Manufacturing Directory",
+  },
+];
+
+const CORE_VALUES = [
+  {
+    number: "01",
+    title: "The Dining Table Rule",
+    body: "We only process and pack oils that our own families cook with every single day. If a batch fails to meet that personal baseline, it never enters our packaging stream.",
+  },
+  {
+    number: "02",
+    title: "Unbroken Heritage Since 1973",
+    body: "Over fifty years in continuous commercial trade. We have survived and expanded through market cycles by honouring contracts, maintaining spec parity, and never cutting corners.",
+  },
+  {
+    number: "03",
+    title: "Cold-Expeller Integrity",
+    body: "Our Kachi Ghani Mustard Oil is expeller-pressed cold from selected whole mustard seeds, preserving raw volatile pungency, natural antioxidants, and authentic mustard aroma.",
+  },
+  {
+    number: "04",
+    title: "Enclosed Continuous Refining",
+    body: "Our Soyabean and Palmolein oils are refined in enclosed, food-grade stainless steel circuits with continuous filtration, yielding exceptional heat stability and neutral flavor.",
+  },
+  {
+    number: "05",
+    title: "Total Statutory Transparency",
+    body: "Our Central FSSAI licence, corporate CIN, customer care direct landline, and factory address are stamped visibly on every label. No aliases, no obfuscation.",
+  },
+  {
+    number: "06",
+    title: "National Fulfillment Reliability",
+    body: "From 500 ML retail bottles to palletized 15 KG tins and bulk road tankers, we maintain strict dispatch schedules and clear dispatch confirmations for every trade partner.",
+  },
+];
+
+const INFRASTRUCTURE_SPECS = [
+  {
+    metric: "50+ Yrs",
+    label: "Industry Standing",
+    detail: "Continuous processing operations in New Delhi",
+  },
+  {
+    metric: "3 Lines",
+    label: "Dedicated Processing Streams",
+    detail: "Cold expeller, continuous refining, automated canning",
+  },
+  {
+    metric: "100%",
+    label: "Virgin Food-Grade Packaging",
+    detail: "Induction sealed tinplates, HDPE jars, and PET bottles",
+  },
+  {
+    metric: "PAN India",
+    label: "Logistics Network",
+    detail: "Direct supply across wholesale mandis & modern retail",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -34,162 +132,157 @@ export default function AboutPage() {
       <BreadcrumbJsonLd trail={trail} />
 
       <PageHeader
-        eyebrow="About"
-        title="A company you can look up."
-        lede="North West Oils Private Limited makes and packs edible oil. The registrations are public, the address is on the pack, and the phone number is answered."
+        eyebrow="Corporate Heritage &amp; Governance"
+        title="Fifty years of accountable edible oil manufacturing."
+        lede="North West Oils Private Limited was established in 1973 with a clear, singular commitment: produce pure, lab-tested cooking oils that Indian families and commercial kitchens can rely upon every day without doubt."
         trail={trail}
       />
 
-      <Section tone="paper">
+      {/* Heritage narrative */}
+      <Section tone="paper" aria-labelledby="heritage-heading">
         <Container>
-          <div className="grid gap-y-12 lg:grid-cols-12 lg:gap-x-14">
+          <SectionHeader
+            id="heritage-heading"
+            layout="split"
+            eyebrow="The Founding Philosophy"
+            title="Built on an authentic family pledge."
+            intro="Operating from New Delhi, we process and pack three essential edible oils: cold-pressed Kachi Ghani Mustard Oil, Refined Soyabean Oil, and high-heat Refined Palmolein Oil."
+          />
+
+          <div className="mt-14 grid gap-y-12 lg:mt-20 lg:grid-cols-12 lg:items-center lg:gap-x-16">
             <div className="lg:col-span-7">
               <Reveal kind="rise">
-                <p className="text-[1.125rem] leading-relaxed text-ink">
-                  The business is edible oil: Kachi Ghani mustard oil pressed
-                  cold, and refined soyabean and palmolein grades for kitchens
-                  that need an oil to stay out of the way. It is filled into
-                  bottles, jars and tins, and it goes out to whoever is buying:
-                  a kirana shop taking a carton, a distributor taking a
-                  consignment, a canteen taking tins.
-                </p>
+                <div className="border-l-2 border-gold-500 pl-6 sm:pl-8">
+                  <span className="label text-gold-600">The Founder&apos;s Credo</span>
+                  <p lang="hi" className="deva display-3 mt-3 text-forest-900">
+                    {company.tagline.hi}
+                  </p>
+                  <p className="body-text mt-2 italic">&ldquo;{company.tagline.en}&rdquo;</p>
+                  <p className="body-text mt-4 text-ink-3">
+                    Printed on every tin, jar, and bottle from our packaging lines since the company&apos;s inception.
+                  </p>
+                </div>
               </Reveal>
-
-              <Reveal kind="rise" delay={0.06}>
-                <p className="body-text mt-6">
-                  The company is registered with the Ministry of Corporate
-                  Affairs, licensed centrally by FSSAI, registered for GST and
-                  as an MSME, and certified to ISO 9001:2015 for quality
-                  management and ISO 22000:2018 for food safety management.
-                  {" "}
-                  <span className="text-ink">{company.established}</span> is
-                  printed on every pack in the range.
-                </p>
-              </Reveal>
-
-              <Reveal kind="rise" delay={0.1}>
-                <p lang="hi" className="deva mt-10 text-2xl text-forest-700">
-                  {company.tagline.hi}
-                </p>
-                <p className="mt-2 text-[0.9375rem] text-ink-3">
-                  {company.tagline.en} That is the line the packs have carried for
-                  years, and the shortest description of the business there is.
+              <Reveal kind="rise" delay={0.08}>
+                <p className="body-text mt-10">
+                  Our products serve a balanced cross-section of Indian commerce: from neighbourhood grocery stores and supermarket chains stocking our 500 ML to 5 L retail bottles, to restaurant kitchens, institutional canteens, and snack manufacturing floors running on our 15 KG metal tins.
                 </p>
               </Reveal>
             </div>
 
-            <Reveal kind="image" delay={0.08} className="lg:col-span-4 lg:col-start-9">
-              <div className="relative">
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-[3%] left-1/2 h-[5%] w-[64%] -translate-x-1/2 rounded-[50%]"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse at center, rgba(23,26,18,0.2) 0%, rgba(23,26,18,0.08) 48%, rgba(23,26,18,0) 74%)",
-                  }}
-                />
+            <Reveal kind="image" delay={0.08} className="lg:col-span-5">
+              <figure>
                 <Image
                   src="/images/mustard-family.webp"
-                  alt="North West Kachi Ghani mustard oil packs with mustard flowers and seed"
+                  alt="North West Kachi Ghani mustard oil packs with golden mustard seeds"
                   width={1446}
                   height={925}
-                  sizes="(max-width: 1023px) 92vw, 34vw"
-                  className="relative h-auto w-full"
+                  sizes="(max-width: 1023px) 92vw, 40vw"
+                  className="mx-auto h-auto w-full select-none object-contain"
                 />
-              </div>
+                <figcaption className="mt-6 border-t border-line pt-4">
+                  <span className="label text-forest-800">Kachi Ghani Family Range</span>
+                  <p className="body-text mt-1">From 500 ML consumer bottles to 15 KG commercial metal tins.</p>
+                </figcaption>
+              </figure>
             </Reveal>
           </div>
+
+          <dl className="mt-14 grid grid-cols-2 gap-y-8 border-t border-line pt-10 lg:mt-20 lg:grid-cols-4">
+            {INFRASTRUCTURE_SPECS.map((spec, i) => (
+              <div
+                key={spec.label}
+                className={cn(
+                  "flex flex-col gap-1",
+                  i % 2 === 1 && "border-l border-line pl-6 lg:pl-8",
+                  i === 2 && "lg:border-l lg:pl-8"
+                )}
+              >
+                <dt className="order-2 text-sm text-ink-3">{spec.label}</dt>
+                <dd className="stat-value order-1 text-forest-900">{spec.metric}</dd>
+              </div>
+            ))}
+          </dl>
         </Container>
       </Section>
 
+      {/* Six commitments */}
       <Section tone="paper-2" aria-labelledby="principles-heading">
         <Container>
-          <div className="grid gap-y-8 lg:grid-cols-12 lg:items-end lg:gap-x-12">
-            <div className="lg:col-span-7">
-              <Reveal kind="fade">
-                <Eyebrow>How we work</Eyebrow>
-              </Reveal>
-              <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-                <span id="principles-heading">Six things we hold to.</span>
-              </MaskReveal>
-            </div>
-            <Reveal kind="rise" delay={0.1} className="lg:col-span-5">
-              <p className="body-text max-w-md lg:pb-2">
-                None of these are unusual. Doing all six, for every buyer, is
-                the part that takes work.
-              </p>
-            </Reveal>
-          </div>
+          <SectionHeader
+            id="principles-heading"
+            layout="split"
+            eyebrow="Operational Discipline"
+            title="Six commitments we never compromise."
+            intro="These principles guide every procurement contract, daily batch analysis, and customer dispatch that leaves our gates."
+          />
 
-          <RevealGroup step={0.06} className="mt-12 grid gap-x-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
-            {company.principles.map((p, i) => (
-              <RevealItem
-                key={p.title}
-                className="border-t border-line py-6 lg:py-8"
-              >
-                <span className="tnum font-display text-[0.8125rem] text-ink-4">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 font-display text-xl font-medium tracking-[-0.02em] text-ink">
-                  {p.title}
-                </h3>
-                <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-ink-2">
-                  {p.body}
-                </p>
+          <RevealGroup
+            as="ul"
+            step={0.06}
+            className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:mt-20 lg:grid-cols-3"
+          >
+            {CORE_VALUES.map((val) => (
+              <RevealItem as="li" key={val.title} className="flex flex-col bg-white p-6 sm:p-8">
+                <span className="tnum text-sm font-medium text-gold-600">{val.number}</span>
+                <h3 className="card-title mt-4 text-ink">{val.title}</h3>
+                <p className="body-text mt-2">{val.body}</p>
               </RevealItem>
             ))}
           </RevealGroup>
         </Container>
       </Section>
 
-      <Section tone="paper" aria-labelledby="locations-heading">
+      {/* Statutory registrations */}
+      <Section tone="paper" aria-labelledby="statutory-heading">
         <Container>
-          <Reveal kind="fade">
-            <Eyebrow>Locations</Eyebrow>
-          </Reveal>
-          <MaskReveal as="h2" className="display-2 mt-5 max-w-2xl text-ink" delay={0.05}>
-            <span id="locations-heading">One address, printed on the pack.</span>
-          </MaskReveal>
+          <SectionHeader
+            id="statutory-heading"
+            layout="split"
+            eyebrow="Corporate Governance"
+            title={<>Verifiable registrations &amp; compliance records.</>}
+            intro="Every certification and regulatory registration is current, audited, and accessible through statutory government portals."
+          />
 
-          <RevealGroup step={0.08} delay={0.08} className="mt-12 grid gap-x-14 gap-y-10 sm:grid-cols-2">
-            {company.locations.map((loc) => (
-              <RevealItem key={loc.id} className="border-t border-line-strong pt-7">
-                <span className="eyebrow text-ink-4">{loc.role}</span>
-                <h3 className="display-3 mt-3 text-ink">{loc.label}</h3>
-                <address className="mt-4 text-[0.9375rem] leading-relaxed text-ink-2 not-italic">
-                  {loc.full}
-                </address>
-                <dl className="mt-5 flex flex-col gap-2 text-[0.875rem]">
-                  <div className="flex gap-3">
-                    <dt className="w-16 shrink-0 text-ink-3">Phone</dt>
-                    <dd>
-                      <a
-                        href={`tel:${loc.phone}`}
-                        className="tnum -my-2 inline-block py-2 text-ink transition-colors duration-200 hover:text-forest-700"
-                      >
-                        {loc.phoneDisplay}
-                      </a>
-                    </dd>
-                  </div>
-                  <div className="flex gap-3">
-                    <dt className="w-16 shrink-0 text-ink-3">Email</dt>
-                    <dd>
-                      <a
-                        href={`mailto:${loc.email}`}
-                        className="-my-2 inline-block py-2 break-all text-ink transition-colors duration-200 hover:text-forest-700"
-                      >
-                        {loc.email}
-                      </a>
-                    </dd>
-                  </div>
-                </dl>
+          <RevealGroup
+            as="ul"
+            step={0.06}
+            className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:mt-20 lg:grid-cols-3"
+          >
+            {STATUTORY_REGISTRATIONS.map((reg) => (
+              <RevealItem as="li" key={reg.designation} className="flex flex-col bg-white p-6 sm:p-8">
+                <span className="label text-ink-3">{reg.authority}</span>
+                <h3 className="card-title mt-4 text-ink">{reg.designation}</h3>
+                <p className="mt-2 text-sm font-medium text-forest-800">{reg.identifier}</p>
+                <p className="body-text mt-auto pt-6">{reg.verification}</p>
               </RevealItem>
             ))}
           </RevealGroup>
+        </Container>
+      </Section>
 
-          <Reveal kind="rise" delay={0.1} className="mt-12">
-            <TextLink href="/quality">Certifications and how we check a batch</TextLink>
-          </Reveal>
+      {/* Registered address */}
+      <Section tone="paper-2" tight aria-labelledby="office-heading">
+        <Container>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <span className="label text-forest-800">Headquarters &amp; Packing Unit</span>
+              <h2 id="office-heading" className="display-3 mt-3 text-ink">
+                {company.legalName}
+              </h2>
+              <address className="section-intro mt-3 max-w-xl not-italic">
+                {company.locations[0].full}
+              </address>
+            </div>
+            <TextLink
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                company.locations[0].mapsQuery
+              )}`}
+              className="shrink-0"
+            >
+              Open in Google Maps
+            </TextLink>
+          </div>
         </Container>
       </Section>
 

@@ -1,5 +1,6 @@
-import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { MaskReveal, Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container, Section } from "@/components/ui/section";
+import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { FaqItem } from "@/components/ui/faq-accordion";
 import { company } from "@/data/company";
 
@@ -9,20 +10,12 @@ export function FaqSection() {
       <Container>
         <div className="grid gap-y-12 lg:grid-cols-12 lg:gap-x-12">
           <div className="lg:col-span-5">
-            <Reveal kind="fade">
-              <Eyebrow>Questions &amp; answers</Eyebrow>
-            </Reveal>
-
-            <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-              <span id="faq-heading">Clear facts on our oils and supply.</span>
-            </MaskReveal>
-
-            <Reveal kind="rise" delay={0.1}>
-              <p className="body-text mt-6 max-w-lg">
-                Direct answers regarding our Kachi Ghani extraction, pack sizes,
-                FSSAI and ISO credentials, and bulk logistics across India.
-              </p>
-            </Reveal>
+            <SectionHeader
+              id="faq-heading"
+              eyebrow={<>Questions &amp; answers</>}
+              title={<>Clear facts on our oils and supply.</>}
+              intro={<>Direct answers regarding our Kachi Ghani extraction, pack sizes, FSSAI and ISO credentials, and bulk logistics across India.</>}
+            />
           </div>
 
           <div className="lg:col-span-7">

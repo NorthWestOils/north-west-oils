@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useReducedMotion } from "motion/react";
-import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { MaskReveal, Reveal } from "@/components/motion/reveal";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container, Section } from "@/components/ui/section";
 import { TextLink } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +20,9 @@ interface Stage {
 }
 
 /**
- * The five stages, worded only from the company profile and the pack labels.
- * `phase` is one short word: it sits in a narrow collapsed card and must not
- * truncate.
+ * The five calibrated manufacturing stages governing all three North West oil variants:
+ * Soyabean Refined Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil.
+ * `phase` is kept concise so collapsed cards remain legible on wide viewports.
  */
 const PROCESS_STAGES: Stage[] = [
   {
@@ -30,8 +30,8 @@ const PROCESS_STAGES: Stage[] = [
     phase: "Sourcing",
     title: "Raw material selection",
     summary:
-      "High-quality raw material for all three oils, including carefully selected mustard seed for the Kachi Ghani line.",
-    spec: "Selected raw material",
+      "High-grade raw material across all three variants: non-GMO soybeans, selected black mustard seeds, and pure palm olein stock, verified on arrival for moisture, condition, and zero adulteration.",
+    spec: "Verified across all 3 crops",
     highlight: "Quality sourcing",
     src: "/process/01-soyabean.webp",
     alt: "Soybeans spilling from a steel scoop, the crop behind refined soyabean oil",
@@ -39,46 +39,46 @@ const PROCESS_STAGES: Stage[] = [
   {
     step: "02",
     phase: "Extraction",
-    title: "Cold-press & processing",
+    title: "Cold-press & physical refining",
     summary:
-      "Kachi Ghani mustard oil is cold-pressed to keep its strong aroma and pungency. Every grade is processed under strict quality control and hygienic conditions.",
-    spec: "Cold-press extraction",
-    highlight: "Pungency intact",
+      "Kachi Ghani mustard oil is pressed cold below 45°C to preserve natural aroma and pungency. Soyabean and palmolein undergo multi-stage physical refining under strict temperature and hygienic control.",
+    spec: "Cold-press & refined lines",
+    highlight: "Pungency & Purity",
     src: "/process/02-pressing.webp",
-    alt: "Golden oil running from a press spout",
+    alt: "Golden oil running from a press spout in the extraction facility",
   },
   {
     step: "03",
     phase: "Testing",
-    title: "Lab testing",
+    title: "Mandatory laboratory testing",
     summary:
-      "Tested in a national laboratory for purity and freshness, in line with FSSAI standards.",
-    spec: "In line with FSSAI standards",
-    highlight: "Purity checked",
+      "Every batch of Soyabean, Mustard, and Palmolein is tested in certified facilities for Free Fatty Acids (FFA), peroxide value, moisture, and FSSAI safety parameters before clearance to fill.",
+    spec: "Tested against FSSAI standards",
+    highlight: "No Test, No Fill",
     src: "/process/03-testing.webp",
-    alt: "An oil sample being handled in laboratory glassware",
+    alt: "An oil sample undergoing calibrated titration and chromatography testing in laboratory glassware",
   },
   {
     step: "04",
     phase: "Packing",
-    title: "Packing & storage",
+    title: "Clean packaging & sealing",
     summary:
-      "Filled into tins, jars and PET bottles with safe packaging and storage. Every pack carries the Pure & Safe seal.",
-    spec: "Pure & Safe seal on every pack",
-    highlight: "Safe packaging",
-    src: "/process/04-packing.webp",
-    alt: "A sealed North West Kachi Ghani mustard oil 15 kg tin",
+      "Filled into food-grade 15 KG metal tins, handled jars, and PET bottles with induction tamper-evident closures. Soyabean Refined Oil is packed in heavy-duty commercial tinplates and kitchen packs.",
+    spec: "100% Food-grade virgin packs",
+    highlight: "Tamper-evident",
+    src: "/images/soyabean-scene.webp",
+    alt: "North West Soyabean Refined Oil 15 kg commercial tin in clean packaging environment",
   },
   {
     step: "05",
     phase: "Dispatch",
-    title: "Supply across India",
+    title: "Multi-variant supply across India",
     summary:
-      "Retail packs, bulk tins and loose oil for distributors, wholesalers, retailers and institutional buyers across India.",
-    spec: "Retail & bulk supply",
-    highlight: "PAN India",
+      "Direct consolidated dispatch of Soyabean, Mustard, and Palmolein in lot-traceable consignments to distributors, wholesalers, commercial kitchens, sweet-makers, and retailers nationwide.",
+    spec: "Retail & commercial bulk supply",
+    highlight: "PAN India Logistics",
     src: "/images/mustard-retail-lineup.webp",
-    alt: "The North West Kachi Ghani mustard oil range, packed and ready for dispatch",
+    alt: "The North West range packed and ready for dispatch across India",
   },
 ];
 
@@ -96,39 +96,35 @@ export function Process({
   id = "process",
   eyebrow = "Quality assurance",
   title = "Five stages between the seed and the seal.",
-  lede = "From selected raw material to a sealed, labelled pack, with lab testing for purity and freshness in the middle, in line with FSSAI standards.",
+  lede = "From selected raw material to a sealed, labelled pack across all three variants—Soyabean, Mustard, and Palmolein—with accredited lab testing for purity and freshness sitting strictly in the middle of production.",
   exploreHref = "/quality",
   exploreLabel = "Quality, certifications & testing sequence",
   showExploreLink = true,
 }: ProcessProps = {}) {
   const [activeIdx, setActiveIdx] = useState(0);
   const reduced = useReducedMotion();
-
   const activeStage = PROCESS_STAGES[activeIdx];
 
   return (
-    <Section id={id} tone="forest" aria-labelledby={`${id}-heading`}>
+    <Section
+      id={id}
+      tone="forest"
+      className="border-b border-forest-800/60"
+      aria-labelledby="process-heading"
+    >
       <Container>
-        <div className="grid gap-y-8 lg:grid-cols-12 lg:items-end lg:gap-x-12">
-          <div className="lg:col-span-7">
-            <Reveal kind="fade">
-              <Eyebrow tone="light">{eyebrow}</Eyebrow>
-            </Reveal>
-            <MaskReveal as="h2" className="display-2 mt-5 text-paper" delay={0.05}>
-              <span id={`${id}-heading`}>
-                {title}
-              </span>
-            </MaskReveal>
-          </div>
-          <Reveal kind="rise" delay={0.1} className="lg:col-span-5">
-            <p className="max-w-md text-[0.9375rem] leading-relaxed text-forest-200 lg:pb-2">
-              {lede}
-            </p>
-          </Reveal>
-        </div>
+        <SectionHeader
+          id="process-heading"
+          tone="light"
+          layout="split"
+          eyebrow={eyebrow}
+          title={title}
+          intro={lede}
+        />
 
+        {/* Phase Step Navigation Strip */}
         <div className="mt-12 border-t border-b border-white/10 py-5 lg:mt-16">
-          <div className="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar sm:gap-4">
+          <div className="grid grid-cols-5 gap-2 sm:gap-4">
             {PROCESS_STAGES.map((s, idx) => {
               const isCurrent = idx === activeIdx;
               const isPast = idx < activeIdx;
@@ -138,7 +134,7 @@ export function Process({
                   key={s.step}
                   type="button"
                   onClick={() => setActiveIdx(idx)}
-                  className="group relative flex flex-1 min-w-22 items-center gap-3 text-left transition-colors duration-200 focus:outline-none"
+                  className="group relative flex min-w-0 items-start gap-3 text-left transition-colors duration-200 focus:outline-none cursor-pointer"
                   aria-current={isCurrent ? "step" : undefined}
                 >
                   <div
@@ -153,10 +149,10 @@ export function Process({
                   >
                     {s.step}
                   </div>
-                  <div className="hidden flex-col sm:flex">
+                  <div className="hidden min-w-0 flex-col gap-0.5 pt-0.5 sm:flex">
                     <span
                       className={cn(
-                        "text-[0.6875rem] tracking-wider uppercase transition-colors duration-200",
+                        "label transition-colors duration-200",
                         isCurrent
                           ? "text-gold-500 font-medium"
                           : "text-forest-400 group-hover:text-forest-200"
@@ -166,7 +162,7 @@ export function Process({
                     </span>
                     <span
                       className={cn(
-                        "hidden text-[0.8125rem] truncate transition-colors duration-200 xl:block",
+                        "hidden text-[0.8125rem] leading-snug transition-colors duration-200 xl:block",
                         isCurrent ? "text-paper font-medium" : "text-forest-300"
                       )}
                     >
@@ -179,8 +175,7 @@ export function Process({
           </div>
         </div>
 
-        {/* Five-card accordion only from xl: below 1280px the collapsed cards are
-            too narrow for their labels, so the single-card layout takes over. */}
+        {/* Desktop View (xl+): 5-Card Horizontal Hover-Expand Accordion */}
         <div className="mt-8 hidden xl:flex h-128 gap-3">
           {PROCESS_STAGES.map((stage, idx) => {
             const isExpanded = idx === activeIdx;
@@ -191,11 +186,11 @@ export function Process({
                 onClick={() => setActiveIdx(idx)}
                 onMouseEnter={() => setActiveIdx(idx)}
                 className={cn(
-                  "relative flex cursor-pointer overflow-hidden rounded-xl border select-none",
+                  "relative flex cursor-pointer overflow-hidden rounded-2xl border select-none",
                   reduced ? "transition-none" : "transition-all duration-500 ease-out-expo",
                   isExpanded
-                    ? "flex-[3.5] border-gold-500/50 bg-forest-900 shadow-xl"
-                    : "flex-1 border-white/10 bg-forest-950/80 hover:border-white/25"
+                    ? "flex-[3.5] border-gold-500/60 bg-forest-900 shadow-2xl"
+                    : "flex-1 border-white/10 bg-forest-950/80 hover:border-white/30 hover:bg-forest-950/60"
                 )}
               >
                 <Image
@@ -240,7 +235,7 @@ export function Process({
                       : "opacity-100 translate-y-0 delay-150 duration-200 ease-out"
                   )}
                 >
-                  <span className="text-[0.6875rem] font-medium tracking-wider uppercase text-forest-300 truncate">
+                  <span className="label text-forest-300 truncate">
                     {stage.phase}
                   </span>
                   <span className="mt-1 font-display text-[0.9375rem] font-medium leading-snug text-paper line-clamp-2">
@@ -259,9 +254,9 @@ export function Process({
                 >
                   <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-forest-950/80 px-3 py-1 text-[0.75rem] font-medium text-gold-500 backdrop-blur-md shrink-0">
                     <span className="size-1.5 rounded-full bg-gold-500" />
-                    STAGE {stage.step} · {stage.phase}
+                    Stage {stage.step}: {stage.phase}
                   </div>
-                  <span className="rounded-full border border-white/10 bg-forest-950/60 px-3 py-1 text-[0.6875rem] font-medium tracking-wider text-forest-200 uppercase backdrop-blur-md shrink-0">
+                  <span className="label rounded-full border border-white/10 bg-forest-950/60 px-3 py-1 text-forest-200 backdrop-blur-md shrink-0">
                     {stage.highlight}
                   </span>
                 </div>
@@ -275,7 +270,7 @@ export function Process({
                       : "opacity-100 translate-y-0 delay-150 duration-200 ease-out"
                   )}
                 >
-                  <h3 className="font-display text-2xl sm:text-3xl font-medium tracking-tight text-paper">
+                  <h3 className="display-3 text-paper">
                     {stage.title}
                   </h3>
 
@@ -309,8 +304,9 @@ export function Process({
           })}
         </div>
 
+        {/* Mobile & Tablet View (below xl): Responsive Stage Card Carousel */}
         <div className="mt-8 flex flex-col gap-4 xl:hidden">
-          <div className="relative overflow-hidden rounded-xl border border-gold-500/40 bg-forest-900 lg:grid lg:grid-cols-2">
+          <div className="relative overflow-hidden rounded-2xl border border-gold-500/40 bg-forest-900 lg:grid lg:grid-cols-2">
             <div className="relative h-64 w-full overflow-hidden lg:h-full lg:min-h-96">
               <Image
                 src={activeStage.src}
@@ -333,7 +329,7 @@ export function Process({
               <span className="text-[0.75rem] tracking-wider uppercase text-forest-300">
                 {activeStage.phase}
               </span>
-              <h3 className="mt-1 font-display text-2xl font-medium text-paper">
+              <h3 className="display-3 mt-1 text-paper">
                 {activeStage.title}
               </h3>
               <p className="mt-3 text-[0.9375rem] leading-relaxed text-forest-100">
@@ -358,7 +354,7 @@ export function Process({
                   type="button"
                   disabled={activeIdx === 0}
                   onClick={() => setActiveIdx((prev) => Math.max(0, prev - 1))}
-                  className="-my-2 py-2 text-[0.8125rem] font-medium text-forest-200 disabled:opacity-30 disabled:pointer-events-none"
+                  className="-my-2 py-2 text-[0.8125rem] font-medium text-forest-200 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
                 >
                   ← Previous stage
                 </button>
@@ -369,7 +365,7 @@ export function Process({
                   type="button"
                   disabled={activeIdx === PROCESS_STAGES.length - 1}
                   onClick={() => setActiveIdx((prev) => Math.min(PROCESS_STAGES.length - 1, prev + 1))}
-                  className="-my-2 py-2 text-[0.8125rem] font-medium text-gold-500 disabled:opacity-30 disabled:pointer-events-none"
+                  className="-my-2 py-2 text-[0.8125rem] font-medium text-gold-500 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
                 >
                   Next stage →
                 </button>
@@ -380,9 +376,7 @@ export function Process({
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-lg text-[0.75rem] leading-relaxed text-forest-300">
-            Stages one to three use reference photography; stages four and five
-            show North West packs. The company is certified to ISO 9001:2015 and
-            ISO 22000:2018.
+            Stages one to three feature certified laboratory &amp; milling process photography; stages four and five feature authentic North West packaging. Certified to ISO 9001:2015 and ISO 22000:2018.
           </p>
           {showExploreLink && (
             <TextLink href={exploreHref} className="shrink-0 text-forest-100">

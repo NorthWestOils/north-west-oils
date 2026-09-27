@@ -37,9 +37,9 @@ export function FloatingWhatsApp({
           ? `Ask about ${productName} on WhatsApp`
           : "Chat with North West Oils on WhatsApp"
       }
-      className="fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.5rem))] z-40 flex size-14 items-center justify-center rounded-full bg-[#1FA855] text-white shadow-[0_8px_24px_-6px_rgba(3,32,20,0.45)] transition-[background-color,transform] duration-200 hover:scale-105 hover:bg-[#178A44] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1FA855] active:scale-95 active:bg-[#126E35] motion-reduce:transition-none motion-reduce:hover:scale-100 lg:right-8 lg:bottom-8 lg:size-15"
+      className="fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.5rem))] z-40 flex size-12 items-center justify-center rounded-full bg-[#1FA855] text-white border-2 border-white/40 transition-[background-color,transform] duration-200 hover:scale-105 hover:bg-[#178A44] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1FA855] active:scale-95 active:bg-[#126E35] motion-reduce:transition-none motion-reduce:hover:scale-100 lg:right-8 lg:bottom-8 lg:size-13"
     >
-      <WhatsAppIcon className="size-7 lg:size-8" />
+      <WhatsAppIcon className="size-6 lg:size-7" />
     </a>
   );
 }

@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { company } from "@/data/company";
-import { WhatsAppIcon } from "@/components/ui/icons";
-import { waMessage, whatsappLink } from "@/lib/whatsapp";
 import { orderedProducts } from "@/data/products";
 
 const PAGES = [
@@ -17,164 +15,124 @@ const LEGAL = [
   { label: "Terms and conditions", href: "/terms-and-conditions" },
 ];
 
+const linkCls =
+  "-my-1 inline-block py-1 text-[0.9375rem] text-forest-100 transition-colors duration-200 hover:text-white";
+
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-forest-950 text-paper">
       <div className="container-page">
-        <div className="grid gap-10 pt-16 pb-12 lg:grid-cols-12 lg:gap-8 lg:pt-20">
-          <div className="lg:col-span-5">
-            <Link href="/" className="inline-flex items-center gap-3.5">
-              <Image
-                src="/images/logo.webp"
-                alt=""
-                width={513}
-                height={760}
-                className="h-11 w-auto"
-              />
-              <span className="flex flex-col leading-tight">
-                <span className="font-display text-xl font-medium tracking-[-0.015em]">
-                  North West Oils
-                </span>
-                <span className="mt-1 text-[0.6875rem] tracking-[0.13em] text-forest-300 uppercase">
-                  Private Limited · Est. {company.established}
-                </span>
-              </span>
-            </Link>
+        {/* Brand band: logo left, family credo right */}
+        <div className="flex flex-col gap-8 border-b border-white/10 pt-16 pb-12 lg:flex-row lg:items-end lg:justify-between lg:pt-20">
+          <Link href="/" className="inline-flex items-center gap-3.5 self-start lg:self-auto">
+            <Image src="/images/logo.webp" alt="" width={513} height={760} className="h-12 w-auto" />
+            <span className="flex flex-col leading-tight">
+              <span className="font-display text-xl font-medium tracking-[-0.015em]">North West Oils</span>
+              <span className="label mt-1 text-forest-300">Private Limited, Est. {company.established}</span>
+            </span>
+          </Link>
 
-            <p className="deva mt-7 max-w-xs text-lg text-forest-200">
+          <div className="lg:text-right">
+            <p lang="hi" className="deva text-xl leading-tight text-gold-500 sm:text-2xl">
               {company.tagline.hi}
             </p>
-            <p className="mt-2 max-w-xs text-sm text-forest-300">
-              {company.tagline.en}
-            </p>
+            <p className="mt-1 text-sm leading-tight text-forest-300">{company.tagline.en}</p>
           </div>
+        </div>
 
-          <nav aria-label="Footer" className="lg:col-span-3">
-            <h2 className="eyebrow text-forest-400">Pages</h2>
-            <ul className="mt-5 flex flex-col gap-4">
+        {/* Link columns */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-12 lg:grid-cols-12 lg:gap-8">
+          <nav aria-label="Footer" className="lg:col-span-2">
+            <h2 className="label text-forest-400">Pages</h2>
+            <ul className="mt-5 flex flex-col gap-3.5">
               {PAGES.map((p) => (
                 <li key={p.href}>
-                  <Link
-                    href={p.href}
-                    className="-my-1 inline-block py-1 text-[0.9375rem] text-forest-100 transition-colors duration-200 hover:text-white"
-                  >
+                  <Link href={p.href} className={linkCls}>
                     {p.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <h2 className="eyebrow mt-9 text-forest-400">The range</h2>
-            <ul className="mt-5 flex flex-col gap-4">
-              {orderedProducts.map((p) => (
-                <li key={p.slug}>
-                  <Link
-                    href={`/products/${p.slug}`}
-                    className="-my-1 inline-block py-1 text-[0.9375rem] text-forest-100 transition-colors duration-200 hover:text-white"
-                  >
-                    {p.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <div className="lg:col-span-4">
-            <h2 className="eyebrow text-forest-400">Get in touch</h2>
-            <ul className="mt-5 flex flex-col gap-4 text-[0.9375rem]">
+          <div className="lg:col-span-3">
+            <h2 className="label text-forest-400">The range</h2>
+            <ul className="mt-5 flex flex-col gap-3.5">
+              {orderedProducts.map((p) => (
+                <li key={p.slug}>
+                  <Link href={`/products/${p.slug}`} className={linkCls}>
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-span-2 lg:col-span-3">
+            <h2 className="label text-forest-400">Get in touch</h2>
+            <ul className="mt-5 flex flex-col gap-3.5">
               <li>
-                <a
-                  href={whatsappLink(waMessage.general)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="-my-1 inline-flex items-center gap-2.5 py-1 text-forest-100 transition-colors duration-200 hover:text-white"
-                >
-                  <WhatsAppIcon className="size-[1.05em] text-forest-300" />
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${company.contact.phone}`}
-                  className="tnum -my-2 inline-block py-2 text-forest-100 transition-colors duration-200 hover:text-white"
-                >
+                <a href={`tel:${company.contact.phone}`} className={`tnum ${linkCls}`}>
                   {company.contact.phoneDisplay}
                 </a>
               </li>
               <li>
-                <a
-                  href={`mailto:${company.contact.email}`}
-                  className="-my-2 inline-block py-2 break-all text-forest-100 transition-colors duration-200 hover:text-white"
-                >
+                <a href={`mailto:${company.contact.email}`} className={`break-all ${linkCls}`}>
                   {company.contact.email}
                 </a>
               </li>
               <li>
-                <a
-                  href={`mailto:${company.contact.careEmail}`}
-                  className="-my-2 inline-block py-2 break-all text-forest-100 transition-colors duration-200 hover:text-white"
-                >
+                <a href={`mailto:${company.contact.careEmail}`} className={`break-all ${linkCls}`}>
                   {company.contact.careEmail}
                 </a>
               </li>
             </ul>
+          </div>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 lg:gap-7">
-              {company.locations.map((loc) => (
-                <address key={loc.id} className="text-[0.875rem] not-italic">
-                  <span className="eyebrow block text-forest-400">
-                    {loc.label} · {loc.role}
-                  </span>
-                  <span className="mt-2.5 block leading-relaxed text-forest-200">
-                    {loc.full}
-                  </span>
-                </address>
-              ))}
-            </div>
+          <div className="col-span-2 flex flex-col gap-6 lg:col-span-4">
+            {company.locations.map((loc) => (
+              <address key={loc.id} className="not-italic">
+                <span className="label block text-forest-400">
+                  {loc.label}, {loc.role}
+                </span>
+                <span className="mt-3 block text-[0.9375rem] leading-relaxed text-forest-200">{loc.full}</span>
+              </address>
+            ))}
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/10 py-6">
+        {/* Credentials */}
+        <ul className="flex flex-wrap gap-2 border-t border-white/10 py-6">
           {company.credentials.map((c) => (
-            <span
+            <li
               key={c.id}
-              className="text-[0.8125rem] text-forest-300"
               title={c.note}
+              className="rounded-full border border-white/10 px-3 py-1.5 text-[0.75rem] text-forest-300"
             >
-              <span className="text-forest-100">{c.name}</span>{" "}
-              <span className="text-forest-400">{c.detail}</span>
-            </span>
+              <span className="font-medium text-forest-100">{c.name}</span> {c.detail}
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Extra bottom space so the floating WhatsApp button never sits on
-            top of this line when the page is scrolled to the end. */}
-        <div className="flex flex-col gap-3 border-t border-white/10 pt-7 pb-24 text-[0.8125rem] text-forest-400 sm:flex-row sm:items-center sm:justify-between lg:pb-28">
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
-            <p>
-              © {year} {company.legalName}. All rights reserved.
-            </p>
-            <nav aria-label="Legal">
-              <ul className="flex flex-wrap gap-x-5 gap-y-2">
-                {LEGAL.map((p) => (
-                  <li key={p.href}>
-                    <Link
-                      href={p.href}
-                      className="-my-1 inline-block py-1 transition-colors duration-200 hover:text-white"
-                    >
-                      {p.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+        {/* Bottom bar. Mobile keeps clearance for the floating WhatsApp button. */}
+        <div className="flex flex-col gap-3 border-t border-white/10 pt-6 pb-20 text-[0.8125rem] text-forest-400 sm:flex-row sm:items-center sm:justify-between lg:pb-8">
           <p>
-            Pack artwork and product photography are the property of{" "}
-            {company.legalName}.
+            © {year} {company.legalName}. All rights reserved. Pack artwork and product
+            photography are company property.
           </p>
+          <nav aria-label="Legal">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              {LEGAL.map((p) => (
+                <li key={p.href}>
+                  <Link href={p.href} className="-my-1 inline-block py-1 transition-colors duration-200 hover:text-white">
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

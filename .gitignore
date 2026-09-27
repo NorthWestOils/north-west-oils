@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local asset archive (original, unoptimised source images)
 /.assets-src/
+
+# AI agent skills & config
+.agents/

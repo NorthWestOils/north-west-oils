@@ -117,7 +117,7 @@ export function FaqAccordion({
     <div className={cn("flex flex-col", className)}>
       {items.map((item, i) => (
         <FaqItem
-          key={item.question}
+          key={`${item.question}-${i}`}
           faq={item}
           index={i}
           defaultOpen={i === defaultOpenIndex}

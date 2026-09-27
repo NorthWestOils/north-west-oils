@@ -1,81 +1,104 @@
-import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { MaskReveal, Reveal } from "@/components/motion/reveal";
-import { ButtonLink, TextLink } from "@/components/ui/button";
+import type { ReactNode } from "react";
+import Image from "next/image";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container, Section } from "@/components/ui/section";
+import { RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { WhatsAppIcon } from "@/components/ui/icons";
 import { company } from "@/data/company";
 import { waMessage, whatsappLink } from "@/lib/whatsapp";
 
-/**
- * The closing call to action, shared by every page except /contact itself.
- *
- * WhatsApp comes first because that is where this trade actually talks, with
- * the phone number and email behind it for the buyers who would rather not.
- */
 export function ContactCta({
-  heading = "Tell us what you need and how much of it.",
-  body = "Pack sizes, quantities, delivery location. We will come back with what we can supply and when.",
-  message = waMessage.general,
+  heading = "Direct access to the manufacturing desk.",
+  body = "Whether you require weekly scheduled 15 KG tins for high-volume commercial kitchens or truckload consignments for regional distribution networks, our commercial desk responds with transparent volume pricing and dispatch schedules.",
+  message = waMessage.trade,
 }: {
   heading?: string;
   body?: string;
-  /** The line WhatsApp opens with, so the chat starts in context. */
   message?: string;
 }) {
+  const channels: { label: string; value: string; href: string; icon?: ReactNode; external?: boolean }[] = [
+    {
+      label: "WhatsApp",
+      value: "Message the trade desk",
+      href: whatsappLink(message),
+      icon: <WhatsAppIcon className="size-[1.1em]" />,
+      external: true,
+    },
+    { label: "Call", value: company.contact.phoneDisplay, href: `tel:${company.contact.phone}` },
+    { label: "Email", value: company.contact.email, href: `mailto:${company.contact.email}` },
+  ];
+
   return (
-    <Section id="enquiries" tone="paper-2" aria-labelledby="cta-heading">
+    <Section id="enquiries" tone="paper" aria-labelledby="cta-heading">
       <Container>
-        <div className="rounded-[2.5rem] border border-line bg-paper p-2 sm:p-3">
-          <div className="rounded-[calc(2.5rem-0.75rem)] border border-line-subtle bg-paper-2/60 p-8 sm:p-12 lg:p-16">
-            <div className="grid gap-y-10 lg:grid-cols-12 lg:items-center lg:gap-x-14">
-              <div className="lg:col-span-7">
-                <Reveal kind="fade">
-                  <Eyebrow>Direct Trade Enquiries</Eyebrow>
-                </Reveal>
-                <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-                  <span id="cta-heading">{heading}</span>
-                </MaskReveal>
-                <Reveal kind="rise" delay={0.1}>
-                  <p className="body-text mt-6 max-w-xl">{body}</p>
-                </Reveal>
-              </div>
+        <div className="relative overflow-hidden rounded-[2rem] bg-forest-900 px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+          <Image
+            src="/images/soyabean-field.webp"
+            alt=""
+            fill
+            sizes="(max-width: 1320px) 100vw, 1320px"
+            className="pointer-events-none object-cover object-[80%_35%] select-none"
+          />
+          {/* Deep green wash keeps the copy readable; the field shows through on the right */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-forest-950 via-forest-950/85 to-forest-950/30"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest-950/50 to-transparent"
+          />
+          {/* Frosted layer behind the contact links, fading out toward the copy */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 hidden w-3/5 bg-forest-950/10 backdrop-blur-[3px] [mask-image:linear-gradient(to_right,transparent,black_35%)] lg:block"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10"
+          />
 
-              <Reveal kind="rise" delay={0.14} className="lg:col-span-5">
-                <div className="flex flex-col gap-6 rounded-2xl border border-line bg-paper p-6 sm:p-8">
-                  <ButtonLink
-                    href={whatsappLink(message)}
-                    variant="whatsapp"
-                    className="w-full"
-                  >
-                    Message us on WhatsApp
-                  </ButtonLink>
-
-                  <div className="flex flex-col gap-3.5 border-t border-line pt-5 text-[0.875rem]">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <span className="eyebrow text-ink-4">Direct Phone</span>
-                      <a
-                        href={`tel:${company.contact.phone}`}
-                        className="tnum font-display text-lg sm:text-xl font-medium text-ink transition-colors duration-200 hover:text-forest-700 whitespace-nowrap"
-                      >
-                        {company.contact.phoneDisplay}
-                      </a>
-                    </div>
-
-                    <div className="flex flex-wrap items-baseline justify-between gap-2 border-t border-line-subtle pt-3">
-                      <span className="eyebrow text-ink-4">Email</span>
-                      <a
-                        href={`mailto:${company.contact.email}`}
-                        className="text-[0.875rem] font-medium text-ink-2 transition-colors duration-200 hover:text-forest-700 break-all"
-                      >
-                        {company.contact.email}
-                      </a>
-                    </div>
-                  </div>
-
-                  <TextLink href="/contact" className="text-[0.875rem]">
-                    All company locations &amp; direct contacts
-                  </TextLink>
-                </div>
-              </Reveal>
+          <div className="relative grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+            <div className="lg:col-span-6">
+              <SectionHeader
+                id="cta-heading"
+                tone="light"
+                eyebrow="Commercial Inquiries & Wholesale Supply"
+                title={heading}
+                intro={body}
+              />
             </div>
+
+            <RevealGroup
+              as="ul"
+              step={0.07}
+              delay={0.1}
+              className="flex flex-col border-t border-white/10 lg:col-span-6"
+            >
+              {channels.map((c) => (
+                <RevealItem as="li" key={c.label} className="border-b border-white/10">
+                  <a
+                    href={c.href}
+                    {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="group flex items-center justify-between gap-6 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500/60"
+                  >
+                    <span className="flex min-w-0 flex-col gap-1.5">
+                      <span className="label text-forest-300">{c.label}</span>
+                      <span className="card-title tnum flex items-center gap-2 break-all text-paper transition-colors duration-200 group-hover:text-gold-500 sm:text-[1.375rem]">
+                        {c.icon}
+                        {c.value}
+                      </span>
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/15 text-paper transition-all duration-300 group-hover:translate-x-1 group-hover:border-gold-500 group-hover:bg-gold-500 group-hover:text-forest-950"
+                    >
+                      →
+                    </span>
+                  </a>
+                </RevealItem>
+              ))}
+            </RevealGroup>
           </div>
         </div>
       </Container>

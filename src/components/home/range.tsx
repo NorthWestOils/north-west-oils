@@ -1,141 +1,155 @@
-import { Container, Eyebrow, Section } from "@/components/ui/section";
-import { MaskReveal, Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { ProductShot } from "@/components/ui/product-shot";
-import { ButtonLink } from "@/components/ui/button";
-import { whatsappLink } from "@/lib/whatsapp";
-import { accentVar, featuredProduct, orderedProducts } from "@/data/products";
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container, Section } from "@/components/ui/section";
+import { RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { TextLink } from "@/components/ui/button";
+import { orderedProducts, featuredProduct } from "@/data/products";
 import { cn } from "@/lib/utils";
 
-/**
- * The range, as three editorial rows rather than three identical cards. The
- * order comes from `orderedProducts`, and the alternating sides keep the page
- * from settling into a rhythm you stop reading.
- */
+const PRODUCT_ROLES: Record<
+  string,
+  { role: string; profile: string; use: string; stage: string }
+> = {
+  "soyabean-refined-oil": {
+    role: "Refined",
+    profile: "High smoke point, neutral taste",
+    use: "Deep frying, namkeen processing and daily restaurant cooking.",
+    stage: "from-forest-100/70 via-paper-2 to-paper",
+  },
+  "mustard-oil": {
+    role: "Kachi Ghani",
+    profile: "Cold-pressed, pungent aroma",
+    use: "Regional curries, pickles, tadka and household kitchens.",
+    stage: "from-gold-500/25 via-gold-500/5 to-paper",
+  },
+  "refined-palmolein-oil": {
+    role: "Frying grade",
+    profile: "Non-foaming, long fry life",
+    use: "Bakeries, snack manufacturing and continuous frying lines.",
+    stage: "from-palm/20 via-palm/5 to-paper",
+  },
+};
+
+/* Hero grade sits in the middle, flanked by the other two. */
+const others = orderedProducts.filter((p) => p.slug !== featuredProduct.slug);
+const displayProducts = [others[0], featuredProduct, ...others.slice(1)].filter(Boolean);
+
 export function Range() {
   return (
-    <Section id="range" tone="paper" aria-labelledby="range-heading">
+    <Section id="range" tone="paper" className="border-b border-line" aria-labelledby="range-heading">
       <Container>
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
-          <div className="lg:col-span-7">
-            <Reveal kind="fade">
-              <Eyebrow>Three oils</Eyebrow>
-            </Reveal>
-            <MaskReveal as="h2" className="display-2 mt-5 text-ink" delay={0.05}>
-              <span id="range-heading">One range, three jobs in the kitchen.</span>
-            </MaskReveal>
-          </div>
-          <Reveal kind="rise" delay={0.1} className="lg:col-span-5">
-            <p className="body-text max-w-md lg:pb-2">
-              Soyabean when the oil should get out of the way of the food.
-              Mustard when the food should taste of mustard. Palmolein for heat
-              that runs all day. Each one is filled into the pack size the buyer
-              actually orders in.
-            </p>
-          </Reveal>
-        </div>
+        <SectionHeader
+          id="range-heading"
+          layout="split"
+          eyebrow="The Core Culinary Range"
+          title="Three essential oils. Purpose-built for Indian kitchens."
+          intro="Refined and cold-pressed to master distinct culinary demands—from neutral frying clarity that protects natural flavours to authentic regional pungency."
+        />
 
-        <div className="mt-14 flex flex-col lg:mt-20">
-          {orderedProducts.map((product, i) => {
-            const flip = i % 2 === 1;
+        <RevealGroup step={0.08} className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-3 lg:items-center lg:gap-6">
+          {displayProducts.map((product, i) => {
+            const meta = PRODUCT_ROLES[product.slug] ?? {
+              role: product.category,
+              profile: "FSSAI licensed",
+              use: product.summary,
+              stage: "from-paper-2 to-paper",
+            };
+            const formats = product.availableFormats ?? product.packs.map((p) => p.label);
+            const featured = product.slug === featuredProduct.slug;
+
             return (
-              <article
-                key={product.slug}
-                className={cn(
-                  "grid items-center gap-8 border-t border-line py-12 lg:grid-cols-12 lg:gap-12 lg:py-16",
-                  i === 0 && "border-t-0 pt-0 lg:pt-0"
-                )}
-              >
-                <Reveal
-                  kind="pack"
+              <RevealItem key={product.slug} className={cn("h-full", featured && "relative z-10 order-first lg:order-none lg:-my-8")}>
+                <article
                   className={cn(
-                    "lg:col-span-5",
-                    flip && "lg:order-2 lg:col-start-8"
+                    "group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white transition-colors duration-500",
+                    featured
+                      ? "border-gold-500/60 ring-1 ring-gold-500/30"
+                      : "border-line hover:border-line-strong"
                   )}
                 >
-                  <ProductShot
-                    src={product.heroImage}
-                    alt={product.heroAlt}
-                    width={product.heroWidth}
-                    height={product.heroHeight}
-                    sizes="(max-width: 640px) 60vw, (max-width: 1023px) 40vw, 32vw"
-                    shadowWidth="54%"
-                    className="mx-auto h-60 sm:h-76 lg:h-96"
-                  />
-                </Reveal>
+                  {/* Stage */}
+                  <div
+                    className={cn(
+                      "relative flex aspect-[4/3.6] items-end justify-center overflow-hidden bg-gradient-to-b px-8 pt-12",
+                      meta.stage
+                    )}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute left-6 top-4 font-display text-[5.5rem] leading-none tracking-tight text-ink/[0.06] tnum"
+                    >
+                      0{i + 1}
+                    </span>
+                    {featured ? (
+                      <span className="label absolute right-5 top-5 rounded-full bg-gold-500 px-2.5 py-1 text-forest-950">
+                        Hero
+                      </span>
+                    ) : null}
+                    <Image
+                      src={product.heroImage}
+                      alt={product.heroAlt}
+                      width={product.heroWidth}
+                      height={product.heroHeight}
+                      sizes="(max-width: 1023px) 70vw, 26vw"
+                      className="relative mb-6 h-[85%] w-auto object-contain select-none transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:scale-[1.03]"
+                    />
+                  </div>
 
-                <RevealGroup
-                  step={0.06}
-                  className={cn("lg:col-span-6", flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-7")}
-                >
-                  <RevealItem>
-                    <Eyebrow style={{ color: accentVar[product.accent] }}>
-                      {product.slug === featuredProduct.slug && "Hero product · "}
-                      {product.category}
-                    </Eyebrow>
-                  </RevealItem>
-
-                  <RevealItem>
-                    <h3 className="display-3 mt-4 text-ink">{product.name}</h3>
-                  </RevealItem>
-
-                  <RevealItem>
-                    <p lang="hi" className="deva mt-2 text-[0.9375rem] text-ink-3">
+                  {/* Details */}
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <span className="label text-forest-800">{meta.role}</span>
+                    <h3 className="display-3 mt-2 text-ink">
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+                      >
+                        {product.name}
+                      </Link>
+                    </h3>
+                    <p lang="hi" className="deva mt-1 text-sm text-ink-3">
                       {product.nameHi}
                     </p>
-                  </RevealItem>
 
-                  <RevealItem>
-                    <p className="body-text mt-5 max-w-lg">{product.summary}</p>
-                  </RevealItem>
-
-                  <RevealItem>
-                    <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-4 rounded-xl border border-line-subtle bg-paper-2/50 p-4">
-                      <div>
-                        <dt className="eyebrow text-ink-4">Pack sizes</dt>
-                        <dd className="tnum mt-1.5 text-[0.875rem] font-medium text-ink">
-                          {product.packs.map((p) => p.label).join(" · ")}
-                        </dd>
+                    <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
+                      <div className="flex flex-col gap-1 py-3.5">
+                        <dt className="label text-ink-4">Profile</dt>
+                        <dd className="text-ink">{meta.profile}</dd>
                       </div>
-                      <div>
-                        <dt className="eyebrow text-ink-4">Container format</dt>
-                        <dd className="mt-1.5 text-[0.875rem] font-medium text-ink">
-                          {product.packs.length > 1
-                            ? "Metal tin, handled jar, PET bottle"
-                            : product.packs[0].format}
-                        </dd>
+                      <div className="flex flex-col gap-1 py-3.5">
+                        <dt className="label text-ink-4">Best for</dt>
+                        <dd className="text-ink-2">{meta.use}</dd>
                       </div>
-                      <div>
-                        <dt className="eyebrow text-ink-4">Fortification</dt>
-                        <dd className="mt-1.5 text-[0.875rem] font-medium text-forest-700">
-                          +F Vitamins A &amp; D
-                        </dd>
+                      <div className="flex flex-col gap-1 py-3.5">
+                        <dt className="label text-ink-4">Packs</dt>
+                        <dd className="tnum text-ink-2">{formats.join(", ")}</dd>
                       </div>
                     </dl>
-                  </RevealItem>
 
-                  <RevealItem>
-                    <div className="mt-7 flex flex-wrap items-center gap-3">
-                      <ButtonLink
-                        href={`/products/${product.slug}`}
-                        variant="outline"
-                        size="sm"
-                        withArrow
-                      >
-                        Explore {product.name}
-                      </ButtonLink>
-                      <ButtonLink
-                        href={whatsappLink(`Hello Team North West Oils, I would like to enquire about trade supply for North West ${product.name}.`)}
-                        variant="whatsapp"
-                        size="sm"
-                      >
-                        Get quote
-                      </ButtonLink>
+                    <div className="mt-auto pt-6">
+                      <span className="inline-flex items-center gap-2 text-sm font-medium text-forest-800">
+                        View specifications
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          className="size-3.5 transition-transform duration-300 ease-out group-hover:translate-x-1"
+                        >
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
                     </div>
-                  </RevealItem>
-                </RevealGroup>
-              </article>
+                  </div>
+                </article>
+              </RevealItem>
             );
           })}
+        </RevealGroup>
+
+        <div className="mt-10 flex justify-center">
+          <TextLink href="/contact">Need bulk or private-label volumes? Talk to the trade desk</TextLink>
         </div>
       </Container>
     </Section>

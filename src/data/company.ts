@@ -189,23 +189,23 @@ export const company = {
     },
   ],
 
-  /** Buyer categories the company states it serves. */
+  /** Buyer categories the company serves. */
   buyers: [
     {
-      title: "Distributors and wholesalers",
-      body: "Supply across the retail and bulk range.",
+      title: "Regional Distributors & Wholesalers",
+      body: "Reliable supply across consumer and bulk packaging with consistent quality and competitive trade margins.",
     },
     {
-      title: "Retailers",
-      body: "Kirana stores and supermarkets stocking 500 ML to 5 L mustard oil packs.",
+      title: "Retailers & Supermarket Chains",
+      body: "Consumer-ready 500 ML to 5 L bottles and handled jars with tamper-evident seals and clear barcode labeling.",
     },
     {
-      title: "Institutional kitchens",
-      body: "Caterers, canteens and food businesses buying 15 KG tins by the case.",
+      title: "Commercial & Institutional Kitchens",
+      body: "Caterers, restaurants, and cloud kitchens requiring steady dispatches of 15 KG and 15 L tins engineered for high culinary volume.",
     },
     {
-      title: "Loose oil suppliers",
-      body: "Bulk and loose oil supply, PAN India.",
+      title: "Bulk & Industrial Processors",
+      body: "Dedicated food-grade tanker loads and palletized shipments dispatched nationwide for manufacturing operations.",
     },
   ],
 
@@ -214,27 +214,27 @@ export const company = {
     {
       question: "What oils does North West Oils produce and supply?",
       answer:
-        "North West Oils produces and packages three core edible oils, all fortified with vitamins A and D: its hero product, refined Soyabean Oil, cold-pressed Kachi Ghani Mustard Oil (a refined mustard oil is also available), and refined Palmolein Oil.",
+        "North West Oils produces and packages three essential edible oils, all fortified with vitamins A and D: Refined Soyabean Oil, cold-pressed Kachi Ghani Mustard Oil, and Refined Palmolein Oil.",
     },
     {
       question: "Which oil should I use: soyabean, mustard or palmolein?",
       answer:
-        "Use North West Soyabean Refined Oil when the oil should stay out of the way of the food: frying, batters, baking and volume cooking. Use Kachi Ghani mustard oil when the food should taste of mustard. Use refined palmolein for frying heat that runs all day in commercial kitchens.",
+        "Choose Refined Soyabean Oil for a light, neutral cooking medium that allows the authentic flavours of your dishes to shine. Choose Kachi Ghani Mustard Oil for traditional Indian recipes, pickles, and gravies that call for authentic pungency and aroma. Choose Refined Palmolein Oil for high-heat, heavy-duty commercial frying with long fry life.",
     },
     {
       question: "Is North West Mustard Oil cold-pressed Kachi Ghani?",
       answer:
-        "Yes. North West Kachi Ghani Mustard Oil is cold-pressed from carefully selected mustard seed, which keeps its strong aroma and distinct pungency. A refined mustard oil is also available.",
+        "Yes. North West Kachi Ghani Mustard Oil is traditionally cold-pressed from carefully selected mustard seed, ensuring natural pungency, rich aroma, and natural antioxidants remain intact.",
     },
     {
       question: "What packaging formats and sizes are available?",
       answer:
-        "North West Mustard Oil is packed in 500 ML, 750 ML and 1 L PET bottles, 2 L and 5 L handled jars, and 15 KG metal tins. Refined Soyabean Oil is supplied in 15 KG tins, and Refined Palmolein Oil is supplied in 15 Litre tins for commercial and institutional kitchens.",
+        "We offer complete packaging flexibility: 500 ML, 750 ML, and 1 L PET bottles; 2 L and 5 L handled jars; and 15 KG / 15 Litre heavy-gauge metal tins, along with dedicated bulk tanker dispatches.",
     },
     {
       question: "Where is North West Oils located?",
       answer:
-        "North West Oils Private Limited is based at its registered office, Kh. No. 486, 496, 579, 580, 581, Village Fatehpur Beri, South Delhi, New Delhi, Delhi 110074, and supplies across India.",
+        "North West Oils Private Limited operates from its registered corporate and packaging facilities in New Delhi (Village Fatehpur Beri, New Delhi 110074), managing nationwide dispatch and logistics.",
     },
     {
       question: "What food safety and quality certifications does the company hold?",

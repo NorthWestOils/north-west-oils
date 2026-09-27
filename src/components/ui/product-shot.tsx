@@ -17,8 +17,6 @@ export function ProductShot({
   priority = false,
   className,
   imageClassName,
-  shadow = true,
-  shadowWidth = "58%",
 }: {
   src: string;
   alt: string;
@@ -28,22 +26,9 @@ export function ProductShot({
   priority?: boolean;
   className?: string;
   imageClassName?: string;
-  shadow?: boolean;
-  shadowWidth?: string;
 }) {
   return (
     <div className={cn("relative flex items-end justify-center", className)}>
-      {shadow ? (
-        <span
-          aria-hidden="true"
-          className="absolute bottom-0 left-1/2 h-[6%] -translate-x-1/2 rounded-[50%]"
-          style={{
-            width: shadowWidth,
-            background:
-              "radial-gradient(ellipse at center, rgba(23,26,18,0.26) 0%, rgba(23,26,18,0.11) 45%, rgba(23,26,18,0) 72%)",
-          }}
-        />
-      ) : null}
       <Image
         src={src}
         alt={alt}

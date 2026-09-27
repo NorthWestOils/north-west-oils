@@ -58,14 +58,6 @@ export function PackSwitcher({
         aria-labelledby={`${uid}-tab-${active.id}`}
         className="relative flex h-[16rem] items-end justify-center sm:h-[21rem] lg:h-[26rem]"
       >
-        <span
-          aria-hidden="true"
-          className="absolute bottom-0 left-1/2 h-[5%] w-[46%] -translate-x-1/2 rounded-[50%]"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(23,26,18,0.24) 0%, rgba(23,26,18,0.1) 45%, rgba(23,26,18,0) 72%)",
-          }}
-        />
 
         {packs.map((pack, i) => {
           const isActive = i === index;
@@ -135,7 +127,7 @@ export function PackSwitcher({
               {selected ? (
                 <motion.span
                   layoutId={reduced ? undefined : `${uid}-pack-indicator`}
-                  className="absolute inset-0 rounded-full bg-paper-3/70"
+                  className="absolute inset-0 rounded-full border border-line-strong bg-white"
                   transition={spring.snappy}
                 />
               ) : null}
@@ -145,13 +137,11 @@ export function PackSwitcher({
         })}
       </div>
 
-      <p aria-live="polite" className="mt-5 min-h-[1.5rem] text-center text-[0.875rem] text-ink-3">
+      <p aria-live="polite" className="mt-5 min-h-[1.5rem] text-center text-sm text-ink-3">
         <span className="font-medium" style={{ color: accentVar[accent] }}>
           {active.label}
         </span>
-        <span aria-hidden="true" className="mx-2 text-ink-4">
-          ·
-        </span>
+        {", "}
         {active.format}
       </p>
     </div>

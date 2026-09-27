@@ -48,7 +48,7 @@ export function LegalDocument({
               >
                 <h2
                   id={`${s.id}-heading`}
-                  className="font-display text-[1.375rem] font-medium tracking-[-0.02em] text-ink"
+                  className="display-3 text-ink"
                 >
                   <span className="tnum mr-3 text-ink-4">{i + 1}.</span>
                   {s.title}

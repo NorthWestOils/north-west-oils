@@ -9,12 +9,12 @@ import { orderedProducts } from "@/data/products";
 export const dynamic = "force-static";
 
 export function GET() {
-  const [flagship] = orderedProducts;
+  const [heroOil] = orderedProducts;
 
   const lines = [
     `# ${company.legalName}`,
     "",
-    `> ${company.summary} Established ${company.established}. Hero product: North West ${flagship.name}.`,
+    `> ${company.summary} Established ${company.established}. Hero product: North West ${heroOil.name}.`,
     "",
     "## Products",
     "",
