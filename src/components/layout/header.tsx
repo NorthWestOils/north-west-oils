@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
@@ -62,6 +62,35 @@ export function Header() {
   /* Light treatment only while sitting on an unscrolled dark hero. */
   const onDark = DARK_HERO_ROUTES.has(pathname) && !scrolled;
 
+  const navRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [indicator, setIndicator] = useState<{ left: number; width: number } | null>(null);
+
+  const activeIndex = NAV.findIndex((item) => isActive(item.href));
+
+  useEffect(() => {
+    const updateIndicator = () => {
+      if (activeIndex === -1) return;
+      const el = navRefs.current[activeIndex];
+      if (!el) return;
+      // Inset by 14px on left and right (matching px-3.5)
+      setIndicator({
+        left: el.offsetLeft + 14,
+        width: Math.max(0, el.offsetWidth - 28),
+      });
+    };
+
+    const frameId = requestAnimationFrame(updateIndicator);
+    window.addEventListener("resize", updateIndicator);
+    document.fonts?.ready?.then(updateIndicator);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", updateIndicator);
+    };
+  }, [activeIndex, pathname]);
+
+  const activeIndicator = activeIndex === -1 ? null : indicator;
+
   return (
     <>
       <a
@@ -115,16 +144,19 @@ export function Header() {
           </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-1">
-              {NAV.map((item) => {
+            <ul className="relative flex items-center gap-1">
+              {NAV.map((item, index) => {
                 const active = isActive(item.href);
                 return (
                   <li key={item.href}>
                     <Link
+                      ref={(el) => {
+                        navRefs.current[index] = el;
+                      }}
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "relative rounded-full px-3.5 py-2 text-[0.9375rem] transition-colors duration-200",
+                        "relative block rounded-full px-3.5 py-2 text-[0.9375rem] transition-colors duration-200",
                         onDark
                           ? active
                             ? "text-paper"
@@ -135,20 +167,40 @@ export function Header() {
                       )}
                     >
                       {item.label}
-                      {active ? (
-                        <motion.span
-                          layoutId={reduced ? undefined : "nav-underline"}
-                          className={cn(
-                            "absolute inset-x-3.5 -bottom-px h-px",
-                            onDark ? "bg-gold-500" : "bg-forest-700"
-                          )}
-                          transition={{ type: "spring", stiffness: 420, damping: 36 }}
-                        />
-                      ) : null}
                     </Link>
                   </li>
                 );
               })}
+
+              {/* Smooth sliding underline: strictly horizontal, completely immune to scroll jumps */}
+              <AnimatePresence>
+                {activeIndicator ? (
+                  <motion.span
+                    key="nav-indicator"
+                    aria-hidden="true"
+                    className={cn(
+                      "pointer-events-none absolute -bottom-px h-px transition-colors duration-300",
+                      onDark ? "bg-gold-500" : "bg-forest-700"
+                    )}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      left: activeIndicator.left,
+                      width: activeIndicator.width,
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={
+                      reduced
+                        ? { duration: 0 }
+                        : {
+                            left: { type: "spring", stiffness: 420, damping: 36 },
+                            width: { type: "spring", stiffness: 420, damping: 36 },
+                            opacity: { duration: 0.15 },
+                          }
+                    }
+                  />
+                ) : null}
+              </AnimatePresence>
             </ul>
           </nav>
 

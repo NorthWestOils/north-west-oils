@@ -265,7 +265,7 @@ export const products: Product[] = [
         height: 1150,
       },
     ],
-    availableFormats: ["15 KG Tin", "5 L Jar", "2 L Jar", "1 L Pouch / Bottle"],
+    availableFormats: ["15 KG Tin", "5 L Jar", "2 L Jar", "1 L Bottle", "750 ML Bottle", "500 ML Bottle"],
     attributes: [
       "Processed under strict quality control and hygienic conditions",
       "Lab tested, with a 100% purity guarantee on every pack",
@@ -355,7 +355,7 @@ export const products: Product[] = [
         height: 1150,
       },
     ],
-    availableFormats: ["15 LTR / 15 KG Tin", "5 L Jar", "Bulk Commercial Supply"],
+    availableFormats: ["15 LTR / 15 KG Tin", "5 L Jar", "2 L Jar", "1 L Bottle", "750 ML Bottle", "500 ML Bottle"],
     attributes: [
       "Refined palmolein for sustained frying heat",
       "Neutral taste that leaves seasoning alone",
@@ -366,7 +366,7 @@ export const products: Product[] = [
     specs: [
       { label: "Grade", value: "Refined palmolein, frying grade" },
       { label: "Ingredient", value: "Palmolein refined oil" },
-      { label: "Pack sizes", value: "15 LTR, 5 L, 2 L, 1 L, 750 ML, 500 ML" },
+      { label: "Pack sizes", value: "15 LTR / 15 KG, 5 L, 2 L, 1 L, 750 ML, 500 ML" },
       { label: "Containers", value: "Food-grade metal tin, handled jar, PET bottle" },
       { label: "Use", value: "Frying, commercial kitchens and retail" },
       { label: "Shelf life", value: "Nine months from packaging" },

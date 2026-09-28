@@ -16,12 +16,12 @@ import { orderedProducts, productBySlug, type Product } from "@/data/products";
 export const metadata: Metadata = {
   title: "Soyabean, Mustard & Palmolein Oil Products",
   description:
-    "The North West Oils range: our hero product, refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in six sizes and refined palmolein in 15 litre tins.",
+    "The North West Oils range: Refined Soyabean Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil — all available across six calibrated pack sizes from 500 ML to 15 KG / 15 L.",
   alternates: { canonical: "/products" },
   ...socialMetadata({
     title: "Soyabean, Mustard & Palmolein Oil Products | North West Oils",
     description:
-      "Our hero product, refined soyabean oil in 15 KG tins, Kachi Ghani mustard oil in six pack sizes and refined palmolein oil in 15 litre tins.",
+      "Refined Soyabean Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil — all available across six calibrated pack sizes from 500 ML to 15 KG / 15 L.",
     path: "/products",
   }),
 };
@@ -33,7 +33,12 @@ const COMPARE_ROWS: { label: string; value: (p: Product) => string }[] = [
   { label: "Made by", value: (p) => p.compare.made },
   { label: "Taste", value: (p) => p.compare.taste },
   { label: "Best use", value: (p) => p.compare.bestUse },
-  { label: "Packs", value: (p) => p.packs.map((pk) => pk.label).join(", ") },
+  {
+    label: "Packs",
+    value: (p) =>
+      p.specs.find((s) => s.label === "Pack sizes")?.value ??
+      p.packs.map((pk) => pk.label).join(", "),
+  },
   { label: "Shelf life", value: () => "Nine months from packaging date" },
 ];
 
@@ -103,7 +108,7 @@ export default function ProductsPage() {
           <div className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-12 lg:gap-6">
             <Reveal kind="image" className="lg:col-span-7">
               <figure className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white">
-                <div className="flex flex-1 items-end justify-center bg-gradient-to-b from-gold-500/25 via-gold-500/5 to-paper px-6 pt-10 sm:px-10">
+                <div className="flex flex-1 items-end justify-center bg-linear-to-b from-gold-500/25 via-gold-500/5 to-paper px-6 pt-10 sm:px-10">
                   <Image
                     src="/images/mustard-retail-lineup.webp"
                     alt="The full North West Kachi Ghani mustard oil line: 15 kg tin, 5 litre and 2 litre jars, and 1 litre and 500 ml bottles"
@@ -124,7 +129,8 @@ export default function ProductsPage() {
 
             <Reveal kind="rise" delay={0.08} className="lg:col-span-5">
               <div className="h-full rounded-3xl border border-line bg-white p-6 sm:p-8">
-                <span className="label text-forest-800">{mustard.name} formats</span>
+                <span className="label text-forest-800">Standard Pack Formats</span>
+                <p className="caption mt-1 text-ink-3">Supplied across all three edible oil variants</p>
                 <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
                   {mustard.packs.map((p) => (
                     <div key={p.id} className="flex items-baseline justify-between gap-4 py-3.5">

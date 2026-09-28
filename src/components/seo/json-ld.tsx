@@ -137,7 +137,7 @@ export function OrganizationJsonLd() {
           itemListElement: [
             {
               "@type": "OfferCatalog",
-              name: "Refined Soyabean Oil (15 KG Tins)",
+              name: "Refined Soyabean Oil (500 ML, 750 ML, 1 L, 2 L, 5 L, 15 KG)",
             },
             {
               "@type": "OfferCatalog",
@@ -145,7 +145,7 @@ export function OrganizationJsonLd() {
             },
             {
               "@type": "OfferCatalog",
-              name: "Refined Palmolein Oil (15 Litre Tins)",
+              name: "Refined Palmolein Oil (500 ML, 750 ML, 1 L, 2 L, 5 L, 15 L / 15 KG)",
             },
           ],
         },
