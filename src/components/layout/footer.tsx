@@ -25,8 +25,8 @@ export function Footer() {
     <footer className="bg-forest-950 text-paper">
       <div className="container-page">
         {/* Brand band: logo left, family credo right */}
-        <div className="flex flex-col gap-8 border-b border-white/10 pt-16 pb-12 lg:flex-row lg:items-end lg:justify-between lg:pt-20">
-          <Link href="/" className="inline-flex items-center gap-3.5 self-start lg:self-auto">
+        <div className="flex flex-col items-center text-center gap-8 border-b border-white/10 pt-14 pb-12 sm:pt-16 lg:flex-row lg:items-end lg:justify-between lg:text-left lg:pt-20">
+          <Link href="/" className="inline-flex items-center gap-3.5 text-left">
             <Image src="/images/logo.webp" alt="" width={513} height={760} className="h-12 w-auto" />
             <span className="flex flex-col leading-tight">
               <span className="font-display text-xl font-medium tracking-[-0.015em]">North West Oils</span>
@@ -34,7 +34,7 @@ export function Footer() {
             </span>
           </Link>
 
-          <div className="lg:text-right">
+          <div className="text-center lg:text-right">
             <p lang="hi" className="deva text-xl leading-tight text-gold-500 sm:text-2xl">
               {company.tagline.hi}
             </p>
@@ -79,13 +79,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${company.contact.email}`} className={`break-all ${linkCls}`}>
-                  {company.contact.email}
+                <a href={`mailto:${company.contact.email}`} className={`wrap-anywhere ${linkCls}`}>
+                  {company.contact.email.split("@")[0]}@<wbr />{company.contact.email.split("@")[1]}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${company.contact.careEmail}`} className={`break-all ${linkCls}`}>
-                  {company.contact.careEmail}
+                <a href={`mailto:${company.contact.careEmail}`} className={`wrap-anywhere ${linkCls}`}>
+                  {company.contact.careEmail.split("@")[0]}@<wbr />{company.contact.careEmail.split("@")[1]}
                 </a>
               </li>
             </ul>
@@ -116,17 +116,19 @@ export function Footer() {
           ))}
         </ul>
 
-        {/* Bottom bar. Mobile keeps clearance for the floating WhatsApp button. */}
-        <div className="flex flex-col gap-3 border-t border-white/10 pt-6 pb-20 text-[0.8125rem] text-forest-400 sm:flex-row sm:items-center sm:justify-between lg:pb-8">
-          <p>
-            © {year} {company.legalName}. All rights reserved. Pack artwork and product
-            photography are company property.
+        {/* Bottom bar */}
+        <div className="flex flex-col items-center text-center gap-4 border-t border-white/10 pt-6 pb-12 text-[0.8125rem] text-forest-300 sm:flex-row sm:items-center sm:justify-between sm:text-left sm:pb-8">
+          <p className="leading-relaxed text-forest-200/90 pr-14 sm:pr-0">
+            © {year} {company.legalName}. All rights reserved.
           </p>
-          <nav aria-label="Legal">
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav aria-label="Legal" className="shrink-0">
+            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:justify-start">
               {LEGAL.map((p) => (
                 <li key={p.href}>
-                  <Link href={p.href} className="-my-1 inline-block py-1 transition-colors duration-200 hover:text-white">
+                  <Link
+                    href={p.href}
+                    className="text-forest-200 transition-colors duration-200 hover:text-gold-500 hover:underline underline-offset-4"
+                  >
                     {p.label}
                   </Link>
                 </li>

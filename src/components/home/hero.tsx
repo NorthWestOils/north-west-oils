@@ -45,7 +45,7 @@ export function Hero() {
       <div className="container-page relative z-10 flex flex-1 flex-col justify-center py-10 lg:py-12">
         <div className="grid flex-1 items-center gap-y-12 lg:grid-cols-12 lg:gap-x-12">
           {/* Left Column: Brand Statement & Procurement CTAs */}
-          <div className="lg:col-span-6 lg:pr-4">
+          <div className="flex flex-col items-center text-center lg:col-span-6 lg:items-start lg:pr-4 lg:text-left">
             {/* National Manufacturer Eyebrow */}
             <motion.div
               {...rise(step.eyebrow, reduced)}
@@ -97,7 +97,7 @@ export function Hero() {
             {/* Concise Uncluttered Lede */}
             <motion.p
               {...rise(step.lede, reduced)}
-              className="mt-5 max-w-lg text-[0.9375rem] leading-relaxed text-forest-200 sm:text-[1rem]"
+              className="mt-5 max-w-lg text-[0.9375rem] leading-relaxed text-forest-200 sm:text-[1rem] lg:mx-0"
             >
               Single-origin soyabean, mustard, and palmolein oils. Packaged from 500 ML retail bottles to 15 KG commercial tinplates for kitchens across India.
             </motion.p>
@@ -105,12 +105,12 @@ export function Hero() {
             {/* CTAs */}
             <motion.div
               {...rise(step.cta, reduced)}
-              className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+              className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start"
             >
               <ButtonLink
                 href={whatsappLink(waMessage.trade)}
                 variant="whatsapp"
-                className="justify-center sm:justify-start"
+                className="justify-center"
               >
                 Get direct bulk quote
               </ButtonLink>
@@ -118,7 +118,7 @@ export function Hero() {
                 href="/products"
                 variant="outline-light"
                 withArrow
-                className="justify-center sm:justify-start"
+                className="justify-center"
               >
                 Explore all 3 oils
               </ButtonLink>

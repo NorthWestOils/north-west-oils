@@ -133,19 +133,27 @@ export default function ContactPage() {
                 <a
                   href={c.href}
                   {...(c.whatsapp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="group flex h-full items-start justify-between gap-6 p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-forest-700 sm:p-8"
+                  className="group flex h-full items-start justify-between gap-4 p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-forest-700 sm:gap-6 sm:p-8"
                 >
                   <span className="flex min-w-0 flex-col">
                     <span className="label text-forest-800">{c.label}</span>
-                    <span className="card-title tnum mt-3 flex items-center gap-2 break-all text-ink transition-colors duration-200 group-hover:text-forest-700">
-                      {c.whatsapp ? <WhatsAppIcon /> : null}
-                      {c.value}
+                    <span className="tnum mt-2 flex items-center gap-2 text-ink transition-colors duration-200 group-hover:text-forest-700 text-sm font-medium sm:text-base lg:text-lg">
+                      {c.whatsapp ? <span className="shrink-0"><WhatsAppIcon /></span> : null}
+                      <span className="min-w-0 wrap-anywhere">
+                        {c.label === "Email" && c.value.includes("@") ? (
+                          <>
+                            {c.value.split("@")[0]}@<wbr />{c.value.split("@")[1]}
+                          </>
+                        ) : (
+                          c.value
+                        )}
+                      </span>
                     </span>
-                    <span className="body-text mt-3 text-ink-2">{c.note}</span>
+                    <span className="body-text mt-2 text-ink-2 text-xs sm:text-sm">{c.note}</span>
                   </span>
                   <span
                     aria-hidden="true"
-                    className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line text-ink transition-all duration-300 group-hover:translate-x-1 group-hover:border-forest-800 group-hover:bg-forest-800 group-hover:text-paper"
+                    className="flex size-8 shrink-0 items-center justify-center rounded-full border border-line text-ink text-sm transition-all duration-300 group-hover:translate-x-1 group-hover:border-forest-800 group-hover:bg-forest-800 group-hover:text-paper sm:size-10 sm:text-base"
                   >
                     →
                   </span>

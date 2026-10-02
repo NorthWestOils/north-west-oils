@@ -120,12 +120,12 @@ export function Story() {
         </div>
 
         {/* Bottom Story CTA Bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/10 bg-forest-900/40 p-6 sm:flex-row sm:p-8">
+        <div className="mt-14 flex flex-col items-center justify-between gap-5 rounded-2xl border border-white/10 bg-forest-900/40 p-6 text-center sm:flex-row sm:text-left sm:p-8">
           <div>
             <h4 className="card-title text-paper">
               Corporate profile &amp; facility specifications
             </h4>
-            <p className="mt-0.5 text-xs text-forest-300">
+            <p className="mt-1.5 text-xs text-forest-300">
               Read our company profile, trade registrations, and processing capabilities.
             </p>
           </div>

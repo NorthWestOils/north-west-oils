@@ -8,10 +8,12 @@ import { company } from "@/data/company";
 import { waMessage, whatsappLink } from "@/lib/whatsapp";
 
 export function ContactCta({
+  eyebrow = "Procurement & Trade Desk",
   heading = "Direct access to the manufacturing desk.",
   body = "Whether you require weekly scheduled 15 KG tins for high-volume commercial kitchens or truckload consignments for regional distribution networks, our commercial desk responds with transparent volume pricing and dispatch schedules.",
   message = waMessage.trade,
 }: {
+  eyebrow?: string;
   heading?: string;
   body?: string;
   message?: string;
@@ -31,7 +33,7 @@ export function ContactCta({
   return (
     <Section id="enquiries" tone="paper" aria-labelledby="cta-heading">
       <Container>
-        <div className="relative overflow-hidden rounded-[2rem] bg-forest-900 px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+        <div className="relative overflow-hidden rounded-4xl bg-forest-900 px-5 py-10 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
           <Image
             src="/images/soyabean-field.webp"
             alt=""
@@ -42,20 +44,20 @@ export function ContactCta({
           {/* Deep green wash keeps the copy readable; the field shows through on the right */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-forest-950 via-forest-950/85 to-forest-950/30"
+            className="pointer-events-none absolute inset-0 bg-linear-to-r from-forest-950 via-forest-950/85 to-forest-950/30"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest-950/50 to-transparent"
+            className="pointer-events-none absolute inset-0 bg-linear-to-t from-forest-950/50 to-transparent"
           />
           {/* Frosted layer behind the contact links, fading out toward the copy */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 hidden w-3/5 bg-forest-950/10 backdrop-blur-[3px] [mask-image:linear-gradient(to_right,transparent,black_35%)] lg:block"
+            className="pointer-events-none absolute inset-y-0 right-0 hidden w-3/5 bg-forest-950/10 backdrop-blur-[3px] mask-[linear-gradient(to_right,transparent,black_35%)] lg:block"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10"
+            className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-white/10"
           />
 
           <div className="relative grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
@@ -63,7 +65,7 @@ export function ContactCta({
               <SectionHeader
                 id="cta-heading"
                 tone="light"
-                eyebrow="Commercial Inquiries & Wholesale Supply"
+                eyebrow={eyebrow}
                 title={heading}
                 intro={body}
               />
@@ -80,18 +82,26 @@ export function ContactCta({
                   <a
                     href={c.href}
                     {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="group flex items-center justify-between gap-6 py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500/60"
+                    className="group flex items-center justify-between gap-3 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500/60 sm:gap-6 sm:py-5"
                   >
-                    <span className="flex min-w-0 flex-col gap-1.5">
+                    <span className="flex min-w-0 flex-col gap-1">
                       <span className="label text-forest-300">{c.label}</span>
-                      <span className="card-title tnum flex items-center gap-2 break-all text-paper transition-colors duration-200 group-hover:text-gold-500 sm:text-[1.375rem]">
-                        {c.icon}
-                        {c.value}
+                      <span className="tnum flex items-center gap-2 text-paper transition-colors duration-200 group-hover:text-gold-500 text-sm font-medium sm:text-base lg:text-lg">
+                        {c.icon ? <span className="shrink-0">{c.icon}</span> : null}
+                        <span className="min-w-0 wrap-anywhere">
+                          {c.label === "Email" && c.value.includes("@") ? (
+                            <>
+                              {c.value.split("@")[0]}@<wbr />{c.value.split("@")[1]}
+                            </>
+                          ) : (
+                            c.value
+                          )}
+                        </span>
                       </span>
                     </span>
                     <span
                       aria-hidden="true"
-                      className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/15 text-paper transition-all duration-300 group-hover:translate-x-1 group-hover:border-gold-500 group-hover:bg-gold-500 group-hover:text-forest-950"
+                      className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-paper text-sm transition-all duration-300 group-hover:translate-x-1 group-hover:border-gold-500 group-hover:bg-gold-500 group-hover:text-forest-950 sm:size-10 sm:text-base"
                     >
                       →
                     </span>
