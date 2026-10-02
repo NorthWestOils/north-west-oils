@@ -72,25 +72,25 @@ export const products: Product[] = [
     slug: "mustard-oil",
     name: "Mustard Oil",
     nameHi: "कच्ची घानी सरसों का तेल",
-    category: "Kachi Ghani & Refined",
+    category: "Kachi Ghani",
     summary:
-      "Cold-pressed Kachi Ghani mustard oil with its pungency and aroma intact, fortified with vitamins A and D, in six pack sizes from 500 ML to 15 KG.",
+      "Kachi Ghani mustard oil with its pungency and aroma intact, fortified with vitamins A and D, in six pack sizes from 500 ML to 15 KG.",
     intro:
-      "Kachi Ghani means the seed is pressed cold, not heated. It is the slower way to get oil out of mustard, and it is the reason the oil still smells and tastes of mustard by the time it reaches the pan. We press from selected seed and fill six sizes, from a 500 ML bottle for a household to a 15 KG tin for a kitchen that cooks all day.",
+      "Our mustard oil comes from selected seed, processed under strict quality control, and it still smells and tastes of mustard by the time it reaches the pan. We fill six sizes, from a 500 ML bottle for a household to a 15 KG tin for a kitchen that cooks all day.",
     seoTitle: "Bulk Kachi Ghani Mustard Oil, 6 Pack Sizes",
     seoDescription:
-      "Cold-pressed Kachi Ghani mustard oil, fortified, in 500 ML, 750 ML and 1 L bottles, 2 L and 5 L jars and 15 KG tins. Bulk supply, PAN India.",
-    alternateNames: ["Kachi Ghani Mustard Oil", "Cold-pressed Mustard Oil", "Sarson ka Tel", "Kachi Ghani Sarson Tel"],
+      "Kachi Ghani mustard oil, fortified, in 500 ML, 750 ML and 1 L bottles, 2 L and 5 L jars and 15 KG tins. Bulk supply, PAN India.",
+    alternateNames: ["Kachi Ghani Mustard Oil", "Mustard Oil", "Sarson ka Tel", "Kachi Ghani Sarson Tel"],
     compare: {
-      made: "Cold-pressed (Kachi Ghani); refined also available",
+      made: "Refined",
       taste: "Pungent, with a natural mustard aroma",
       bestUse: "Traditional Indian cooking, regional gravies, pickling, and tempering",
     },
     faqs: [
       {
-        question: "What does Kachi Ghani mean?",
+        question: "How is North West Mustard Oil made?",
         answer:
-          "Kachi Ghani refers to traditional cold-pressing where mustard seeds are crushed at low temperatures without chemical refining. This preserves the natural pungency, characteristic aroma, and vital antioxidants.",
+          "It is made from selected mustard seed under strict quality control and hygienic conditions, then lab tested for purity and freshness in line with FSSAI standards before it is filled.",
       },
       {
         question: "What is Kachi Ghani mustard oil used for?",
@@ -116,8 +116,8 @@ export const products: Product[] = [
     accent: "mustard",
     heroImage: "/products/mustard-15kg-tin.webp",
     heroAlt: "North West Kachi Ghani Mustard Oil in a 15 kg food-grade tin",
-    heroWidth: 815,
-    heroHeight: 1150,
+    heroWidth: 1030,
+      heroHeight: 1195,
     packs: [
       {
         id: "15kg",
@@ -176,7 +176,7 @@ export const products: Product[] = [
     ],
     availableFormats: ["15 KG Tin", "5 L Jar", "2 L Jar", "1 L Bottle", "750 ML Bottle", "500 ML Bottle"],
     attributes: [
-      "Cold-pressed by the Kachi Ghani method",
+      "Processed under strict quality control",
       "Distinct pungency and natural mustard aroma",
       "Rich in monounsaturated fatty acids and omega-3",
       "Fortified with vitamins A and D",
@@ -184,7 +184,7 @@ export const products: Product[] = [
       "Best before nine months from packaging",
     ],
     specs: [
-      { label: "Grade", value: "Kachi Ghani (cold-pressed) and refined" },
+      { label: "Grade", value: "Refined" },
       { label: "Ingredient", value: "Mustard oil" },
       { label: "Pack sizes", value: "15 KG, 5 L, 2 L, 1 L, 750 ML, 500 ML" },
       { label: "Fortification", value: "Vitamins A and D" },
@@ -252,8 +252,8 @@ export const products: Product[] = [
     accent: "soy",
     heroImage: "/products/soyabean-15kg-tin.webp",
     heroAlt: "North West Soyabean Refined Oil in a 15 kg food-grade tin",
-    heroWidth: 771,
-    heroHeight: 1150,
+    heroWidth: 960,
+      heroHeight: 1000,
     packs: [
       {
         id: "15kg",
@@ -342,8 +342,8 @@ export const products: Product[] = [
     accent: "palm",
     heroImage: "/products/palmolein-15l-tin.webp",
     heroAlt: "North West Refined Palmolein Oil in a 15 litre food-grade tin",
-    heroWidth: 812,
-    heroHeight: 1150,
+    heroWidth: 610,
+      heroHeight: 660,
     packs: [
       {
         id: "15l",

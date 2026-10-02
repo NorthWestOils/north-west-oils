@@ -12,7 +12,7 @@ import { FAQJsonLd } from "@/components/seo/json-ld";
 export const metadata: Metadata = {
   title: "Bulk Soyabean, Mustard & Palmolein Oil | North West Oils",
   description:
-    "Bulk and wholesale soyabean, Kachi Ghani mustard and palmolein oil, supplied PAN India. Soyabean Refined Oil is our hero product. FSSAI licensed, since 1973.",
+    "Bulk and wholesale soyabean, Kachi Ghani mustard and palmolein oil, supplied PAN India. Soyabean Refined Oil is our hero product. FSSAI licensed, with edible oil experience since 1973.",
   alternates: { canonical: "/" },
 };
 

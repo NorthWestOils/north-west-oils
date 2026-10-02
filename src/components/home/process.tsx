@@ -39,13 +39,13 @@ const PROCESS_STAGES: Stage[] = [
   {
     step: "02",
     phase: "Extraction",
-    title: "Cold-press & physical refining",
+    title: "Extraction & refining",
     summary:
-      "Kachi Ghani mustard oil is pressed cold below 45°C to preserve natural aroma and pungency. Soyabean and palmolein undergo multi-stage physical refining under strict temperature and hygienic control.",
-    spec: "Cold-press & refined lines",
+      "Soyabean, Kachi Ghani mustard, and palmolein oils are processed under strict temperature and hygienic control, keeping each oil clean, stable, and true to its natural character.",
+    spec: "Controlled processing lines",
     highlight: "Pungency & Purity",
     src: "/process/02-pressing.webp",
-    alt: "Golden oil running from a press spout in the extraction facility",
+    alt: "Golden oil running from a spout in the processing facility",
   },
   {
     step: "03",

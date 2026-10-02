@@ -124,7 +124,7 @@ export function OrganizationJsonLd() {
         })),
         knowsAbout: [
           "Refined soyabean oil",
-          "Kachi Ghani cold-press mustard oil extraction",
+          "Kachi Ghani mustard oil",
           "Edible oil manufacturing and packaging",
           "Refined palmolein oil",
           "Food safety management ISO 22000:2018",

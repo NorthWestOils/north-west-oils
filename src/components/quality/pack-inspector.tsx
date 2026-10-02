@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { Container, Section } from "@/components/ui/section";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
+import { company } from "@/data/company";
 
 interface PackPoint {
   number: string;
@@ -27,7 +28,7 @@ const PACK_POINTS: PackPoint[] = [
     number: "01",
     title: "Central FSSAI licence and logo",
     location: "Front and side panel of every tin and bottle",
-    body: "The 14-digit licence number (10014011001948) is printed on every pack and can be verified publicly on the official FSSAI FoSCoS portal.",
+    body: `The 14-digit licence number (${company.fssaiLicence}) is printed on every pack and can be verified publicly on the official FSSAI FoSCoS portal.`,
     badgeX: 92,
     badgeY: 61,
     targetX: 74,

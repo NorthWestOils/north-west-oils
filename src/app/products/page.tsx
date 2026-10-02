@@ -63,7 +63,7 @@ export default function ProductsPage() {
       <PageHeader
         eyebrow="Commercial Product Catalog"
         title="Three calibrated edible oils, engineered for every temperature."
-        lede="From cold-expeller pressed Kachi Ghani mustard preserving volatile pungency, to continuous enclosed refining for crystal-clear soyabean and palmolein oils. Fully certified under Central FSSAI and ISO protocols."
+        lede="From pungent Kachi Ghani mustard to crystal-clear refined soyabean and palmolein oils. Fully certified under Central FSSAI and ISO protocols."
         trail={[
           { name: "Home", href: "/" },
           { name: "Products", href: "/products" },

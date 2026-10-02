@@ -68,7 +68,7 @@ const CREDENTIALS: CredentialItem[] = [
     badge: "QMS Certified",
     tagline: "Standardized quality control across all production lines.",
     description:
-      "Certified to ISO 9001:2015 for establishing and executing consistent quality management systems across raw seed procurement, cold-press extraction, refining, packaging, and dispatch.",
+      "Certified to ISO 9001:2015 for establishing and executing consistent quality management systems across raw seed procurement, refining, packaging, and dispatch.",
     verifiedSpecs: [
       "Standard operating procedures for intake and storage",
       "Continuous equipment maintenance and sanitation records",

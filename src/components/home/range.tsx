@@ -21,7 +21,7 @@ const PRODUCT_ROLES: Record<
   },
   "mustard-oil": {
     role: "Kachi Ghani",
-    profile: "Cold-pressed, pungent aroma",
+    profile: "Pungent, natural aroma",
     use: "Regional curries, pickles, tadka and household kitchens.",
     stage: "from-gold-500/25 via-gold-500/5 to-paper",
   },
@@ -46,7 +46,7 @@ export function Range() {
           layout="split"
           eyebrow="The Core Culinary Range"
           title="Three essential oils. Purpose-built for Indian kitchens."
-          intro="Refined and cold-pressed to master distinct culinary demands—from neutral frying clarity that protects natural flavours to authentic regional pungency."
+          intro="Each oil is made for distinct culinary demands—from neutral frying clarity that protects natural flavours to authentic regional pungency."
         />
 
         <RevealGroup step={0.08} className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-3 lg:items-center lg:gap-6">

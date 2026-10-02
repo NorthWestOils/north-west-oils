@@ -6,31 +6,33 @@ import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { company } from "@/data/company";
 
+const { guidance } = company;
+
 const MILESTONES = [
   {
-    year: "1973",
-    title: "Founding Mill",
-    description: "Established in New Delhi with a simple premise: never sell an oil you wouldn't cook with at home.",
+    year: String(guidance.tradeSince),
+    title: "Into the Oil Trade",
+    description: `${guidance.name} begins in the edible oil business, the start of more than five decades of trade experience.`,
   },
   {
-    year: "1995",
-    title: "Refining Expansion",
-    description: "Commissioned closed-loop stainless steel refining lines and automated multi-stage winterization.",
+    year: String(company.established),
+    title: "Company Incorporated",
+    description: `North West Oils Private Limited is formally incorporated in New Delhi under the guidance of ${guidance.name}.`,
   },
   {
-    year: "2012",
+    year: "Licensed",
     title: "Central FSSAI & Dual ISO",
-    description: "Secured Central FSSAI licensing along with ISO 9001:2015 and ISO 22000:2018 certifications.",
+    description: "Central FSSAI licensing along with ISO 9001:2015 and ISO 22000:2018 certifications.",
   },
   {
     year: "Today",
     title: "PAN India Distribution",
-    description: "Supplying bulk commercial packs and retail bottles to thousands of institutional partners nationwide.",
+    description: "Supplying bulk commercial packs and retail bottles to distributors, retailers and institutional kitchens nationwide.",
   },
 ];
 
 const METRICS = [
-  { value: "50+", label: "Years of Heritage", sub: "Unbroken family trust" },
+  { value: "50+", label: "Years of Trade Experience", sub: `In edible oils since ${guidance.tradeSince}` },
   { value: "3", label: "Master Oils", sub: "Soyabean, Mustard, Palmolein" },
   { value: "100%", label: "Lab Tested", sub: "FSSAI & NABL verified" },
   { value: "PAN India", label: "Supply Reach", sub: "Tins, Jars, Bottles & Tankers" },
@@ -46,9 +48,9 @@ export function Story() {
             <SectionHeader
               id="story-heading"
               tone="light"
-              eyebrow={<>Heritage &amp; Governance, since {company.established}</>}
-              title={<>Fifty years of doing only one thing right.</>}
-              intro={<>Founded in {company.established} in New Delhi, North West Oils has built half a century of trust on a single standard: pure edible oils backed by verifiable statutory licensing and laboratory testing.</>}
+              eyebrow={<>Our Story &amp; Governance</>}
+              title={<>Five decades of experience. One standard.</>}
+              intro={<>North West Oils Private Limited was formally incorporated in New Delhi in {company.established} under the guidance of {guidance.name}, who has been in the edible oil business since {guidance.tradeSince}. That experience shapes a single standard: pure edible oils backed by verifiable statutory licensing and laboratory testing.</>}
             />
           </div>
 
@@ -124,7 +126,7 @@ export function Story() {
               Corporate profile &amp; facility specifications
             </h4>
             <p className="mt-0.5 text-xs text-forest-300">
-              Read our full company history, trade registrations, and milling capacities.
+              Read our company profile, trade registrations, and processing capabilities.
             </p>
           </div>
           <ButtonLink href="/about" variant="outline-light" size="sm" withArrow className="shrink-0">

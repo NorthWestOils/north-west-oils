@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Quality, Testing & Statutory Clearance",
   description:
-    "How North West Oils ensures edible oil purity: multi-parameter laboratory testing, cold-press integrity, FSSAI compliance benchmarks, and ISO 9001/22000 certified packing.",
+    "How North West Oils ensures edible oil purity: multi-parameter laboratory testing, hygienic processing, FSSAI compliance benchmarks, and ISO 9001/22000 certified packing.",
   alternates: { canonical: "/quality" },
   ...socialMetadata({
     title: "Quality, Testing & Statutory Clearance | North West Oils",
@@ -43,8 +43,8 @@ const QA_GATES = [
   {
     step: "02",
     title: "Enclosed food-grade processing",
-    desc: "Mustard oil is cold-pressed in traditional expellers without excessive friction heat, preserving pungency and natural antioxidants. Refined grades flow through sealed stainless steel circuits.",
-    check: "Unheated expeller stream, closed-loop filtration",
+    desc: "Soyabean, mustard, and palmolein oils are processed through sealed stainless steel circuits under strict temperature and hygienic control, keeping each oil clean and stable.",
+    check: "Sealed stainless circuits, closed-loop filtration",
   },
   {
     step: "03",

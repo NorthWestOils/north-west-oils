@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     siteName: company.legalName,
-    title: "North West Oils | Edible oils since 1973",
+    title: `North West Oils | Edible oil expertise since ${company.guidance.tradeSince}`,
     description: company.summary,
     images: [
       {
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "North West Oils | Edible oils since 1973",
+    title: `North West Oils | Edible oil expertise since ${company.guidance.tradeSince}`,
     description: company.summary,
     images: ["/og/default.jpg"],
   },

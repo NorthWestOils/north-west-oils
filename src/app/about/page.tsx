@@ -13,14 +13,14 @@ import { company } from "@/data/company";
 import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "About North West Oils | Edible Oils Since 1973" },
+  title: { absolute: `About North West Oils | Edible Oil Expertise Since ${company.guidance.tradeSince}` },
   description:
-    "North West Oils Private Limited is a Central FSSAI licensed, ISO 9001:2015 and ISO 22000:2018 certified manufacturer of pure edible oils, supplying nationwide since 1973.",
+    `Incorporated in ${company.established} under the guidance of ${company.guidance.name}, in the edible oil business since ${company.guidance.tradeSince}. Central FSSAI licensed, ISO 9001 and ISO 22000 certified.`,
   alternates: { canonical: "/about" },
   ...socialMetadata({
     title: "About North West Oils Private Limited",
     description:
-      "Central FSSAI licensed, ISO 9001:2015 and ISO 22000:2018 certified edible oil manufacturer and supplier, delivering across India since 1973.",
+      `Incorporated in ${company.established} under the guidance of ${company.guidance.name}, in the edible oil business since ${company.guidance.tradeSince}. Central FSSAI licensed, ISO certified, supplying PAN India.`,
     path: "/about",
   }),
 };
@@ -40,7 +40,7 @@ const STATUTORY_REGISTRATIONS = [
   {
     authority: "Food Safety & Standards Authority of India",
     designation: "Central FSSAI Manufacturing Licence",
-    identifier: "Central Licence (On every pack)",
+    identifier: `Licence No. ${company.fssaiLicence}`,
     verification: "Licensed under Central Jurisdiction",
   },
   {
@@ -77,13 +77,13 @@ const CORE_VALUES = [
   },
   {
     number: "02",
-    title: "Unbroken Heritage Since 1973",
-    body: "Over fifty years in continuous commercial trade. We have survived and expanded through market cycles by honouring contracts, maintaining spec parity, and never cutting corners.",
+    title: `Experience Since ${company.guidance.tradeSince}`,
+    body: `The company was formally incorporated in ${company.established} under the guidance of ${company.guidance.name}, in the edible oil business since ${company.guidance.tradeSince}. That experience shows in how we work: honouring contracts, maintaining spec parity, and never cutting corners.`,
   },
   {
     number: "03",
-    title: "Cold-Expeller Integrity",
-    body: "Our Kachi Ghani Mustard Oil is expeller-pressed cold from selected whole mustard seeds, preserving raw volatile pungency, natural antioxidants, and authentic mustard aroma.",
+    title: "Mustard Seed Integrity",
+    body: "Our Kachi Ghani Mustard Oil is made from selected whole mustard seeds under strict quality control, keeping its natural pungency and authentic mustard aroma.",
   },
   {
     number: "04",
@@ -105,13 +105,13 @@ const CORE_VALUES = [
 const INFRASTRUCTURE_SPECS = [
   {
     metric: "50+ Yrs",
-    label: "Industry Standing",
-    detail: "Continuous processing operations in New Delhi",
+    label: "Trade Experience",
+    detail: `In edible oils since ${company.guidance.tradeSince}`,
   },
   {
     metric: "3 Lines",
     label: "Dedicated Processing Streams",
-    detail: "Cold expeller, continuous refining, automated canning",
+    detail: "Seed screening, continuous refining, automated canning",
   },
   {
     metric: "100%",
@@ -132,13 +132,13 @@ export default function AboutPage() {
       <BreadcrumbJsonLd trail={trail} />
 
       <PageHeader
-        eyebrow="Corporate Heritage &amp; Governance"
-        title="Fifty years of accountable edible oil manufacturing."
-        lede="North West Oils Private Limited was established in 1973 with a clear, singular commitment: produce pure, lab-tested cooking oils that Indian families and commercial kitchens can rely upon every day without doubt."
+        eyebrow="Corporate Profile &amp; Governance"
+        title={`Five decades of experience, formally incorporated in ${company.established}.`}
+        lede={`North West Oils Private Limited was formally incorporated in ${company.established} under the guidance of ${company.guidance.name}, who has been in the edible oil business since ${company.guidance.tradeSince}. The commitment is unchanged: produce pure, lab-tested cooking oils that Indian families and commercial kitchens can rely upon every day without doubt.`}
         trail={trail}
       />
 
-      {/* Heritage narrative */}
+      {/* Company narrative */}
       <Section tone="paper" aria-labelledby="heritage-heading">
         <Container>
           <SectionHeader
@@ -146,7 +146,7 @@ export default function AboutPage() {
             layout="split"
             eyebrow="The Founding Philosophy"
             title="Built on an authentic family pledge."
-            intro="Operating from New Delhi, we process and pack three essential edible oils: cold-pressed Kachi Ghani Mustard Oil, Refined Soyabean Oil, and high-heat Refined Palmolein Oil."
+            intro="Operating from New Delhi, we process and pack three essential edible oils: Kachi Ghani Mustard Oil, Refined Soyabean Oil, and high-heat Refined Palmolein Oil."
           />
 
           <div className="mt-14 grid gap-y-12 lg:mt-20 lg:grid-cols-12 lg:items-center lg:gap-x-16">

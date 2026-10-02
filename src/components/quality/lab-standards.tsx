@@ -57,13 +57,13 @@ const TEST_PARAMETERS = [
   {
     id: "pungency",
     tab: "Pungency",
-    name: "Cold-Press Pungency (Allyl Isothiocyanate)",
+    name: "Mustard Pungency (Allyl Isothiocyanate)",
     fssaiLimit: "Min 0.20% by mass (Mustard)",
     northWestStandard: "Natural full-potency pungent extraction",
     kitchenImpact:
       "Preserves the signature sharp bite and robust aroma required for traditional Indian delicacies, pickles, tadka, and regional gravies.",
     testingMethod: "Gas chromatography and steam distillation",
-    frequency: "Raw seed pressing clearance",
+    frequency: "Every mustard batch",
   },
   {
     id: "purity",

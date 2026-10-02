@@ -13,14 +13,21 @@
 
 export const SITE_URL = "https://northwestoilspvtltd.in";
 
+/** Central FSSAI licence number. */
+const FSSAI_LICENCE = "13325002000037";
+
 export const company = {
   legalName: "North West Oils Private Limited",
   brandName: "North West",
   shortName: "North West Oils",
   /** Corporate Identity Number, from the certificate of incorporation. */
   cin: "U46909DL2024PTC430606",
-  /** Printed on every pack in the range. */
-  established: 1973,
+  /** Year of incorporation, matching the CIN above. */
+  established: 2024,
+  /** The company was incorporated under the guidance of Trilok Goyal, who
+      has been in the edible oil business since 1973. */
+  guidance: { name: "Trilok Goyal", tradeSince: 1973 },
+  fssaiLicence: FSSAI_LICENCE,
 
   tagline: {
     hi: "जो खाता हूँ, वही खिलाता हूँ।",
@@ -98,7 +105,7 @@ export const company = {
       id: "fssai",
       name: "FSSAI",
       detail: "Central licence",
-      note: "Licensed under the Food Safety and Standards Authority of India. The licence number is printed on every pack.",
+      note: `Licensed under the Food Safety and Standards Authority of India, licence no. ${FSSAI_LICENCE}. The licence number is printed on every pack.`,
     },
     {
       id: "iso-9001",
@@ -140,7 +147,7 @@ export const company = {
     },
     {
       title: "Modern processing",
-      body: "Cold-press extraction for Kachi Ghani, and strict quality control and hygienic conditions for every grade.",
+      body: "Strict quality control and hygienic conditions for every grade.",
     },
     {
       title: "Quality control",
@@ -170,7 +177,7 @@ export const company = {
     {
       step: "02",
       title: "Extraction and refining",
-      body: "Kachi Ghani mustard oil is cold-pressed to keep its strong aroma and pungency. Every grade is processed under strict quality control and hygienic conditions.",
+      body: "Every grade is processed under strict quality control and hygienic conditions.",
     },
     {
       step: "03",
@@ -214,7 +221,7 @@ export const company = {
     {
       question: "What oils does North West Oils produce and supply?",
       answer:
-        "North West Oils produces and packages three essential edible oils, all fortified with vitamins A and D: Refined Soyabean Oil, cold-pressed Kachi Ghani Mustard Oil, and Refined Palmolein Oil.",
+        "North West Oils produces and packages three essential edible oils, all fortified with vitamins A and D: Refined Soyabean Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil.",
     },
     {
       question: "Which oil should I use: soyabean, mustard or palmolein?",
@@ -222,14 +229,19 @@ export const company = {
         "Choose Refined Soyabean Oil for a light, neutral cooking medium that allows the authentic flavours of your dishes to shine. Choose Kachi Ghani Mustard Oil for traditional Indian recipes, pickles, and gravies that call for authentic pungency and aroma. Choose Refined Palmolein Oil for high-heat, heavy-duty commercial frying with long fry life.",
     },
     {
-      question: "Is North West Mustard Oil cold-pressed Kachi Ghani?",
+      question: "How is North West Mustard Oil made?",
       answer:
-        "Yes. North West Kachi Ghani Mustard Oil is traditionally cold-pressed from carefully selected mustard seed, ensuring natural pungency, rich aroma, and natural antioxidants remain intact.",
+        "North West Kachi Ghani Mustard Oil is made from carefully selected mustard seed under strict quality control, keeping its natural pungency and rich aroma.",
     },
     {
       question: "What packaging formats and sizes are available?",
       answer:
         "We offer complete packaging flexibility: 500 ML, 750 ML, and 1 L PET bottles; 2 L and 5 L handled jars; and 15 KG / 15 Litre heavy-gauge metal tins, along with dedicated bulk tanker dispatches.",
+    },
+    {
+      question: "When was North West Oils founded?",
+      answer:
+        "North West Oils Private Limited was formally incorporated in New Delhi in 2024 under the guidance of Trilok Goyal, who has been in the edible oil business since 1973.",
     },
     {
       question: "Where is North West Oils located?",
@@ -258,7 +270,7 @@ export const company = {
     {
       question: "How does North West Oils ensure the quality of its cooking oils?",
       answer:
-        "Quality starts with high-quality raw material and runs through cold-press extraction for Kachi Ghani, processing under strict quality control and hygienic conditions, lab testing for purity and freshness in line with FSSAI standards, and safe packaging and storage. The company is certified to ISO 9001:2015 and ISO 22000:2018.",
+        "Quality starts with high-quality raw material and runs through processing under strict quality control and hygienic conditions, lab testing for purity and freshness in line with FSSAI standards, and safe packaging and storage. The company is certified to ISO 9001:2015 and ISO 22000:2018.",
     },
     {
       question: "What food safety and quality certifications does North West Oils have?",

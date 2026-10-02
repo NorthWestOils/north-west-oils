@@ -99,7 +99,7 @@ export function Hero() {
               {...rise(step.lede, reduced)}
               className="mt-5 max-w-lg text-[0.9375rem] leading-relaxed text-forest-200 sm:text-[1rem]"
             >
-              Single-origin soyabean, cold-pressed mustard, and palmolein oils. Packaged from 500 ML retail bottles to 15 KG commercial tinplates for kitchens across India.
+              Single-origin soyabean, mustard, and palmolein oils. Packaged from 500 ML retail bottles to 15 KG commercial tinplates for kitchens across India.
             </motion.p>
 
             {/* CTAs */}
@@ -162,7 +162,7 @@ export function Hero() {
       {/* Hero Foot: Clean Executive Trust Strip */}
       <div className="relative z-10 border-t border-white/10 bg-forest-950/70 backdrop-blur-md py-3.5">
         <div className="container-page flex flex-wrap items-center justify-between gap-y-2 gap-x-6 text-xs text-forest-300">
-          <div>FSSAI Central Licence: <span className="text-paper font-medium">10014011001948</span></div>
+          <div>FSSAI Central Licence: <span className="text-paper font-medium">{company.fssaiLicence}</span></div>
           <div>Certified ISO 9001 &amp; ISO 22000</div>
           <div>100% Pure Plant Oils</div>
           <div>Pan-India Bulk &amp; Tanker Supply</div>

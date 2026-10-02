@@ -28,6 +28,7 @@ export function GET() {
     "## Company",
     "",
     `- Established: ${company.established}`,
+    `- Guidance: ${company.guidance.name}, in the edible oil business since ${company.guidance.tradeSince}`,
     ...company.locations.map(
       (l) => `- ${l.role}: ${l.full}. Phone ${l.phoneDisplay}.`
     ),
