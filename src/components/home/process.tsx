@@ -66,8 +66,8 @@ const PROCESS_STAGES: Stage[] = [
       "Filled into food-grade 15 KG metal tins, handled jars, and PET bottles with induction tamper-evident closures. Soyabean Refined Oil is packed in heavy-duty commercial tinplates and kitchen packs.",
     spec: "100% Food-grade virgin packs",
     highlight: "Tamper-evident",
-    src: "/images/soyabean-scene.webp",
-    alt: "North West Soyabean Refined Oil 15 kg commercial tin in clean packaging environment",
+    src: "/products/soyabean-15kg-tin.webp",
+    alt: "North West Soyabean Refined Oil 15 kg food-grade commercial tin",
   },
   {
     step: "05",

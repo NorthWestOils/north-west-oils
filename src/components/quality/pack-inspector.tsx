@@ -26,63 +26,63 @@ interface PackPoint {
 const PACK_POINTS: PackPoint[] = [
   {
     number: "01",
-    title: "Central FSSAI licence and logo",
-    location: "Front and side panel of every tin and bottle",
-    body: `The 14-digit licence number (${company.fssaiLicence}) is printed on every pack and can be verified publicly on the official FSSAI FoSCoS portal.`,
-    badgeX: 92,
-    badgeY: 61,
-    targetX: 74,
-    targetY: 61,
+    title: "Pure & Safe quality emblem",
+    location: "Top-left label header",
+    body: "Our signature Pure & Safe emblem printed prominently on the upper left, affirming 100% pure plant origin and hygienic processing.",
+    badgeX: 12,
+    badgeY: 26.5,
+    targetX: 43.5,
+    targetY: 26.5,
   },
   {
     number: "02",
-    title: "+F fortification logo",
-    location: "Upper right of the label",
-    body: "Confirms fortification with Vitamin A and Vitamin D. Look for the +F mark with the fortification declaration printed beneath.",
-    badgeX: 8,
-    badgeY: 48,
-    targetX: 21,
-    targetY: 48,
+    title: "Green vegetarian mark (100% Veg)",
+    location: "Top-right label header",
+    body: "The statutory green dot-in-square symbol with registered trademark filing, confirming 100% pure vegetarian plant-origin oil.",
+    badgeX: 88,
+    badgeY: 24.5,
+    targetX: 56.5,
+    targetY: 24.5,
   },
   {
     number: "03",
-    title: "Green vegetarian mark",
-    location: "Next to the brand title",
-    body: "A green circle inside a green square confirms 100% plant-origin oil, printed on every retail and commercial container.",
-    badgeX: 92,
-    badgeY: 17,
-    targetX: 78,
-    targetY: 17,
+    title: "+F Fortification mark (Vitamins A & D)",
+    location: "Middle-left panel above nutrition",
+    body: "Carries the official +F fortification logo, confirming enrichment with essential Vitamins A and D3 as mandated by national health standards.",
+    badgeX: 12,
+    badgeY: 43.5,
+    targetX: 43.0,
+    targetY: 43.5,
   },
   {
     number: "04",
-    title: "ISO 9001 and ISO 22000 declaration",
-    location: "Lower side panel",
-    body: "Declared on the container artwork, with certificate documentation available on trade inquiry.",
-    badgeX: 8,
-    badgeY: 56.5,
-    targetX: 24,
-    targetY: 56.5,
+    title: "ISO 9001 & ISO 22000 declaration",
+    location: "Lower-left certification section",
+    body: "Explicit statutory declaration confirming production under dual ISO 9001 (Quality Management) and ISO 22000 (Food Safety) audited systems.",
+    badgeX: 12,
+    badgeY: 56.0,
+    targetX: 44.0,
+    targetY: 49.5,
   },
   {
     number: "05",
-    title: "Batch lot code and shelf life",
-    location: "Tin lid or bottle shoulder",
-    body: "Each container links back to its lab clearance record and packing date. Best before 9 months from packaging, with retention samples archived for every lot.",
-    badgeX: 8,
-    badgeY: 82,
-    targetX: 24,
-    targetY: 82,
+    title: "Central FSSAI licence and logo",
+    location: "Middle-right verification panel",
+    body: `The 14-digit licence number (${company.fssaiLicence}) with the FSSAI logo is printed on every pack and verifiable on the official FoSCoS portal.`,
+    badgeX: 88,
+    badgeY: 53.0,
+    targetX: 57.0,
+    targetY: 53.0,
   },
   {
     number: "06",
-    title: "Registered office and helpline",
-    location: "Back specification panel",
-    body: "The Village Fatehpur Beri, South Delhi address and phone +91 98105 48867 are printed on every tin and carton.",
-    badgeX: 92,
-    badgeY: 86,
-    targetX: 70,
-    targetY: 86,
+    title: "Registered office, helpline & 15 Kg net",
+    location: "Bottom manufacturer panel",
+    body: "The Village Fatehpur Beri, South Delhi address, customer care helpline (+91 98105 48867), and Make in India lion mark printed across the base.",
+    badgeX: 88,
+    badgeY: 67.0,
+    targetX: 50.0,
+    targetY: 67.0,
   },
 ];
 
@@ -128,22 +128,24 @@ export function PackInspector() {
 
         <div className="mt-14 grid gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-x-12 lg:items-start">
           {/* Truly Sticky Left Column */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <div className="flex flex-col items-center rounded-3xl border border-line bg-paper-2 p-6 sm:p-7">
+          <div className="lg:col-span-6 lg:sticky lg:top-24">
+            <div className="flex flex-col items-center rounded-3xl border border-line bg-paper-2 p-4 sm:p-6 lg:p-7">
               <div className="mb-4 flex w-full items-center justify-between">
                 <span className="label text-forest-800">Food-Grade 15 KG Tin</span>
                 <span className="caption text-ink-3">Statutory Pack Markings</span>
               </div>
 
-              {/* Exact aspect ratio container so pins stay pinned precisely */}
-              <div className="relative aspect-771/1150 w-full max-w-72 select-none sm:max-w-80">
+              {/* Exact aspect ratio container matching 4:3 2896x2172 image */}
+              <div className="relative aspect-4/3 w-full max-w-lg lg:max-w-xl select-none">
                 <Image
                   src="/products/soyabean-15kg-tin.webp"
                   alt="North West 15 KG edible oil tin showing its printed markings"
                   fill
-                  sizes="(min-width: 1024px) 30vw, 80vw"
-                  className="pointer-events-none object-contain"
+                  unoptimized
                   priority
+                  loading="eager"
+                  sizes="(min-width: 1024px) 45vw, 92vw"
+                  className="pointer-events-none object-contain"
                 />
 
                 {/* SVG Pointer / Leader Lines */}
@@ -243,7 +245,7 @@ export function PackInspector() {
           </div>
 
           {/* List of 6 items */}
-          <RevealGroup as="ol" step={0.05} className="divide-y divide-line border-y border-line lg:col-span-7">
+          <RevealGroup as="ol" step={0.05} className="divide-y divide-line border-y border-line lg:col-span-6">
             {PACK_POINTS.map((pt, i) => {
               const isActive = activeIndex === i;
               return (

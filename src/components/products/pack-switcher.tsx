@@ -56,7 +56,7 @@ export function PackSwitcher({
         id={`${uid}-panel`}
         role="tabpanel"
         aria-labelledby={`${uid}-tab-${active.id}`}
-        className="relative flex h-[16rem] items-end justify-center sm:h-[21rem] lg:h-[26rem]"
+        className="relative flex h-64 items-end justify-center sm:h-84 lg:h-104"
       >
 
         {packs.map((pack, i) => {
@@ -90,6 +90,8 @@ export function PackSwitcher({
                 height={pack.height}
                 sizes="(max-width: 640px) 45vw, (max-width: 1023px) 32vw, 24vw"
                 priority={priority && i === 0}
+                loading={priority && i === 0 ? "eager" : "lazy"}
+                unoptimized
                 className="h-full w-auto object-contain"
               />
             </motion.div>
@@ -137,7 +139,7 @@ export function PackSwitcher({
         })}
       </div>
 
-      <p aria-live="polite" className="mt-5 min-h-[1.5rem] text-center text-sm text-ink-3">
+      <p aria-live="polite" className="mt-5 min-h-6 text-center text-sm text-ink-3">
         <span className="font-medium" style={{ color: accentVar[accent] }}>
           {active.label}
         </span>

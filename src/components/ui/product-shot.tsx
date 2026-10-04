@@ -36,7 +36,8 @@ export function ProductShot({
         height={height}
         sizes={sizes}
         priority={priority}
-        loading={priority ? undefined : "lazy"}
+        unoptimized
+        loading={priority ? "eager" : "lazy"}
         className={cn("relative h-full w-auto object-contain", imageClassName)}
       />
     </div>

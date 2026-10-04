@@ -122,6 +122,7 @@ export default function RootLayout({
     <html
       lang="en-IN"
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${instrument.variable} ${devanagari.variable}`}
     >
       <head>

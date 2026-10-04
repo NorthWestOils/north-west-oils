@@ -44,15 +44,15 @@ export function ProductCard({
       {/* Stage */}
       <div
         className={cn(
-          "relative flex items-end justify-center overflow-hidden bg-gradient-to-b px-8 pt-12",
-          featured ? "aspect-[4/3.6] lg:aspect-auto lg:min-h-[32rem]" : "aspect-[4/3.6]",
+          "relative flex items-end justify-center overflow-hidden bg-linear-to-b px-8 pt-12",
+          featured ? "aspect-[4/3.6] lg:aspect-auto lg:min-h-128" : "aspect-[4/3.6]",
           STAGE_TINT[product.accent]
         )}
       >
         {index ? (
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute left-6 top-4 font-display text-[5.5rem] leading-none tracking-tight text-ink/[0.06] tnum"
+            className="pointer-events-none absolute left-6 top-4 font-display text-[5.5rem] leading-none tracking-tight text-ink/6 tnum"
           >
             0{index}
           </span>
@@ -71,8 +71,11 @@ export function ProductCard({
           alt={product.heroAlt}
           width={product.heroWidth}
           height={product.heroHeight}
-          sizes={featured ? "(max-width: 1023px) 70vw, 40vw" : "(max-width: 1023px) 70vw, 36vw"}
-          className="relative mb-6 h-[85%] w-auto object-contain select-none transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:scale-[1.03]"
+          unoptimized
+          priority={featured}
+          loading={featured ? "eager" : "lazy"}
+          sizes={featured ? "(max-width: 1023px) 90vw, 55vw" : "(max-width: 1023px) 90vw, 45vw"}
+          className="relative mb-6 h-[85%] w-auto object-contain select-none transition-transform duration-700 ease-out-expo group-hover:-translate-y-2 group-hover:scale-[1.03]"
         />
       </div>
 

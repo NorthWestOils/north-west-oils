@@ -143,16 +143,18 @@ export function Hero() {
           >
 
             {/* Grounded Still Composition Container */}
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none select-none">
+            <div className="relative mx-auto flex items-center justify-center w-full max-w-md lg:max-w-xl select-none py-2 lg:py-4">
               <Image
-                src="/images/soyabean-scene.webp"
-                alt="North West Soyabean Refined Oil in a 15 kg food-grade tin, with soybeans and soy leaves"
-                width={1400}
-                height={1013}
+                src="/products/soyabean-15kg-tin.webp"
+                alt="North West Soyabean Refined Oil 15 kg food-grade tin"
+                width={771}
+                height={1150}
                 priority
+                loading="eager"
+                unoptimized
                 fetchPriority="high"
-                sizes="(max-width: 1023px) 92vw, 48vw"
-                className="h-auto w-full select-none"
+                sizes="(max-width: 1023px) 90vw, 45vw"
+                className="h-auto max-h-130 sm:max-h-145 lg:max-h-160 xl:max-h-170 w-auto select-none object-contain"
               />
             </div>
           </motion.div>

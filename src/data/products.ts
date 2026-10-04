@@ -252,8 +252,8 @@ export const products: Product[] = [
     accent: "soy",
     heroImage: "/products/soyabean-15kg-tin.webp",
     heroAlt: "North West Soyabean Refined Oil in a 15 kg food-grade tin",
-    heroWidth: 960,
-      heroHeight: 1000,
+    heroWidth: 771,
+    heroHeight: 1150,
     packs: [
       {
         id: "15kg",
@@ -289,8 +289,8 @@ export const products: Product[] = [
       "Wholesale, distributor consignments and loose-oil supply",
     ],
     scene: {
-      src: "/images/soyabean-scene.webp",
-      alt: "North West Soyabean Refined Oil 15 kg tin with soybeans and soy leaves",
+      src: "/products/soyabean-15kg-tin.webp",
+      alt: "North West Soyabean Refined Oil 15 kg tin",
       transparent: true,
     },
   },

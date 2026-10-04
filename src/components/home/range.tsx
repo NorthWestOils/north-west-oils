@@ -61,7 +61,7 @@ export function Range() {
             const featured = product.slug === featuredProduct.slug;
 
             return (
-              <RevealItem key={product.slug} className={cn("h-full", featured && "relative z-10 order-first lg:order-none lg:-my-8")}>
+              <RevealItem key={product.slug} className={cn("h-full", featured && "relative z-10 order-first lg:order-0 lg:-my-8")}>
                 <article
                   className={cn(
                     "group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white transition-colors duration-500",
@@ -73,13 +73,13 @@ export function Range() {
                   {/* Stage */}
                   <div
                     className={cn(
-                      "relative flex aspect-[4/3.6] items-end justify-center overflow-hidden bg-gradient-to-b px-8 pt-12",
+                      "relative flex aspect-[4/3.6] items-end justify-center overflow-hidden bg-linear-to-b px-8 pt-12",
                       meta.stage
                     )}
                   >
                     <span
                       aria-hidden="true"
-                      className="pointer-events-none absolute left-6 top-4 font-display text-[5.5rem] leading-none tracking-tight text-ink/[0.06] tnum"
+                      className="pointer-events-none absolute left-6 top-4 font-display text-[5.5rem] leading-none tracking-tight text-ink/6 tnum"
                     >
                       0{i + 1}
                     </span>
@@ -93,8 +93,11 @@ export function Range() {
                       alt={product.heroAlt}
                       width={product.heroWidth}
                       height={product.heroHeight}
-                      sizes="(max-width: 1023px) 70vw, 26vw"
-                      className="relative mb-6 h-[85%] w-auto object-contain select-none transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:scale-[1.03]"
+                      unoptimized
+                      priority={featured}
+                      loading={featured ? "eager" : "lazy"}
+                      sizes="(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 420px"
+                      className="relative mb-6 h-[85%] w-auto object-contain select-none transition-transform duration-700 ease-out-expo group-hover:-translate-y-2 group-hover:scale-[1.03]"
                     />
                   </div>
 
