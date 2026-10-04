@@ -288,11 +288,6 @@ export const products: Product[] = [
       "Retail shelves, supermarkets and kirana stock",
       "Wholesale, distributor consignments and loose-oil supply",
     ],
-    scene: {
-      src: "/products/soyabean-15kg-tin.webp",
-      alt: "North West Soyabean Refined Oil 15 kg tin",
-      transparent: true,
-    },
   },
   {
     slug: "refined-palmolein-oil",
