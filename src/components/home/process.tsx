@@ -78,7 +78,7 @@ const PROCESS_STAGES: Stage[] = [
     spec: "Retail & commercial bulk supply",
     highlight: "PAN India Logistics",
     src: "/images/mustard-retail-lineup.webp",
-    alt: "The North West range packed and ready for dispatch across India",
+    alt: "The North West mustard oil lineup packed and ready for dispatch across India",
   },
 ];
 

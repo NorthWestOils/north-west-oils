@@ -174,9 +174,10 @@ export default function AboutPage() {
               <figure>
                 <Image
                   src="/images/mustard-retail-lineup.webp"
-                  alt="North West Kachi Ghani mustard oil full lineup"
-                  width={1370}
-                  height={850}
+                  alt="North West Kachi Ghani Mustard Oil family lineup: 15 KG Tin, 5 L Canister, 2 L Canister, 1 L Bottle, and 500 ML Bottle"
+                  width={2400}
+                  height={1400}
+                  unoptimized
                   sizes="(max-width: 1023px) 92vw, 40vw"
                   className="mx-auto h-auto w-full select-none object-contain"
                 />

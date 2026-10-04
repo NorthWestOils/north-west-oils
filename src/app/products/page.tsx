@@ -111,11 +111,13 @@ export default function ProductsPage() {
                 <div className="flex flex-1 items-end justify-center bg-linear-to-b from-gold-500/25 via-gold-500/5 to-paper px-6 pt-10 sm:px-10">
                   <Image
                     src="/images/mustard-retail-lineup.webp"
-                    alt="The full North West Kachi Ghani mustard oil line: 15 kg tin, 5 litre and 2 litre jars, and 1 litre and 500 ml bottles"
-                    width={1370}
-                    height={850}
+                    alt="North West Kachi Ghani Mustard Oil family lineup: 15 KG Tin, 5 L Canister, 2 L Canister, 1 L Bottle, and 500 ML Bottle"
+                    width={2400}
+                    height={1400}
+                    unoptimized
+                    loading="eager"
                     sizes="(max-width: 1023px) 92vw, 54vw"
-                    className="h-auto w-full select-none"
+                    className="h-auto w-full select-none object-contain"
                   />
                 </div>
                 <figcaption className="border-t border-line p-6 sm:p-8">
