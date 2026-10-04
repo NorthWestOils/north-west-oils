@@ -199,8 +199,8 @@ export const products: Product[] = [
       "Institutional kitchens buying 15 KG tins",
     ],
     scene: {
-      src: "/images/mustard-range.webp",
-      alt: "The North West mustard oil range: 15 kg tin, 5 litre jar and PET bottles with mustard flowers, seed and a bowl of oil",
+      src: "/images/mustard-retail-lineup.webp",
+      alt: "The North West Kachi Ghani mustard oil range: 15 kg tin, 5 litre and 2 litre jars, and 1 litre and 500 ml bottles",
       transparent: true,
     },
   },

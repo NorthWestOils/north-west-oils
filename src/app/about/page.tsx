@@ -173,10 +173,10 @@ export default function AboutPage() {
             <Reveal kind="image" delay={0.08} className="lg:col-span-5">
               <figure>
                 <Image
-                  src="/images/mustard-family.webp"
-                  alt="North West Kachi Ghani mustard oil packs with golden mustard seeds"
-                  width={1446}
-                  height={925}
+                  src="/images/mustard-retail-lineup.webp"
+                  alt="North West Kachi Ghani mustard oil full lineup"
+                  width={1370}
+                  height={850}
                   sizes="(max-width: 1023px) 92vw, 40vw"
                   className="mx-auto h-auto w-full select-none object-contain"
                 />
