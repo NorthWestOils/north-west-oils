@@ -367,11 +367,6 @@ export const products: Product[] = [
       "Retail grocers and supermarket shelves",
       "Bulk and institutional supply",
     ],
-    scene: {
-      src: "/images/palmolein-scene.webp",
-      alt: "North West Refined Palmolein Oil 15 litre tin with palm fruit and palm leaves",
-      transparent: false,
-    },
   },
 ];
 
