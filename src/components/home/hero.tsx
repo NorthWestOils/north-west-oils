@@ -120,7 +120,7 @@ export function Hero() {
                 withArrow
                 className="justify-center"
               >
-                Explore all 3 oils
+                Explore our range
               </ButtonLink>
             </motion.div>
           </div>
@@ -162,12 +162,33 @@ export function Hero() {
       </div>
 
       {/* Hero Foot: Clean Executive Trust Strip */}
-      <div className="relative z-10 border-t border-white/10 bg-forest-950/70 backdrop-blur-md py-3.5">
-        <div className="container-page flex flex-wrap items-center justify-between gap-y-2 gap-x-6 text-xs text-forest-300">
-          <div>FSSAI Central Licence: <span className="text-paper font-medium">{company.fssaiLicence}</span></div>
-          <div>Certified ISO 9001 &amp; ISO 22000</div>
-          <div>100% Pure Plant Oils</div>
-          <div>Pan-India Bulk &amp; Tanker Supply</div>
+      <div className="relative z-10 border-t border-white/10 bg-forest-950/80 backdrop-blur-md py-3 sm:py-3.5">
+        <div className="container-page">
+          <ul className="grid grid-cols-2 gap-x-3 gap-y-2.5 text-[0.75rem] text-forest-300 sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6 sm:text-xs">
+            <li className="flex items-center gap-1.5 sm:gap-2">
+              <span className="size-1.5 rounded-full bg-gold-500 shrink-0" aria-hidden="true" />
+              <span>
+                FSSAI<span className="hidden sm:inline"> Central</span>:{" "}
+                <span className="font-medium text-paper">{company.fssaiLicence}</span>
+              </span>
+            </li>
+            <li className="flex items-center gap-1.5 sm:gap-2">
+              <span className="size-1.5 rounded-full bg-gold-500 shrink-0" aria-hidden="true" />
+              <span>
+                <span className="hidden sm:inline">Certified </span>ISO 9001 &amp; 22000
+              </span>
+            </li>
+            <li className="flex items-center gap-1.5 sm:gap-2">
+              <span className="size-1.5 rounded-full bg-gold-500 shrink-0" aria-hidden="true" />
+              <span>100% Pure Plant Oils</span>
+            </li>
+            <li className="flex items-center gap-1.5 sm:gap-2">
+              <span className="size-1.5 rounded-full bg-gold-500 shrink-0" aria-hidden="true" />
+              <span>
+                Pan-India Bulk <span className="hidden sm:inline">&amp; Tanker </span>Supply
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

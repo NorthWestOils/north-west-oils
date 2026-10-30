@@ -20,8 +20,8 @@ interface Stage {
 }
 
 /**
- * The five calibrated manufacturing stages governing all three North West oil variants:
- * Soyabean Refined Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil.
+ * The five calibrated manufacturing stages governing all North West and Evergreen oil variants:
+ * Soyabean Refined Oil, North West & Evergreen Kachi Ghani Mustard Oil, and Refined Palmolein Oil.
  * `phase` is kept concise so collapsed cards remain legible on wide viewports.
  */
 const PROCESS_STAGES: Stage[] = [
@@ -30,8 +30,8 @@ const PROCESS_STAGES: Stage[] = [
     phase: "Sourcing",
     title: "Raw material selection",
     summary:
-      "High-grade raw material across all three variants: non-GMO soybeans, selected black mustard seeds, and pure palm olein stock, verified on arrival for moisture, condition, and zero adulteration.",
-    spec: "Verified across all 3 crops",
+      "High-grade raw material across all variants: non-GMO soybeans, selected black mustard seeds for North West and Evergreen, and pure palm olein stock, verified on arrival for moisture, condition, and zero adulteration.",
+    spec: "Verified across all crops",
     highlight: "Quality sourcing",
     src: "/process/01-soyabean.webp",
     alt: "Soybeans spilling from a steel scoop, the crop behind refined soyabean oil",
@@ -41,7 +41,7 @@ const PROCESS_STAGES: Stage[] = [
     phase: "Extraction",
     title: "Extraction & refining",
     summary:
-      "Soyabean, Kachi Ghani mustard, and palmolein oils are processed under strict temperature and hygienic control, keeping each oil clean, stable, and true to its natural character.",
+      "Soyabean, Kachi Ghani mustard (North West and Evergreen), and palmolein oils are processed under strict temperature and hygienic control, keeping each oil clean, stable, and true to its natural character.",
     spec: "Controlled processing lines",
     highlight: "Pungency & Purity",
     src: "/process/02-pressing.webp",
@@ -74,7 +74,7 @@ const PROCESS_STAGES: Stage[] = [
     phase: "Dispatch",
     title: "Multi-variant supply across India",
     summary:
-      "Direct consolidated dispatch of Soyabean, Mustard, and Palmolein in lot-traceable consignments to distributors, wholesalers, commercial kitchens, sweet-makers, and retailers nationwide.",
+      "Direct consolidated dispatch of Soyabean, Mustard, Evergreen, and Palmolein in lot-traceable consignments to distributors, wholesalers, commercial kitchens, sweet-makers, and retailers nationwide.",
     spec: "Retail & commercial bulk supply",
     highlight: "PAN India Logistics",
     src: "/images/mustard-retail-lineup.webp",
@@ -96,7 +96,7 @@ export function Process({
   id = "process",
   eyebrow = "Quality assurance",
   title = "Five stages between the seed and the seal.",
-  lede = "From selected raw material to a sealed, labelled pack across all three variants—Soyabean, Mustard, and Palmolein—with accredited lab testing for purity and freshness sitting strictly in the middle of production.",
+  lede = "From selected raw material to a sealed, labelled pack across all our variants—Soyabean, Mustard, Evergreen, and Palmolein—with accredited lab testing for purity and freshness sitting strictly in the middle of production.",
   exploreHref = "/quality",
   exploreLabel = "Quality, certifications & testing sequence",
   showExploreLink = true,

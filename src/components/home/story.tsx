@@ -33,7 +33,7 @@ const MILESTONES = [
 
 const METRICS = [
   { value: "50+", label: "Years of Trade Experience", sub: `In edible oils since ${guidance.tradeSince}` },
-  { value: "3", label: "Master Oils", sub: "Soyabean, Mustard, Palmolein" },
+  { value: "4", label: "Culinary Grades", sub: "Soyabean, Mustard, Evergreen, Palmolein" },
   { value: "100%", label: "Lab Tested", sub: "FSSAI & NABL verified" },
   { value: "PAN India", label: "Supply Reach", sub: "Tins, Jars, Bottles & Tankers" },
 ];

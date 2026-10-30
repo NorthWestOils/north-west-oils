@@ -14,14 +14,14 @@ import { socialMetadata } from "@/lib/seo";
 import { orderedProducts, productBySlug, type Product } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Soyabean, Mustard & Palmolein Oil Products",
+  title: "Soyabean, Mustard, Evergreen & Palmolein Edible Oils",
   description:
-    "The North West Oils range: Refined Soyabean Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil — all available across six calibrated pack sizes from 500 ML to 15 KG / 15 L.",
+    "The North West Oils range: Refined Soyabean Oil, Kachi Ghani Mustard Oil, Evergreen Mustard Oil, and Refined Palmolein Oil — all available across calibrated pack sizes from 500 ML to 15 KG / 15 L.",
   alternates: { canonical: "/products" },
   ...socialMetadata({
-    title: "Soyabean, Mustard & Palmolein Oil Products | North West Oils",
+    title: "Soyabean, Mustard, Evergreen & Palmolein Edible Oils | North West Oils",
     description:
-      "Refined Soyabean Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil — all available across six calibrated pack sizes from 500 ML to 15 KG / 15 L.",
+      "Refined Soyabean Oil, Kachi Ghani Mustard Oil, Evergreen Mustard Oil, and Refined Palmolein Oil — all available across calibrated pack sizes from 500 ML to 15 KG / 15 L.",
     path: "/products",
   }),
 };
@@ -62,8 +62,8 @@ export default function ProductsPage() {
 
       <PageHeader
         eyebrow="Commercial Product Catalog"
-        title="Three calibrated edible oils, engineered for every temperature."
-        lede="From pungent Kachi Ghani mustard to crystal-clear refined soyabean and palmolein oils. Fully certified under Central FSSAI and ISO protocols."
+        title="Four calibrated edible oils, engineered for every temperature."
+        lede="From pungent Kachi Ghani mustard (North West and Evergreen) to crystal-clear refined soyabean and palmolein oils. Fully certified under Central FSSAI and ISO protocols."
         trail={[
           { name: "Home", href: "/" },
           { name: "Products", href: "/products" },
@@ -77,12 +77,12 @@ export default function ProductsPage() {
             id="range-heading"
             layout="split"
             eyebrow="The Range"
-            title="Three oils, one standard of refining."
-            intro="Our hero refined soyabean oil leads the line, with Kachi Ghani mustard and refined palmolein built for regional cooking and continuous frying."
+            title="Four distinctive oils, one standard of purity."
+            intro="Our hero refined soyabean oil leads the line, with North West & Evergreen Kachi Ghani mustard and refined palmolein built for regional cooking and continuous frying."
           />
 
-          <RevealGroup step={0.08} className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-2 lg:gap-6">
-            <RevealItem className="lg:col-span-2">
+          <RevealGroup step={0.08} className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-3 lg:gap-6">
+            <RevealItem className="lg:col-span-3">
               <ProductCard product={featured} index={1} featured headingLevel="h3" />
             </RevealItem>
             {rest.map((product, i) => (
@@ -112,8 +112,8 @@ export default function ProductsPage() {
                   <Image
                     src="/images/mustard-retail-lineup.webp"
                     alt="North West Kachi Ghani Mustard Oil family lineup: 15 KG Tin, 5 L Canister, 2 L Canister, 1 L Bottle, and 500 ML Bottle"
-                    width={2400}
-                    height={1400}
+                    width={1672}
+                    height={941}
                     unoptimized
                     loading="eager"
                     sizes="(max-width: 1023px) 92vw, 54vw"
@@ -132,7 +132,7 @@ export default function ProductsPage() {
             <Reveal kind="rise" delay={0.08} className="lg:col-span-5">
               <div className="h-full rounded-3xl border border-line bg-white p-6 sm:p-8">
                 <span className="label text-forest-800">Standard Pack Formats</span>
-                <p className="caption mt-1 text-ink-3">Supplied across all three edible oil variants</p>
+                <p className="caption mt-1 text-ink-3">Supplied across all our edible oil variants</p>
                 <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
                   {mustard.packs.map((p) => (
                     <div key={p.id} className="flex items-baseline justify-between gap-4 py-3.5">
@@ -154,7 +154,7 @@ export default function ProductsPage() {
             id="compare-heading"
             layout="split"
             eyebrow="Side by Side"
-            title="How the three oils compare."
+            title="How our edible oils compare."
             intro="Processing, taste, recommended use and pack formats across the range, at a glance."
           />
 
@@ -163,7 +163,7 @@ export default function ProductsPage() {
               <div className="overflow-x-auto">
                 <table className="w-full min-w-160 border-collapse text-left">
                   <caption className="sr-only">
-                    North West soyabean, mustard and palmolein oil compared
+                    North West and Evergreen edible oils compared
                   </caption>
                   <thead>
                     <tr className="border-b border-line">

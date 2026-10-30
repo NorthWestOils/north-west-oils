@@ -146,7 +146,7 @@ export default function AboutPage() {
             layout="split"
             eyebrow="The Founding Philosophy"
             title="Built on an authentic family pledge."
-            intro="Operating from New Delhi, we process and pack three essential edible oils: Kachi Ghani Mustard Oil, Refined Soyabean Oil, and high-heat Refined Palmolein Oil."
+            intro="Operating from New Delhi, we process and pack our core culinary range: Kachi Ghani Mustard Oil (North West and Evergreen brands), Refined Soyabean Oil, and high-heat Refined Palmolein Oil."
           />
 
           <div className="mt-14 grid gap-y-12 lg:mt-20 lg:grid-cols-12 lg:items-center lg:gap-x-16">
@@ -175,8 +175,8 @@ export default function AboutPage() {
                 <Image
                   src="/images/mustard-retail-lineup.webp"
                   alt="North West Kachi Ghani Mustard Oil family lineup: 15 KG Tin, 5 L Canister, 2 L Canister, 1 L Bottle, and 500 ML Bottle"
-                  width={2400}
-                  height={1400}
+                  width={1672}
+                  height={941}
                   unoptimized
                   sizes="(max-width: 1023px) 92vw, 40vw"
                   className="mx-auto h-auto w-full select-none object-contain"

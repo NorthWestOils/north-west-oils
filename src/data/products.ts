@@ -143,8 +143,8 @@ export const products: Product[] = [
         format: "Handled jar",
         image: "/products/mustard-2l-jar.webp",
         alt: "North West Kachi Ghani Mustard Oil 2 litre handled jar",
-        width: 768,
-        height: 1150,
+        width: 1122,
+        height: 1402,
       },
       {
         id: "1l",
@@ -368,6 +368,130 @@ export const products: Product[] = [
       "Bulk and institutional supply",
     ],
   },
+  {
+    slug: "evergreen-mustard-oil",
+    name: "Evergreen Mustard Oil",
+    nameHi: "एवरग्रीन सरसों का तेल",
+    category: "Kachi Ghani",
+    summary:
+      "Traditional Kachi Ghani mustard oil carrying the iconic Evergreen brand mark, pressed with robust pungency and fortified with vitamins A and D across five pack sizes from 500 ML to 15 KG.",
+    intro:
+      "Evergreen Kachi Ghani Mustard Oil is pressed from carefully selected mustard seeds, preserving its authentic sharp aroma, natural pungency, and clear golden hue. Processed under certified ISO 9001:2015 and ISO 22000:2018 hygienic standards and fortified with vitamins A and D, Evergreen delivers authentic culinary purity for households and commercial kitchens alike.",
+    seoTitle: "Bulk Evergreen Kachi Ghani Mustard Oil, 5 Pack Sizes",
+    seoDescription:
+      "Evergreen Kachi Ghani Mustard Oil, fortified with vitamins A and D, in 500 ML, 1 L bottles, 2 L, 5 L jars and 15 KG tins. Bulk supply, PAN India.",
+    alternateNames: [
+      "Evergreen Kachi Ghani Mustard Oil",
+      "Evergreen Mustard Oil",
+      "Evergreen Sarson Ka Tel",
+      "Evergreen Oil",
+      "एवरग्रीन सरसों का तेल",
+    ],
+    compare: {
+      made: "Kachi Ghani",
+      taste: "Pungent, authentic mustard aroma",
+      bestUse: "Traditional Indian cooking, regional gravies, pickling, and tempering",
+    },
+    faqs: [
+      {
+        question: "How is Evergreen Mustard Oil produced?",
+        answer:
+          "Evergreen Kachi Ghani Mustard Oil is pressed from premium-grade mustard seeds under strict ISO 9001:2015 and ISO 22000:2018 quality controls, lab-tested for 100% purity before packaging.",
+      },
+      {
+        question: "What pack sizes are available for Evergreen Mustard Oil?",
+        answer:
+          "Evergreen is supplied in 500 ML and 1 L PET bottles for retail and household pantries, 2 L and 5 L handled jars for regular culinary use, and 15 KG food-grade metal tins for commercial establishments and caterers.",
+      },
+      {
+        question: "Is Evergreen Mustard Oil fortified?",
+        answer:
+          "Yes. Evergreen Kachi Ghani Mustard Oil is fortified with vitamins A and D in accordance with FSSAI standards and displays the +F fortification mark on every pack.",
+      },
+      {
+        question: "What is the shelf life of Evergreen Mustard Oil?",
+        answer:
+          "Best before nine months from packaging. Store in a dry place away from heat and direct sunlight.",
+      },
+    ],
+    accent: "mustard",
+    heroImage: "/products/evergreen-15kg-tin.webp",
+    heroAlt: "Evergreen Kachi Ghani Mustard Oil in a 15 kg food-grade tin",
+    heroWidth: 815,
+    heroHeight: 1150,
+    packs: [
+      {
+        id: "15kg",
+        label: "15 KG",
+        format: "Food-grade metal tin",
+        image: "/products/evergreen-15kg-tin.webp",
+        alt: "Evergreen Kachi Ghani Mustard Oil 15 kg tin",
+        width: 815,
+        height: 1150,
+      },
+      {
+        id: "5l",
+        label: "5 L",
+        format: "Handled jar",
+        image: "/products/evergreen-5l-jar.webp",
+        alt: "Evergreen Kachi Ghani Mustard Oil 5 litre handled jar",
+        width: 1086,
+        height: 1448,
+      },
+      {
+        id: "2l",
+        label: "2 L",
+        format: "Handled jar",
+        image: "/products/evergreen-2l-jar.webp",
+        alt: "Evergreen Kachi Ghani Mustard Oil 2 litre handled jar",
+        width: 1086,
+        height: 1448,
+      },
+      {
+        id: "1l",
+        label: "1 L",
+        format: "PET bottle",
+        image: "/products/evergreen-1l-bottle.webp",
+        alt: "Evergreen Kachi Ghani Mustard Oil 1 litre PET bottle",
+        width: 1440,
+        height: 3000,
+      },
+      {
+        id: "500ml",
+        label: "500 ML",
+        format: "PET bottle",
+        image: "/products/evergreen-500ml-bottle.webp",
+        alt: "Evergreen Kachi Ghani Mustard Oil in a PET bottle",
+        width: 1440,
+        height: 3000,
+      },
+    ],
+    availableFormats: ["15 KG Tin", "5 L Jar", "2 L Jar", "1 L Bottle", "500 ML Bottle"],
+    attributes: [
+      "Pressed from selected high-grade mustard seeds",
+      "Distinct pungency and natural mustard aroma",
+      "Certified under ISO 9001: 2015 and ISO 22000 : 2018 standards",
+      "Fortified with vitamins A and D",
+      "100% vegetarian",
+      "Best before nine months from packaging",
+    ],
+    specs: [
+      { label: "Grade", value: "Kachi Ghani" },
+      { label: "Ingredient", value: "Mustard oil" },
+      { label: "Pack sizes", value: "15 KG, 5 L, 2 L, 1 L, 500 ML" },
+      { label: "Fortification", value: "Vitamins A and D" },
+      { label: "Certifications", value: "ISO 9001: 2015, ISO 22000 : 2018, FSSAI" },
+      { label: "Containers", value: "Metal tin, handled jar, PET bottle" },
+      { label: "Shelf life", value: "Nine months from packaging" },
+      { label: "Storage", value: "Dry place, away from heat and light" },
+    ],
+    bestFor: [
+      "Everyday household cooking",
+      "Retail shelves and kirana stores",
+      "Distributor and wholesale stock",
+      "Commercial kitchens and restaurants buying 15 KG tins",
+    ],
+  },
 ];
 
 export const productBySlug = (slug: string) =>
@@ -381,6 +505,7 @@ export const productBySlug = (slug: string) =>
 const DISPLAY_ORDER = [
   "soyabean-refined-oil",
   "mustard-oil",
+  "evergreen-mustard-oil",
   "refined-palmolein-oil",
 ] as const;
 

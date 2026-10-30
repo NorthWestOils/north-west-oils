@@ -36,7 +36,7 @@ export const company = {
 
   /** One-line description used for metadata and structured data. */
   summary:
-    "North West Oils Private Limited supplies refined soyabean oil, Kachi Ghani mustard oil and refined palmolein oil in bulk and wholesale to distributors, wholesalers, retailers and institutional kitchens, PAN India.",
+    "North West Oils Private Limited supplies refined soyabean oil, Kachi Ghani mustard oil (North West and Evergreen), and refined palmolein oil in bulk and wholesale to distributors, wholesalers, retailers and institutional kitchens, PAN India.",
 
   locations: [
     {
@@ -172,7 +172,7 @@ export const company = {
     {
       step: "01",
       title: "Raw material selection",
-      body: "High-quality raw material for all three oils, including carefully selected mustard seed for the Kachi Ghani line.",
+      body: "High-quality raw material across our edible oils, including carefully selected mustard seed for the Kachi Ghani lines.",
     },
     {
       step: "02",
@@ -221,7 +221,7 @@ export const company = {
     {
       question: "What oils does North West Oils produce and supply?",
       answer:
-        "North West Oils produces and packages three essential edible oils, all fortified with vitamins A and D: Refined Soyabean Oil, Kachi Ghani Mustard Oil, and Refined Palmolein Oil.",
+        "North West Oils produces and packages essential edible oils, all fortified with vitamins A and D: Refined Soyabean Oil, Kachi Ghani Mustard Oil (North West and Evergreen brands), and Refined Palmolein Oil.",
     },
     {
       question: "Which oil should I use: soyabean, mustard or palmolein?",
@@ -285,7 +285,7 @@ export const company = {
     {
       question: "Are North West cooking oils fortified?",
       answer:
-        "Yes. All three North West oils (soyabean, mustard and palmolein) are fortified with vitamins A and D and carry the +F mark. All three are also 100% vegetarian.",
+        "Yes. All North West and Evergreen cooking oils (soyabean, mustard, and palmolein) are fortified with vitamins A and D and carry the +F mark. All are also 100% vegetarian.",
     },
   ],
 

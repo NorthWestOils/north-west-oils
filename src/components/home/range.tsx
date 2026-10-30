@@ -31,11 +31,15 @@ const PRODUCT_ROLES: Record<
     use: "Bakeries, snack manufacturing and continuous frying lines.",
     stage: "from-palm/20 via-palm/5 to-paper",
   },
+  "evergreen-mustard-oil": {
+    role: "Kachi Ghani",
+    profile: "Iconic Evergreen mark, robust pungency",
+    use: "Traditional gravies, pickles, tadka and regional cuisine.",
+    stage: "from-gold-500/25 via-gold-500/5 to-paper",
+  },
 };
 
-/* Hero grade sits in the middle, flanked by the other two. */
-const others = orderedProducts.filter((p) => p.slug !== featuredProduct.slug);
-const displayProducts = [others[0], featuredProduct, ...others.slice(1)].filter(Boolean);
+const displayProducts = orderedProducts;
 
 export function Range() {
   return (
@@ -45,11 +49,11 @@ export function Range() {
           id="range-heading"
           layout="split"
           eyebrow="The Core Culinary Range"
-          title="Three essential oils. Purpose-built for Indian kitchens."
+          title="Four essential oils. Purpose-built for Indian kitchens."
           intro="Each oil is made for distinct culinary demands—from neutral frying clarity that protects natural flavours to authentic regional pungency."
         />
 
-        <RevealGroup step={0.08} className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-3 lg:items-center lg:gap-6">
+        <RevealGroup step={0.08} className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-6">
           {displayProducts.map((product, i) => {
             const meta = PRODUCT_ROLES[product.slug] ?? {
               role: product.category,
@@ -61,7 +65,7 @@ export function Range() {
             const featured = product.slug === featuredProduct.slug;
 
             return (
-              <RevealItem key={product.slug} className={cn("h-full", featured && "relative z-10 order-first lg:order-0 lg:-my-8")}>
+              <RevealItem key={product.slug} className="h-full">
                 <article
                   className={cn(
                     "group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white transition-colors duration-500",
@@ -73,13 +77,13 @@ export function Range() {
                   {/* Stage */}
                   <div
                     className={cn(
-                      "relative flex aspect-[4/3.6] items-end justify-center overflow-hidden bg-linear-to-b px-8 pt-12",
+                      "relative flex aspect-[4/3.6] items-end justify-center overflow-hidden bg-linear-to-b px-6 pt-10 sm:px-8 sm:pt-12",
                       meta.stage
                     )}
                   >
                     <span
                       aria-hidden="true"
-                      className="pointer-events-none absolute left-6 top-4 font-display text-[5.5rem] leading-none tracking-tight text-ink/6 tnum"
+                      className="pointer-events-none absolute left-6 top-4 font-display text-[4.5rem] sm:text-[5.5rem] leading-none tracking-tight text-ink/6 tnum"
                     >
                       0{i + 1}
                     </span>
@@ -96,15 +100,15 @@ export function Range() {
                       unoptimized
                       priority={featured}
                       loading={featured ? "eager" : "lazy"}
-                      sizes="(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 420px"
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 280px"
                       className="relative mb-6 h-[85%] w-auto object-contain select-none transition-transform duration-700 ease-out-expo group-hover:-translate-y-2 group-hover:scale-[1.03]"
                     />
                   </div>
 
                   {/* Details */}
-                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <div className="flex flex-1 flex-col p-6">
                     <span className="label text-forest-800">{meta.role}</span>
-                    <h3 className="display-3 mt-2 text-ink">
+                    <h3 className="card-title mt-2 text-ink">
                       <Link
                         href={`/products/${product.slug}`}
                         className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
@@ -119,15 +123,15 @@ export function Range() {
                     <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
                       <div className="flex flex-col gap-1 py-3.5">
                         <dt className="label text-ink-4">Profile</dt>
-                        <dd className="text-ink">{meta.profile}</dd>
+                        <dd className="text-ink text-xs sm:text-sm">{meta.profile}</dd>
                       </div>
                       <div className="flex flex-col gap-1 py-3.5">
                         <dt className="label text-ink-4">Best for</dt>
-                        <dd className="text-ink-2">{meta.use}</dd>
+                        <dd className="text-ink-2 text-xs sm:text-sm">{meta.use}</dd>
                       </div>
                       <div className="flex flex-col gap-1 py-3.5">
                         <dt className="label text-ink-4">Packs</dt>
-                        <dd className="tnum text-ink-2">{formats.join(", ")}</dd>
+                        <dd className="tnum text-ink-2 text-xs sm:text-sm">{formats.join(", ")}</dd>
                       </div>
                     </dl>
 

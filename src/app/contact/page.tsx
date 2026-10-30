@@ -17,12 +17,12 @@ import { socialMetadata } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Bulk orders & trade enquiries",
   description:
-    "Trade and bulk supply enquiries for North West soyabean, mustard and palmolein oil. Direct manufacturer pricing and nationwide logistics. WhatsApp or call +91 98105 48867.",
+    "Trade and bulk supply enquiries for North West soyabean, mustard, evergreen, and palmolein oils. Direct manufacturer pricing and nationwide logistics. WhatsApp or call +91 98105 48867.",
   alternates: { canonical: "/contact" },
   ...socialMetadata({
     title: "Bulk orders & trade enquiries | North West Oils",
     description:
-      "Trade and bulk enquiries for North West soyabean, mustard and palmolein oil. WhatsApp or call +91 98105 48867.",
+      "Trade and bulk enquiries for North West soyabean, mustard, evergreen, and palmolein oils. WhatsApp or call +91 98105 48867.",
     path: "/contact",
   }),
 };
@@ -36,7 +36,7 @@ const WHAT_TO_INCLUDE = [
   {
     step: "01",
     title: "Oil variant & pack format",
-    body: "Soyabean Refined Oil, Kachi Ghani Mustard Oil, or Refined Palmolein. Available across all formats: 500 ML, 750 ML and 1 L bottles, 2 L and 5 L handled jars, and 15 KG / 15 L commercial tins.",
+    body: "Soyabean Refined Oil, North West Mustard Oil, Evergreen Mustard Oil, or Refined Palmolein. Available across all formats: 500 ML, 750 ML and 1 L bottles, 2 L and 5 L handled jars, and 15 KG / 15 L commercial tins.",
   },
   {
     step: "02",
@@ -57,7 +57,8 @@ const WHAT_TO_INCLUDE = [
 
 const QUICK_QUOTES = [
   { label: "Soyabean Refined Oil", product: "Soyabean Refined Oil (15 KG & Retail)" },
-  { label: "Kachi Ghani Mustard Oil", product: "Kachi Ghani Mustard Oil (500 ML to 15 KG)" },
+  { label: "North West Mustard Oil", product: "North West Kachi Ghani Mustard Oil (500 ML to 15 KG)" },
+  { label: "Evergreen Mustard Oil", product: "Evergreen Kachi Ghani Mustard Oil (500 ML to 15 KG)" },
   { label: "Refined Palmolein", product: "Refined Palmolein Oil (15 LTR & Retail)" },
 ];
 

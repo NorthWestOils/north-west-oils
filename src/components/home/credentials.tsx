@@ -111,7 +111,7 @@ const CREDENTIALS: CredentialItem[] = [
     badge: "Vitamins A & D",
     tagline: "Nutritional enrichment for healthier daily consumption.",
     description:
-      "North West Refined Soyabean Oil and Refined Palmolein Oil are fortified with Vitamins A and D to support dietary health, carrying the official +F logo as mandated by food fortification standards.",
+      "North West Refined Soyabean Oil, Evergreen Mustard Oil, and Refined Palmolein Oil are fortified with Vitamins A and D to support dietary health, carrying the official +F logo as mandated by food fortification standards.",
     verifiedSpecs: [
       "Standardized Vitamin A and Vitamin D3 enrichment",
       "Homogeneous nutrient dispersion assay",
@@ -134,7 +134,7 @@ const CREDENTIALS: CredentialItem[] = [
     badge: "Pure Plant-Based",
     tagline: "Exclusively plant-derived oils with zero animal fats.",
     description:
-      "All three North West oils are extracted exclusively from premium non-GMO mustard seeds, soybeans, and palm fruit. Free from tallow, animal fats, or non-vegetarian processing aids.",
+      "All North West and Evergreen oils are extracted exclusively from premium non-GMO mustard seeds, soybeans, and palm fruit. Free from tallow, animal fats, or non-vegetarian processing aids.",
     verifiedSpecs: [
       "100% plant-derived edible oil source",
       "Dedicated vegetarian processing equipment",

@@ -290,7 +290,7 @@ export default async function ProductPage({ params }: Params) {
       <Section tone="paper" aria-labelledby="also-heading">
         <Container>
           <SectionHeader id="also-heading" eyebrow="Also in the Range" title="Explore the other oils." />
-          <RevealGroup step={0.08} className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:gap-6">
+          <RevealGroup step={0.08} className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-6">
             {others.map((other) => (
               <RevealItem key={other.slug} className="h-full">
                 <article className="group relative flex h-full overflow-hidden rounded-3xl border border-line bg-white transition-[border-color,box-shadow] duration-500 hover:border-line-strong hover:shadow-[0_24px_60px_-30px_rgb(20_40_25/0.35)]">
